@@ -1,0 +1,75 @@
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+
+\renewcommand{\headrulewidth}{1pt}
+%\renewcommand{\footrulewidth}{1pt}
+%\title{Arbeitsblatt LHCb Masterclass}
+%\author{You}
+
+
+\begin{document}\selectlanguage{ngerman}
+\section*{Datenanalyse - Suchen Sie neue Teilchen!}
+
+Sie haben nun den Punkt erreicht, um die Arbeit einer Teilchenphysikerin und eines Teilchenphysikers nachvollziehen und ebenfalls Entdeckungen durchführen zu können!
+
+Sie erhalten  einen Laptop, der auf die originalen Daten des CERNs zugreift. Wir müssen das Programm im PC zunächst aktivieren: 
+
+\SetDefinition{\textbf{Vorbereitung} \\ \ Öffnen Sie ein Terminal, in der Taskleiste sollte das Symbol bereits anklickbar sein, ansonsten öffnen Sie es mit der Tastenkombination  \\
+    \keystroke{STRG}+\keystroke{ALT}+\keystroke{T} \\ \, \\ \textbf{2)} Geben Sie dann folgenden Befehl ein: \\ \url{source}\,\,\,\,$\sim$\url{/lhcb_masterclass/bin/activate}  \\ \, \\
+    \textbf{3)} Geben Sie anschießend ein: \url{module}\,\,\url{load}\,\,\url{ bgood_allsources/4.65.0} \\ \, \\
+    \textbf{3)} Geben Sie anschießend ein: \url{cd}\,\,\url{ histogramServerMasterClass} \\ \, \\
+   \textbf{4)} Geben Sie anschießend ein: \url{sh}\,\,\url{ run.sh} \\ \, \\
+   \textbf{5)} Sie erhalten dann einen Link. Halten Sie \keystroke{STRG} gedrückt und klicken Sie auf den Link. Dann haben Sie das Programm gestartet.
+}
+% Damit die Aufgaben nicht zu offentsichtlich ist, könnte man auch Spuren anderer Stattfindenn Zerfälle implementieren, wo es auf gar kenen Fall eine Korellaion gibt. z.B. weitere Pis, etc.
+
+
+
+Falls Sie keine Benutzeroberfläche sehen, melden Sie sich sofort bei uns!
+
+
+\SetDefinition{\textbf{Aufgabe 0: } Betrachten Sie die Benutzeroberfläche und identifizieren Sie Ihnen bereits bekannte Aspekte aus dem vorheigen Vortrag der Datenanlyse.}
+% Damit die Aufgaben nicht zu offentsichtlich ist, könnte man auch Spuren anderer Stattfindenn Zerfälle implementieren, wo es auf gar kenen Fall eine Korellaion gibt. z.B. weitere Pis, etc.
+
+Betrachten Sie die vom LHCb detektierten Produkte. Physiker*innen wissen bereits, dass der Zerfall $\Xi_c^+ \rightarrow K^-p\pi^+$ möglich ist. Kann dies auch bei uns passiert sein? Hierzu müsste nach Filterung der Daten, ein Peak bei der die invariante Masse des $\Xi_c^+$ bei ca. $2470\,$MeV$/c^2$ entstehen.
+
+\SetDefinition{\textbf{Aufgabe 1a:} Rekonstruieren Sie über die angegebenen Zerfallsprodukte, indem Sie die Produkte über Schaltflächen zu wählen und die Filter auf Basis Ihres Wissens eigenständig anpassen.  %% Feedback 
+\\
+\emph{Hinweis:} Die Schaltflächen sind ganz unten zu finden.}
+\newpage
+\kariert{Schreiben Sie sich hier ggf. die zugeordnete  Masse auf, sowie die Anzahl der Ereignisse. Schätzen Sie ab.}{17}{22} 
+%\small \textbf{Wenn Sie mit der Aufgabe fertig sind, holen Sie sich den nächsten Aufgabenzettel vorne ab!}
+
+Fertig? - Holen Sie sich vorne den nächsten Aufgabenzettel.\newpage
+
+Sie haben nun $\Xi_c^+$ rekonstruiert und die Masse bestimmt. Damit haben Sie die Physik noch nicht weitergebracht, schließlich kennen wir dieses Teilchen bereits.
+
+
+
+\SetDefinition{\textbf{Aufgabe 1b:}  Machen Sie sich nun analog wie zuvor auf die Suche nach  $\Omega_c^0$. Wir vermuten, dass es das Mutterteilchen des Zerfalls $\Omega_c^0 \rightarrow K^-\,\Xi_c^+$ sein könnte. Gehen Sie dem nach! \\
+\emph{Hinweis:} Stellen Sie die Filtereinstellungen selbstständig neu ein, sowie die Wahl der Schaltflächen}
+
+
+
+
+\kariert{Schreiben Sie sich hier ggf. die zugeordnete  Masse auf, sowie die Anzahl der Ereignisse. Schätzen Sie ab.}{17}{7} \\ 
+
+
+\SetDefinition{\textbf{Aufgabe 2:}  Interpretieren Sie das Ergebnis. Diskutieren Sie in Gruppen und sammeln Sie Ihre Ideen.}
+
+\kariert{}{17}{7} \\ 
+
+%\small \textbf{Wenn Sie mit der Aufgabe fertig sind, holen Sie sich den nächsten Aufgabenzettel vorne ab!} \newpage
+
+%Sie sehen Peaks, aber diese sitzen auf einem Kontinuum! Das können wir der wissenschaftlichen Community nicht präsentieren, daher müssen wir eine Anpassung durchführen und die Resonanzen isolieren.
+
+%\SetDefinition{\textbf{Aufgabe 2, Zusammenfassung:} Nehmen Sie sich vorne Klebezettel und heften Sie diese an die Stelle an der Tafel, wo Sie Resonanzen fanden. Benutzen Sie pro Resonanz max. 7 Klebezettel und verteilen Sie sie so um der Form der Resonanz gerecht zu werden. \\ \emph{Hinweis:} Die Auflösung an der Tafel betrifft 5 M$e$V/$c^2$.}
+
+%\kariert{Hier ist Raum, falls Sie sich Notizen machen möchten.}{17}{5} 
+
+%Sind Sie fertig? 
+%\SetDefinition{\textbf{Zusatzaufgabe:} Was ist die Aussage des Diagramms an der Tafel? Was ist nun der nächste Schritt?}
+
+%\kariert{}{17}{9} 
+
+\end{document}

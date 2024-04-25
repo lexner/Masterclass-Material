@@ -1,0 +1,802 @@
+\sisetup{locale = DE} 
+\title{\textbf{\rmfamily Einführung in die Datenanalyse}}
+\subtitle{Histogramme, Filter, invariante Masse}
+\author[~\PersonDataAnalysis~]{{\PersonDataAnalysis}}
+\institute[\WorkGroup]{ \University}
+\date{\dateMC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Options for the footline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in foot}%
+\usebeamerfont{author in foot} \parbox{0.5\paperwidth}{\insertsubsection{}}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.11\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.385\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertsection{}\hfill
+|~Folie \insertframenumber{} \hspace*{2ex}%/ \inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+\tikzset{>=latex}
+\usetikzlibrary{decorations.markings, calc}
+\newcommand{\midlabelline}[3]{
+   \node (midlabel) at ($ (#1)!.5!(#2) $) {#3};
+   \draw[<-] (#1) --  (midlabel);
+   \draw[->] (midlabel) -- (#2);}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options for the timetable
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \makeatletter
+% \newcommand{\setcurrtime}[1]{%
+%   \set@time\curr@hour\curr@mins#1\@nil
+% }
+% \def\set@time#1#2#3:#4\@nil{%
+%   \def#1{#3}\def#2{#4}%
+% }
+% \newcommand{\currtime}[1][00:00]{%
+%   \begingroup
+%   \set@time\new@hour\new@mins#1\@nil
+%   \count\z@=\curr@mins\relax
+%   \count\tw@=\curr@hour\relax
+%   \advance\count\z@\new@mins\relax
+%   \advance\count\tw@\new@hour\relax
+%   \ifnum\count\z@>59
+%     \advance\count\z@-60
+%     \advance\count\tw@\@ne
+%   \fi
+%   % we have to use \count\z@ and \count\tw@ before
+%   % ending the group and printing the result
+%   \edef\x{\endgroup\two@digits{\count\tw@}:\two@digits{\count\z@}}\x
+% }
+% \makeatother
+
+
+\begin{document}\selectlanguage{ngerman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+\begin{center}
+    \begin{tabular}{ccc}
+ \parbox{0.33\textwidth}{\LogoInsitute}    &
+ ~~~~\parbox{0.33\textwidth}{\includegraphics[height=1cm]{Logos And Group/LHCb_Logo.png}}   &  \parbox{0.33\textwidth}{\LogoUniversity}\\
+\end{tabular}
+\end{center}
+
+\maketitle
+\end{frame}
+\section{Einleitung}
+\begin{frame}
+  Wir wollen ein neues Teilchen finden!\\ 
+\begin{minipage}{0.25\textwidth}
+~
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+ \begin{center}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+    \includegraphics[\textwidth]{Figures Lecture on Datanalysis/penguin2.jpeg}
+\end{center} 
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+    Quarkinhalt:\\
+    \begin{tabular}{cc}
+        $\Omega_c^0$ & $ssc$  \\
+         $\Xi^+$ & $usc$ \\ 
+         $K^-$ & $s \bar u$
+    \end{tabular}
+\end{minipage}
+      
+   \normalsize \ding{43} Wie können wir das $\Omega_c^0$ suchen?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Massekonzept}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \begin{frame}
+   \begin{center} \begin{spacing}{2}
+       \Large Der Begriff \\ \LARGE \textbf{Masse} \\ \Large in unserer Alltagssprache
+   \end{spacing}\end{center}
+   
+   \end{frame}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \subsection{Bild: Airbus}
+\begin{frame}{Mal nachgehakt...}
+\begin{minipage}{0.1\textwidth}
+    \quad
+\end{minipage}
+            \begin{minipage}[t]{0.49\textwidth}
+      \vspace{1cm} 
+      Mit welchen Eigenschaften assoziiert ihr \emph{Masse}? \pause \\ Unsere Ideen:
+      
+      \begin{center}
+        \begin{itemize}
+             \item[-] langlebig
+            \item [-] ausgedehnt
+            \item [-]"Da"
+            \item [-] Leicht nachweisbar
+        \end{itemize}
+         \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{0.29\textwidth}
+     \centering
+     \vspace{+.1cm}
+         \includegraphics[width=2cm]{Figures Lecture on Hadrons/SevenMountainsMilk.png}\\ \vspace{.5cm}
+         \includegraphics[width=2.5cm]{Figures Lecture on Hadrons/Airbus A321Neo.jpg}
+           \end{minipage} 
+ \end{frame}
+  \subsection{Bild: Workman et al. (PDG), 2022, 219}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Mit was haben wir es zu tun?}
+\begin{minipage}[t]{0.39\textwidth}
+     \centering
+     \vspace{+.4cm}
+        \begin{tikzpicture}[yscale = 1.2,xscale=0.6]\tiny
+
+
+
+\draw[fill=LHCbLightBlue!80] (4.7,2) to (3.6,2.2)  to (2.5,2.4)  to (1.4,2.6)to (3.6,2.7) to(5.8,2.8)  to  (8.0,2.9)to(6.9,2.6)    to(5.8,2.3)   to(4.7,2);
+\draw[fill=LHCbLightBlue!80] (4.8,3) node [below left=-2pt] {\textcolor{black}{$\mathbf{\Omega_{c}^{0}}$}} to (3.7,3.20) to (2.6,3.4) to(4.58,3.49) to (7,3.6)  to(5.9,3.3) node [below right] {\textcolor{black}{$\mathbf{\Xi_{c}^{+}}$}}  to(4.8,3);
+    \draw[fill=LHCbLightBlue!80] (6,4.3)  to (4.9,4) to (3.8,4.2) to (6,4.3);
+\draw[black, --] (5,5) to (4.9,4)  to (4.8,3)   node [above=2pt] {\colorbox{LHCbLightBlue!80}{$ssc$}}  to (4.7,2)   (5,5)to(6,4.3)   to(7,3.6)  to(8.0,2.9)   (5,5)to(3.8,4.2) to(2.6,3.4)  to(1.4,2.6)   ;
+\draw[](5.9,3.3) node [above left=-1pt] {\tiny $usc$};
+ \node (ccc) at (5,5) {$\bullet$};
+        
+        \node (scc) at (4.9,4) {$\bullet$};
+        \node (ucc) at (6,4.3) {$\bullet$};
+        \node (dcc) at (3.8,4.2) {$\bullet$};
+        
+         \node (ssc) at (4.8,3) {$\bullet$};
+         \node (dsc) at (3.7,3.20) {$\bullet$};
+         \node (ddc) at (2.6,3.4) {$\bullet$};
+             \node (usc) at (5.9,3.3) {$\bullet$};
+             \node (uuc) at (7,3.6) {$\bullet$};
+
+         
+          \node (sss) at (4.7,2) {$\bullet$};
+          \node (dss) at (3.6,2.2) {$\bullet$};
+          \node (uds) at (4.63,2.53) {$\bullet$} ;
+          \node (dds) at (2.5,2.4) {$\bullet$};
+          \node (ddd) at (1.4,2.6) {$\bullet$};
+                    \node (uss) at (5.8,2.3) {$\bullet$};
+                     \node (uus) at (6.9,2.6) {$\bullet$};
+                     \node (uuu) at (8.0,2.9) {$\bullet$};
+
+      \node (udc) at (4.58,3.49) {$\bullet$};
+      \node (udd) at (3.6,2.7) {$\bullet$};
+      \node (uud) at (5.8,2.8) {$\bullet$};
+
+    \end{tikzpicture}
+Schwere Baryonen
+           \end{minipage}
+            \begin{minipage}[t]{0.59\textwidth}
+Was trifft davon auf schwere Hadronen zu? \pause %Schwer niemals definiert 
+\begin{center}
+        \begin{itemize}
+            \item[-] Instabil, zerfallen
+            \item[-] Kurzlebig
+            % Diese Abschaetzung koennte man einfueren bei dem TOpquarks und begruenden warum ein Gluon wie weit fliegen wuerde damit es zu einer Formation kaeme
+                        \item[-] Klein {\small(Atomkerne $\sim 10^{-14}\,$m})
+            \item[-] Müssen erzeugt werden
+            \item [$\Rightarrow$] \textbf{Nicht einfach nachweisbar}
+            \\\item [\,] \pause
+            \item [\ding{43}] Ideen?
+        \end{itemize}
+        \end{center}
+      \end{minipage}
+    \end{frame}
+    \subsection{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Suche nach $\Omega_c^0$}
+
+  \begin{center} \vspace{-1cm}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+ \end{center}
+   \begin{spacing}{1.5}
+       
+  
+    \begin{itemize}    \item[\ding{202}] \textbf{ Suchen nach den Zerfallsprodukten in den LHCb Daten }
+    \item[] \textcolor{white}{Kombinieren die Zerfallsprodukte und schauen uns das Massenspektrum an   }
+    \item [] \textcolor{white}{Finden wir einen Peak, haben wir eine neues Teilchen entdeckt! }
+\end{itemize}
+ \end{spacing}
+
+\end{frame}
+\begin{frame}{$\Omega_c^0$ Zerfall}
+Quark Inhalt von $\Omega_c^0:~~css$
+\vspace{0.5cm}
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex(cl) {\(c\)};
+    \vertex[right=5cm of cl] (cr) {\(c\)};
+    \vertex[below=1cm of cl] (sl1) {\(s\)};
+    \vertex[right=5cm of sl1] (sr1) {\(s\)};
+    \vertex[below right = 1cm and 2cm of cl] (g1);
+    \vertex[below right = 1cm and 1.5cm of g1] (g2);
+    \vertex[below = 0.5cm of sr1] (u) {\(u\)};
+    \vertex[below = 1cm of u] (ubar) {\(\bar u\)};
+    \vertex[below=2cm of sl1] (sl2) {\(s\)};
+    \vertex[right=5cm of sl2] (sr2) {\(s\)};
+    \diagram* { {[edges=fermion]
+    (cl) -- (cr), (sl1) -- (g1), (g1) -- (sr1),
+    (sl2) -- (sr2), (g2) -- (u), (ubar) -- (g2)};
+    (g1) -- [boson, edge label = \(g\)] (g2)
+    };
+\draw [decoration={brace}, decorate] (sl2.south west) -- (cl.north west) node [pos=0.5, left] {\(\Omega_c^0\)};
+\draw [decoration={brace}, decorate] (cr.north east) --  (u.south east) node [pos=0.5, right] {\(\Xi_c^+\)};
+\draw [decoration={brace}, decorate] (ubar.north east) --  (sr2.south east) node [pos=0.5, right] {\(K^-\)};
+\end{feynman}
+\end{tikzpicture}   
+\end{center}
+%\pause
+
+\\ \pause
+Das $\Xi_c^+$ ist allerdings nicht stabil und zerfällt weiter in \begin{center}
+   \Large $\mathbf{\Xi_c^+ \rightarrow p\, K^-\, \boldsymbol \pi^+}$
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{Der $\Xi_c^+$ Zerfall}
+
+Wir kennen das $\Xi_c^+$ mit Lebensdauer \[\tau_{\Xi_c^+}\approx 4.5 \times 10^{-13}\,\text{s}\]
+\begin{center}
+    \begin{overpic}[width=10cm]{Figures Lecture on Datanalysis/LHCb_Calculation_tracks only.png}
+\put(100,42){$\pi^+$}
+\put(100,33){$p$}
+\put(100,27){$K^-$}
+\put(100,1){$K^-$}
+\put(3,20){$\rotatebox[]{135}{\rightarrow}\Omega_c^0 $}
+\put(3,30){$\leftarrow~\Xi_c^+\rightarrow$}
+\end{overpic}
+\end{center}
+
+
+\small Aus präzisen Vertex-Rekonstruktion, können wir die \textbf{Flugdistanz} des $\Xi_c^+$ ($\sim$ mm bis cm) als Filter verwenden!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Der $\Xi_c^+$ Zerfall} 
+Wir betrachten hier den Zerfall \begin{center}
+    $\Xi_c^+ \rightarrow p K^- \pi^+$
+\end{center} \pause
+\textbf{\textcolor{red}{Warum gerade dieser?}}\\
+Andere Optionen wären z.B.\\ 
+\begin{minipage}{0.5\textwidth}
+\begin{itemize}
+    \item $\Xi_c^+ \rightarrow \Xi^0 \pi^+$
+    \item $\Xi_c^+ \rightarrow p K^0$ 
+\end{itemize}  
+\vspace{1.5cm}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{tikzpicture}
+\draw[](-3,-3)circle(0.141cm);
+    \draw[--] (-3.1,-3.1)--(-2.9,-2.9);
+    \draw[--] (-3.1,-2.9)--(-2.9,-3.1);
+
+
+\draw[](-2,-3)circle(0.141cm);
+    \draw[--] (-2.1,-3.1)--(-1.9,-2.9);
+    \draw[--] (-2.1,-2.9)--(-1.9,-3.1);
+
+\draw[](-1,-3)circle(0.141cm);
+    \draw[--] (-1.1,-3.1)--(-0.9,-2.9);
+    \draw[--] (-1.1,-2.9)--(-0.9,-3.1);
+
+\draw[](-3,-2)circle(0.141cm);
+    \draw[--] (-3.1,-2.1)--(-2.9,-1.9);
+    \draw[--] (-3.1,-1.9)--(-2.9,-2.1);
+
+\draw[] (-2,-2) node {$\Vec{B}$};
+% \draw[](-2,-2)circle(0.141cm);
+%     \draw[--] (-2.1,-2.1)--(-1.9,-1.9);
+%     \draw[--] (-2.1,-1.9)--(-1.9,-2.1);
+
+\draw[](-1,-2)circle(0.141cm);
+    \draw[--] (-1.1,-2.1)--(-0.9,-1.9);
+    \draw[--] (-1.1,-1.9)--(-0.9,-2.1);
+
+\draw[](-3,-1)circle(0.141cm);
+    \draw[--] (-3.1,-1.1)--(-2.9,-0.9);
+    \draw[--] (-3.1,-0.9)--(-2.9,-1.1);
+
+\draw[](-2,-1)circle(0.141cm);
+    \draw[--] (-2.1,-1.1)--(-1.9,-0.9);
+    \draw[--] (-2.1,-0.9)--(-1.9,-1.1);
+
+ \draw[](-1,-1)circle(0.141cm);
+    \draw[--] (-1.1,-1.1)--(-0.9,-0.9);
+    \draw[--] (-1.1,-0.9)--(-0.9,-1.1);
+
+\draw[](-3,-4)circle(0.141cm);
+    \draw[--] (-3.1,-4.1)--(-2.9,-3.9);
+    \draw[--] (-3.1,-3.9)--(-2.9,-4.1);
+
+\draw[](-2,-4)circle(0.141cm);
+    \draw[--] (-2.1,-4.1)--(-1.9,-3.9);
+    \draw[--] (-2.1,-3.9)--(-1.9,-4.1);
+
+ \draw[](-1,-4)circle(0.141cm);
+    \draw[--] (-1.1,-4.1)--(-0.9,-3.9);
+    \draw[--] (-1.1,-3.9)--(-0.9,-4.1);
+
+ \draw[](-4,-4)circle(0.141cm);
+    \draw[--] (-4.1,-4.1)--(-3.9,-3.9);
+    \draw[--] (-4.1,-3.9)--(-3.9,-4.1);
+
+    \draw[](-4,-3)circle(0.141cm);
+    \draw[--] (-4.1,-3.1)--(-3.9,-2.9);
+    \draw[--] (-4.1,-2.9)--(-3.9,-3.1);
+
+\draw[](-4,-2)circle(0.141cm);
+    \draw[--] (-4.1,-2.1)--(-3.9,-1.9);
+    \draw[--] (-4.1,-1.9)--(-3.9,-2.1);
+
+\draw[](-4,-1)circle(0.141cm);
+    \draw[--] (-4.1,-1.1)--(-3.9,-0.9);
+    \draw[--] (-4.1,-0.9)--(-3.9,-1.1);
+
+\draw[->,red] (-2.75,-4.3)--(-2.74,-0.9) node[black,above] {$K^0$};
+ \draw[blue] (-0.65,-2.3) --++ (90:0)  arc (90:180:2)   ;
+ \draw[->, blue] (-0.65,-2.3)--(0,-2.3)node[black,right] {$K^-$};
+
+\end{tikzpicture}
+    %\includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/Particle_in_B_Field.png}
+\end{minipage}
+%Proton, $K^-$ und $\pi^+$ sind alles geladene und (hinreichend) stabile Teilchen, die gut rekonstruiert werden können!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Invariante Masse}
+    \textbf{Strategie:}\\ Rekonstruktion über (hinreichend) stabile Zerfallsprodukte
+    \begin{center}
+    \begin{overpic}[width=10cm]{Figures Lecture on Datanalysis/LHCb_Calculation_tracks only.png}
+\put(100,42){$\pi^+$}
+\put(100,33){$p$}
+\put(100,27){$K^-$}
+\put(100,1){$K^-$}
+\put(3,20){$\rotatebox[]{135}{\rightarrow} \textbf{?}$}
+\put(3,30){$\leftarrow~\textbf{?} ~\rightarrow$}
+\end{overpic}\end{center} \pause
+Welche el. Ladung werden wohl die Teilchen haben, die sich hinter den Fragezeichen verbergen?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\Bigbullet{\raisebox{-1.1mm}{\scalebox{2.5}{$\bullet$}}}
+\definecolor{orange}{rgb}{0.96,0.48,0.16}
+\definecolor{lightblue}{rgb}{0.33,0.61,0.86}
+\definecolor{goodgreen}{rgb}{0.43,0.70,0.26}
+\newcommand\BigbulletG{\raisebox{-2mm}{\scalebox{3.5}{$\bullet$}}}
+\begin{frame}{Suche nach $\Omega_c^0$}
+
+  \begin{center} \vspace{-1cm}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+ \end{center}
+   \begin{spacing}{1.5}
+       
+  
+    \begin{itemize}    \item[\ding{202}] Suchen nach den Zerfallsprodukten in den LHCb Daten 
+    \item[\ding{203}]\textbf {Kombinieren die Zerfallsprodukte und schauen uns das Massenspektrum an   }
+        \item[]  \textcolor{white}{Wir filtern Daten}
+    \item [] \textcolor{white}{Finden wir einen Peak, haben wir eine neues Teilchen entdeckt! }
+\end{itemize}
+ \end{spacing}
+
+\end{frame}
+
+\begin{frame}{Invariante Masse}
+\begin{center}
+Wir betrachten das graue Teilchen. Es ruht und besitzt die \\ Ruhemasse = Ruheenergie $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_1.png}\put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} \end{overpic}
+\end{center}
+
+
+\textcolor{white}{Die Masse von \BigbulletG teilt sich vollständig in Impuls und Masse der Produkte \Bigbullet\Bigbullet\Bigbullet auf. \\
+    \\ $\Rightarrow$ Addiere Energie und Impuls-Vektoren und erhalte so die Masse des \emph{Teilchens 1}!}
+    \end{frame}
+\begin{frame}{Invariante Masse}
+\begin{center}
+Wir betrachten das graue Teilchen. Es ruht und besitzt die \\ Ruhemasse = Ruheenergie $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_2.png}
+     
+     \put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (47.5,22.5){\parbox{1cm}{\textcolor{black}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (90,34){\parbox{1cm}{\textcolor{black}{$m_1$\\ \footnotesize{$v_1$}}}} 
+     \put (92,20){\parbox{1cm}{\textcolor{black}{$m_2$\\ \footnotesize{$v_2$}}}} 
+     \put (90,5){\parbox{1cm}{\textcolor{black}{$m_3$\\ \footnotesize{$v_3$}}}} 
+          
+\end{overpic}
+\end{center}
+Das Teilchen Zerfällt in drei Produkte. \\ \, \\ \, \\ \,
+\end{frame}
+\begin{frame}{Invariante Masse}
+\begin{center}
+Wir betrachten das graue Teilchen. Es ruht und besitzt die \\ Ruhemasse = Ruheenergie $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_2.png}
+     
+     \put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (47.5,22.5){\parbox{1cm}{\textcolor{black}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (90,34){\parbox{1cm}{\textcolor{black}{$m_1$\\ \footnotesize{$v_1$}}}} 
+     \put (92,20){\parbox{1cm}{\textcolor{black}{$m_2$\\ \footnotesize{$v_2$}}}} 
+     \put (90,5){\parbox{1cm}{\textcolor{black}{$m_3$\\ \footnotesize{$v_3$}}}} 
+          
+\end{overpic}
+\end{center}
+Die Masse von \textcolor{gray}{\BigbulletG} teilt sich vollständig in Impuls und Masse/\,Energie der Produkte \textcolor{orange}{\Bigbullet}\textcolor{lightblue}{\Bigbullet}\textcolor{goodgreen}{\Bigbullet} auf. \\ \pause
+    \\ $\Rightarrow$ Addiere Energie und Impuls-Vektoren und erhalte so die Masse von \textcolor{gray}{\BigbulletG}!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{frame}{Invariante Masse}
+     Eine einfache Aufgabe?\\ \vspace{0.5cm} \pause
+     \begin{itemize}
+         \item [\ding{43}] Man muss exakt die Produkte des Zerfalls treffen! \\ 
+         \item  [\ding{43}] Daten müssen gefiltert werden. 
+               \end{itemize}\vspace{0.5cm} \pause
+           Indizien zur Kombinatorik: 
+           
+          \begin{itemize}
+         \item [\ding{202}]Ladungserhaltung
+         \item [\ding{203}]Gemeinsamer Schnittpunkt der Spur
+                    \end{itemize}
+\end{frame}
+\begin{frame}{Beispiel: Hypothese $\Xi_c^+ \rightarrow p K^- \pi^+$}
+ Der LHCb misst $p$, $K^-$, $\pi^+$, $\mu^-$, $\gamma$ \\ \pause 
+\begin{minipage}{.4\textwidth}
+    
+
+\begin{tabular}{cc}
+   \includegraphics[width=.4\textwidth]{Figures Lecture on Datanalysis/OnOff_button.png}  & \parbox{.5\textwidth}{$\LARGE \pi^+ $  \\ \,}        \\
+   \includegraphics[width=.4\textwidth]{Figures Lecture on Datanalysis/OnOff_button.png}  & \parbox{.5\textwidth}{$\LARGE K^- $  \\ \,}           \\
+   \rotatebox[]{180}{\includegraphics[width=.4\textwidth]{Figures Lecture on Datanalysis/OnOff_button.png}}  & \parbox{.5\textwidth}{$\LARGE \gamma $  \\ \,}           \\
+   \rotatebox[]{180}{\includegraphics[width=.4\textwidth]{Figures Lecture on Datanalysis/OnOff_button.png}}  & \parbox{.5\textwidth}{$\LARGE \mu^- $  \\ \,}           \\
+\includegraphics[width=.4\textwidth]{Figures Lecture on Datanalysis/OnOff_button.png}  & \parbox{.5\textwidth}{$\LARGE p$  \\ \,}              \\
+               
+\end{tabular}
+\end{minipage} 
+\begin{minipage}{.58\textwidth}
+    \begin{overpic}[width=6.3cm]{Figures Lecture on Datanalysis/Invarint_Mass_2.png}
+     
+     \put (11,22.5){\parbox{1cm}{\textcolor{white}{\footnotesize $\Xi_c^+$}}} 
+     \put (49.75,22.5){\parbox{1cm}{\textcolor{black}{\footnotesize $\Xi_c^+$}}} 
+     \put (81,35){\parbox{1cm}{\textcolor{black}{\footnotesize $\pi^+$}}} 
+     \put (82,21){\parbox{1cm}{\textcolor{black}{\footnotesize $K^-$}}} 
+     \put (83,6){\parbox{1cm}{\textcolor{black}{\footnotesize $p$}}} 
+          
+\end{overpic}\small  \\ 
+Funktionsweise von \textbf{\textcolor{red}{Rekonstruktionen}} \\ 
+
+\end{minipage}
+\end{frame}
+
+\subsection{Bild: LHCb, 2008}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Suche nach $\Omega_c^0$}
+
+  \begin{center} \vspace{-1cm}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+ \end{center}
+   \begin{spacing}{1.5}
+       
+  
+    \begin{itemize}    \item[\ding{202}] Suchen nach den Zerfallsprodukten in den LHCb Daten 
+    \item[\ding{203}]Kombinieren die Zerfallsprodukte und schauen uns das Massenspektrum an   
+        \item[\ding{204}]  \textcolor{black}{\textbf {Wir filtern Daten}}
+    \item [] \textcolor{white}{Finden wir einen Peak, haben wir eine neues Teilchen entdeckt! }
+\end{itemize}
+ \end{spacing}
+
+\end{frame}
+
+
+\begin{frame}{Events}
+\begin{center}
+     \includegraphics[width=8cm]{Figures Lecture on Datanalysis/2D-Eventdisplay.png} \\
+    Typisches Eventdisplay
+\end{center}
+   \end{frame}
+   \subsection{}
+   \begin{frame}
+
+        \Large \textbf {Wie stelle ich Ergebnisse dar?} \\ 
+        \quad Histogramme 
+
+\end{frame}
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+\subsection{}
+
+\begin{frame}{Histogramme \& Filter}
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0.3cm}
+\begin{center}
+\begin{overpic}[width=1\textwidth]{Figures Lecture on Datanalysis/Histogram_Resoance.png} \put (30,-3){\scriptsize Variable} \put (0,40){\rotatebox[]{90}{\scriptsize Anzahl Ereignisse}}\end{overpic}
+\end{center}
+           \end{minipage}
+           \vspace{-2cm}
+            \begin{minipage}[t]{0.55\textwidth}
+                 \begin{itemize}
+         \item Gibt Häufigkeitsverteilung an
+         \item Einteilung in Klassen, mit vorgegebener Breite
+               \end{itemize}
+               \vspace{1cm}
+               \begin{center}
+              \tcbox[tcbox raise base]{\parbox{3cm}{\centering Beispiel?!\\ \href{https://docs.google.com/spreadsheets/d/19Me7GeqSumzgNOTNH_OifDmuqUSA9yFIJokz8N98cV0/edit#gid=1009602959&fvid=1063437180}{\textbf{Klick}}}}
+               \end{center}
+      \end{minipage}
+\end{frame}
+
+
+\subsection{Bild: CERN}
+\begin{frame}
+
+
+
+\begin{minipage}{0.49\textwidth}
+    \animategraphics[autoplay,width=\textwidth]{10}{Figures_HiggstoGammaGamma_Gif/frame_}{0}{163}
+  \end{minipage}  \begin{minipage}{0.49\textwidth}
+
+\includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/ATLAS_Energy_People.jpg}
+\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    
+\section{Histogramme und Filter}
+
+%    \subsection{LHCb, 2016}
+%     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{Ergebnis}
+    
+
+
+
+
+% \begin{center}
+% \includegraphics[width=0.5\textwidth]{Figures Lecture on Datanalysis/Resonance_Xi_c_-.png}\\
+%     $\Xi_b^- \rightarrow \Xi_c^0 ~\pi^-$ \vspace{0.5cm}
+
+     
+%         Kombinationen weisen auf die Masse eines pot. unentdeckten Mutterteilchens hin. \vspace{0.5cm}
+             
+              
+%                \begin{minipage} {0.4\textwidth}\\
+%               \\ \tcbox[tcbox raise base]{\ding{43} Sog. Resonanzen}
+              
+%                \end{minipage}
+%                \end{center}
+        
+
+% \end{frame}
+% \subsection{} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Datenanalyse} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\LARGE \textbf{ Wie sehen aber Filter beim LHCb aus?}
+    
+\end{frame}
+\begin{frame}{Datenanalyse}
+%Wir wollen aus den riesigen Mengen an Daten, nur die Ereignisse auswählen, die für unsere Analyse interessant sind\\
+
+Riesige Mengen an Daten, was davon interessiert uns?\\ \pause
+\vspace{0.2cm}
+\ding{43} Wir müssen Kriterien überlegen, um $\Omega_c^0 \rightarrow \Xi_c^+ K^-$ gegenüber Untergrund zu unterscheiden\\\pause 
+\vspace{0.5cm}
+Potenzielle Untergründe: 
+\begin{itemize}
+    \item ein $\Xi_c^+$ und ein $K^-$ werden in der Kollision erzeugt, stammen aber \textbf{nicht} aus gesuchtem $\Omega_c^0$ Zerfall\pause
+    \item Wir haben ein Teilchen \textbf{falsch identifiziert}, z.B. ein $\pi^-$ für ein $K^-$ gehalten
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bild: LHCb, 2008}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Teilchenidentifikation - Reminder}
+Wie konnten wir Teilchen mit dem LHCb identifizieren? \\
+\vspace{0.5cm}
+\begin{center}
+    \begin{tabular}{ll}
+    Tracking &  $p$ und $q$\\
+    Kalorimeter & $E$ \\
+    RICH & $v$ \\
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+\begin{center}
+    \includegraphics[width = 0.45\textwidth]{Figures Lecture on Datanalysis/2D-Eventdisplay.png}
+\end{center}  
+\end{frame}
+\subsection{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Filter für das $\Omega_c^0$?}
+\begin{minipage}[c]{0.75\textwidth}
+    Problem: Wir kennen das $\Omega_c^0$ noch nicht \vspace{1cm}
+\end{minipage} 
+\begin{minipage}[c]{0.2\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/sad-penguin3.png}
+\end{minipage}\\ \pause
+\vspace{0.5cm}%\pause
+\begin{minipage}[c]{0.2\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/happy-penguin2.jpeg}
+\end{minipage}%
+\begin{minipage}[c]{0.75\textwidth}
+    \ding{43} Können aber trotzdem Kriterien durch unser Wissen über Hadronen und das Standard Modell aufstellen!
+\end{minipage}
+
+\end{frame}% Finde diese SLide etwas misleading, wozu brauchen wir die eigentlich?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Der $\Omega_c^0$-Zerfall}
+Wir suchen:
+\begin{equation*}
+    \Omega_c^0\rightarrow \Xi_c^+ K^-
+\end{equation*}
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex(cl) {\(c\)};
+    \vertex[right=5cm of cl] (cr) {\(c\)};
+    \vertex[below=1cm of cl] (sl1) {\(s\)};
+    \vertex[right=5cm of sl1] (sr1) {\(s\)};
+    \vertex[below right = 1cm and 2cm of cl] (g1);
+    \vertex[below right = 1cm and 1.5cm of g1] (g2);
+    \vertex[below = 0.5cm of sr1] (u) {\(u\)};
+    \vertex[below = 1cm of u] (ubar) {\(\bar u\)};
+    \vertex[below=2cm of sl1] (sl2) {\(s\)};
+    \vertex[right=5cm of sl2] (sr2) {\(s\)};
+    \diagram* { {[edges=fermion]
+    (cl) -- (cr), (sl1) -- (g1), (g1) -- (sr1),
+    (sl2) -- (sr2), (g2) -- (u), (ubar) -- (g2)};
+    (g1) -- [boson, edge label' = \(g\)] (g2)
+    };
+\draw [decoration={brace}, decorate] (sl2.south west) -- (cl.north west) node [pos=0.5, left] {\(\Omega_c^0\)};
+\draw [decoration={brace}, decorate] (cr.north east) --  (u.south east) node [pos=0.5, right] {\(\Xi_c^+\)};
+\draw [decoration={brace}, decorate] (ubar.north east) --  (sr2.south east) node [pos=0.5, right] {\(K^-\)};
+\end{feynman}
+\end{tikzpicture}   
+\end{center}
+\ding{43} starke Wechselwirkung!
+\end{frame}
+\begin{frame}{Filter für das $\Omega_c^0$?}
+Typische Lebensdauer für einen starken Zerfall:\begin{center}
+    $\tau \approx 10^{-24}\,\textmd{s}$%\pause
+\end{center} \pause
+
+\begin{itemize}
+    \item Nochmal um einen Faktor $10^{11}$ kleiner als die Lebensdauer des $\Xi_c^+$! \pause
+    \item Das $\Omega_c^0$ sollte sofort noch im $pp$-Kollisionspunkt zerfallen 
+    \item[] \pause
+\item[ \ding{43}] \textbf{\textcolor{red}{Die Tochterteilchen des $\Omega_c^0$ sollen direkt aus dem $pp$-Kollisionspunkt kommen!}}
+\end{itemize} 
+%\pause
+
+\end{frame}
+\begin{frame}{Filter für das $\Omega_c^0$?}
+\textbf{Impact Parameter (IP)}: Minimaler Abstand zwischen Kollisionspunkt und rekonstruiertem Teilchen
+\begin{center}
+\begin{tikzpicture}
+    \draw[->, black, very thick] (-3,0) node[black,left] {$p$}-- (-0.1,0){};
+    \draw[->, black, very thick] (3,0) node[black,right] {$p$} -- (0.1,0){};
+    \draw[->,darkblue] (2.5,1) -- (4.5,2){};
+    \draw[->, darkgreen] (2.5,1)-- (3.5,3){};
+    \draw[--, dashed, thick, gray] (0,-1.5)--(2.5,1){};
+    \draw[--,red,thick] (0,0) -- (0.75,-0.75);
+    \draw[red] (0.5,-0.5) --++ (90:0)  arc (135:45:0.33)  ;
+     \midlabelline{-1,-1}{-0.25,-1.75}{\small \textcolor{red}{$IP$}};
+     \draw (2.5,-1.5) node {Impact Parameter};
+
+    \draw[red, fill=red](0.75,-0.55)circle(0.05cm);
+\end{tikzpicture}
+    % \includegraphics[width=7cm]{Figures Lecture on Datanalysis/Impact_Paramenter.png}
+\end{center} \pause
+ \textbf{\textcolor{red}{Kleiner IP = große Wahrscheinlichkeit, dass das Teilchen aus dem Kollisionspunkt kommt}}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Teilchenidentifikation}
+Die einzelnen Messdaten (Krümmungsradius, Geschwindigkeit, etc.) werden zu einer Variable verarbeitet: 
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+\scriptsize
+    \draw (-6,0)  node [rounded corners=3pt, draw, fill=white, line width=0.1] {\parbox{70pt}{Daten aus \\ - Tracking \\ - Kalorimenter \\ - RICH}};
+    \draw (0,0) node [rounded corners=3pt, draw, fill=black, line width=0.1,text=white]   {\parbox{50pt}{\centering \vspace{10pt}\textbf{Neuronales Netz (NN)}\vspace{10pt}}} ;
+    \draw (6.3,0) node [rounded corners=3pt, draw, fill=white, line width=0.1]  {\parbox{90pt}{\centering Zahl $\in [0,1]$ \\ Wie wahrscheinlich ist es, dass es sich um Teilchen X handelt?}};
+    \draw[--,fill=darkblue] (-3,-0.5)--(-3,0.5)--(-2.5,0.5)--(-2.5,0.75)--(-2,0)--(-2.5,-0.75)--(-2.5,-0.5)--(-3,-0.5);
+    \draw[--,fill=darkblue] (2,-0.5)--(2,0.5)--(2.5,0.5)--(2.5,0.75)--(3,0)--(2.5,-0.75)--(2.5,-0.5)--(2,-0.5);
+    
+\end{tikzpicture}
+     % \includegraphics[width=8cm]{Figures Lecture on Datanalysis/ProbNN_DE.png}  
+\end{center}\pause
+Variable "ProbNNp": Wie wahrscheinlich, handelt es sich um ein Proton
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Filter für das $\Omega_c^0$?}
+Wissen aus der Theorie, dass schwere Teilchen, meistens mit einem hohen \textbf{transversalen Impuls} erzeugt werden
+\begin{center}
+\begin{tikzpicture}
+    \draw[->, black, very thick] (-3,0) node[black,left] {$p$}-- (-0.1,0){};
+    \draw[->, black, very thick] (3,0) node[black,right] {$p$} -- (0.1,0){};
+    \draw[->, green, thick] (0,0)-- (0,2) node[midway,left] {$\Vec{p_{\perp}}$};
+    \draw[->, red, thick] (0,2)-- (2,2) node[midway,above]  {$\Vec{p_{||}}$};
+    \draw[->, blue,very thick] (0,0)-- (2,2) node[midway,right]  {$\Vec{p}$};
+
+  
+\end{tikzpicture}
+   % \includegraphics[width=7cm]{Figures Lecture on Datanalysis/transverse_momentum.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Suche nach $\Omega_c^0$}
+
+  \begin{center} \vspace{-1cm}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+ \end{center}
+   \begin{spacing}{1.5}
+       
+  
+    \begin{itemize}    \item[\ding{202}] Suchen nach den Zerfallsprodukten in den LHCb Daten 
+    \item[\ding{203}]Kombinieren die Zerfallsprodukte und schauen uns das Massenspektrum an   
+        \item[\ding{204}]  \textcolor{black}{Wir filtern Daten}
+    \item [\ding{205}] \textcolor{back}{\textbf{Finden wir einen Peak, haben wir eine neues Teilchen entdeckt! }}
+    \begin{itemize} \pause
+        \item [\ding{43}] \textcolor{red }{Ihr seid die Wissenschaftler*innen!}
+    \end{itemize}
+\end{itemize}
+ \end{spacing}
+
+\end{frame}
+\begin{frame}{Zusammenfassung}
+Wir suchen nach:
+\begin{spacing}{1.5}
+\begin{itemize}
+    \item 3 Tracks, als $p, K^-, \pi^+$ identifiziert
+    \item Diese Tracks stammen aus einem sekundären Vertex, da das $\Xi_c^+$ ein kurze Strecke im Detektor fliegt
+    \item Das gesuchte $\Omega_c^0$ zerfällt noch im $pp$-Kollisionspunkt (kleiner IP)
+    \item Das gesuchte $\Omega_c^0$ hat einen hohen transversalen Impuls
+\end{itemize}
+\end{spacing}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Referenzen} \footnotesize
+
+    \begin{itemize}
+\item[-] The LHCb Collaboration. Measurement of the properties of the $\Xi_b^0$ baryon. 	JHEP 1605 (2016) 161.
+\item[-] The LHCb Collaboration. The LHCb Detector at the LHC.  JINST 3 (2008) S08005.
+\item[-] Airbus. \url{aircraft.airbus.com/en/aircraft/a320/a321xlr#images}
+\end{itemize}
+
+
+    % \bibliographystyle{plain}
+    % \bibliography{Z_References}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+

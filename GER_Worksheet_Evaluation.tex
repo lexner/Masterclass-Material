@@ -1,0 +1,163 @@
+\lhead{}
+\chead{}
+\rhead{}
+
+\pagestyle{fancy}
+%headers
+%\lhead{\begin{picture}(0,0)\put(0,10){\includegraphics[width=2.5cm]{grafik}}\end{picture}}
+\chead{\,  \newline \paragraph{\Large LHCb Masterclass -- $\Omega_c^0$-Spektroskopie -- Evaluation \\} \newline
+
+\\ Ihr Feedback ist für die Weiterentwicklung unseres Projekts von höchster Bedeutung. 
+}
+
+%\rhead{
+%\textsc{Tecnológico Nacional de México}\\
+%\textsc{Instituto Tecnológico de Morelia}\\
+%\textsc{Departamento de Ingeniería Electrónica}\\}
+\rfoot{\includegraphics[height=1cm]{Logos And Group/LHCb_Logo.png}}
+\lfoot{Es gibt eine Rückseite~~~~~~~~~~~\url{\dateMC}}
+\renewcommand{\headrulewidth}{0pt}
+%end headers----
+%=-=-=-=-=-=-=-=
+
+% begin questionnaires--
+% Set up counters for questions and headings
+\newcounter{hnumber}
+\setcounter{hnumber}{0}
+%\stepcounter{hnumber}
+\newcounter{qnumber}
+\setcounter{qnumber}{0}
+\stepcounter{qnumber}
+%=-=-=-=-=-=-=-=
+% defining answer macro
+\newcommand{\yesno}{{\Large ~$\Box$}}
+
+%=-=-=-=-=-=-=-=%=-=-=-=-=-=-=-=
+%% we now define the questions
+\newcommand{\question}[1]{
+    \hfill \relax \thehnumber.\theqnumber\hfill\hfill &\textsf{\small{#1}} &{\small\yesno} & {\small\yesno} &{\small\yesno} &{\small\yesno}&{\small\yesno}\stepcounter{qnumber}\\
+}
+
+%=-=-=-=-=-=-=-=%=-=-=-=-=-=-=-=
+%% we now define the headings of questions
+\newcommand{\heading}[1]{
+	\stepcounter{hnumber}
+	\thehnumber &\multicolumn{4}{l}{\bf\textsf{#1}} \\ \midrule%
+	}
+
+%=-=-=-=-=-=-=-=
+\newcommand{\divider}{\hline}
+
+%=-=-=-=-=-=-=-=%=-=-=-=-=-=-=-=
+% Document's content
+
+\vspace{1cm}\begin{document}\selectlanguage{ngerman}
+\, \\ 
+\SetDefinition{\textbf{Aufgabe:} Bewerten Sie uns gewissenhaft, kreuzen Sie entsprechend Fragen und Aussagen nach ihrer Trefflichkeit (von ++ für starke Zustimmung, über $\circ$ für neutral, bis -\,- für absolut keine Zustimmung) an, und kommentieren Sie gegebenenfalls. \\ \emph{Hinweis:} Ihr Feedback ist vollkommen anonym.}
+
+
+\begin{longtable}{c p{10cm}ccccc}
+% Main table's header
+Nr. &\textbf{Beschreibung}&\footnotesize \textbf{+\,+} & \footnotesize \textbf{+} & \footnotesize $\mathbf{\circ}$& \footnotesize \textbf{-}&\footnotesize \textbf{-\,-} \vspace{0.3cm} \\
+
+%----------------------
+% 1.
+\question{Ich habe den Vorbereitungskurs gemacht}
+\question{Ich hatte vor der Veranstaltung Vorstellungen in Elementarteilchenphysik, bzw. Hadronenspektroskopie}
+\\
+
+\setcounter{qnumber}{0}
+\stepcounter{qnumber}
+\heading{Inhalt}
+\question{Das Tempo der Vorträge war angemessen} 
+ &Wenn nicht: Welcher Vortrag sollte ein geringeres Tempo haben? \vspace{0cm} \\
+ &Welcher:\noindent\rule{9cm}{1pt}\\
+\question{Ich weiß, warum man Teilchen rekonstruieren muss} %Innere Struktur
+\question{Hadronenspektroskopie hat Alltagsbezug} %Innere Struktur, Anspruch
+\question{Die Vorträge waren interessant} \\ 
+ &Welcher (nicht):\noindent\rule{7.8cm}{1pt}\\ \\
+ &Warum:\noindent\rule{9cm}{1pt}\\
+%&\emph{Comments on Poster Content:}
+\\
+
+%----------------------
+%2.
+\setcounter{qnumber}{0}
+\stepcounter{qnumber}
+\heading{Lehrtechnik}
+\question{Die Masterclass war wie Unterricht} %Sollte es nciht, besser vorberietet, höheres nivreau
+\question{Der Einstieg hat mich motiviert}
+\question{Es war ein dauerhaftes Wechselspiel von Vortrag und Anwendung} %Innere Struktur, Inbegirff von Lernen reflekiteren, spannend mit Frage über "Ich habe zu viel gelernt", cogn Load
+\question{Ich wusste am Anfang was das Ziel am Ende ist} %Motivation, Lernaufgabe
+\question{Das Puzzeln von Teilchen hat den Kopf entlastet} %Vorgehen
+\question{Der Vortrag anschließend hat geholfen, die Erkenntnisse im Puzzle zu reflektieren} %Vorgehen
+\question{Ich will das Puzzle für zu Hause!} %Kommerzialisieurng
+\question{Die Histogramme über die eigenen Daten einzuführen war erleuchtend} %Methodik, Aktivieurng
+\question{Ich empfand es als gut, dass die Gruppe zum Mitdenken angeregt wurde } 
+\question{Ich konnte eigenständig arbeiten} 
+\question{Die Methoden waren vielfältig}
+\question{Die Atmosphäre war locker}
+%&\emph{Comments on Poster Content:}
+\\
+\newpage
+%----------------------
+%3.
+\setcounter{qnumber}{0}
+\stepcounter{qnumber}
+\heading{Datenanalyse \& Aufgaben}
+\question{Die Rechenaufgabe hat geholfen Detektoren zu verstehen} 
+\question{Ich brauchte bei der Rechenaufgabe Hilfekarten} %Wenn nicht, Differnzierung! 
+\question{Ich wusste was in der Datenanalyse zu tun ist}
+\question{Die Benutzeroberfläche der Datenanalyse war einfach zu bedienen}
+\question{Ich hätte mir gewünscht zu sehen, wie das Programm der Datenanalyse funktioniert}
+\question{Das Design der Materialien war schön} %Cogn. Load
+
+\\
+
+\setcounter{qnumber}{0}
+\stepcounter{qnumber}
+\heading{Erkenntnis}
+\question{Ich habe heute viel gelernt}
+\question{Ich war überfordert}
+\question{Das Niveau war hoch}
+\question{Mein Bild von Teilchenphysiker*innen hat sich verändert} \\ 
+&Wie hat sich Ihre Meinung dazu durch die Veranstaltung verändert? (Auf Skala ein $\times$ setzen) \\ 
+&~~~~~~~~~~~~~~~~~~~\begin{tikzpicture}
+    \draw [--] (0,0) -- (10,0);
+    \draw  (-0.2,-0.03) node {$\bullet$ } node [below]{positiv};
+        \draw  (5,-0.03) node {$\bullet$ } node [below]{gar nicht};
+                \draw  (10.2,-0.03) node {$\bullet$ } node [below]{negativ};
+\end{tikzpicture}\\
+\question{Ich kann meinen Eltern später erklären was $\Omega$-Baryonen sind und wie man sie nachweist }
+\question{Ich hatte heute viel Spaß}
+\question{Ich wurde heute für ein Physikstudium begeistert} \\ 
+&Wie hat sich Ihre Meinung dazu durch die Veranstaltung verändert? \\ 
+&~~~~~~~~~~~~~~~~~~~\begin{tikzpicture}
+    \draw [--] (0,0) -- (10,0);
+    \draw  (-0.2,-0.03) node {$\bullet$ } node [below]{positiv};
+        \draw  (5,-0.03) node {$\bullet$ } node [below]{gar nicht};
+                \draw  (10.2,-0.03) node {$\bullet$ } node [below]{negativ};
+\end{tikzpicture}\\
+
+\question{Ich empfehle diese Veranstaltung}
+\\
+
+
+
+\bottomrule
+\end{longtable}
+Ich identifiziere mich als... \hspace{0.7cm} $\Box$ weiblich \hspace{0.7cm} $\Box$ männlich \hspace{0.7cm} $\Box$ divers \hspace{0.7cm} $\Box$ Keine Angabe \\
+
+
+\small \noindent \bf Das möchte ich unbedingt noch loswerden...\vspace{0.6cm}
+
+\bottomrule\vspace{0.6cm}
+\bottomrule\vspace{0.6cm}
+\bottomrule\vspace{0.6cm}
+\bottomrule\vspace{0.6cm}
+\bottomrule\vspace{0.6cm}
+
+
+Wir bedanken uns für Ihre Teilnahme am Projekt und wünschen für Sie und Ihren Werdegang alles Gute!\thispagestyle{plain}
+
+\end{document}

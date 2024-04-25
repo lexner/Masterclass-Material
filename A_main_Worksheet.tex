@@ -1,0 +1,242 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% READ ME
+% 
+% 1. Please give details of your working group, institute, time schedule in the specification, see section A.
+% 2.1 Load the content package of your language in section K.
+% 2.2 Load the individual files one after the other and compile.  
+% 2.3 Compile the lecture matieral with LuaLaTeX and the worksheet material with pdfLaTeX (!)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt, a4paper, halfparskip, oneside]{scrartcl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% [A] PLEASE FILL IN THE GAPS IN THE SPECIFICATION.TEX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{A_Specification}
+
+
+%----------------------------------------------------------------------------------------
+% [B] PAKETE UND ANDERE DOKUMENTENKONFIGURATIONEN
+%----------------------------------------------------------------------------------------
+\usepackage[english, ngerman]{babel}
+\usepackage{textcomp,amsmath,longtable}
+\usepackage{latexsym}
+\usepackage{booktabs}
+\usepackage{enumerate} % Benutzerdefinierte Positionsnummern für Aufzählungen
+\usepackage[ruled]{algorithm2e} % Algorithmen
+\usepackage[framemethod=tikz]{mdframed} % Ermöglicht die Definition von benutzerdefinierten Boxen-/Rahmen-Umgebungen
+\usepackage{listings} % Dateilisten, mit Syntaxhervorhebung
+\lstset{basicstyle=\ttfamily,} % Auflistungen in der Schriftart "Monospace" setzen.
+\usepackage{tabularx,colortbl}
+\usepackage[table]{xcolor} % Farbige Tabellen 
+\usepackage{multirow} % Tabellen mit zusammengefasster Reihe
+\usepackage{booktabs} % Schönere horizontale Tabellen
+\usepackage[inline]{enumitem} % Erlaubt es Aufzählungen in einer Reihe durchzuführen. Z.B. a) ... b), etc. 
+\usepackage{graphicx} % Erlaubt das Einstellen von Grafiken
+\usepackage{subfig} % Erlaubt das Einstellen von GRafiken innerhalb eines Textes (besser als principar)
+%\usepackage{picinpar} % Erlaubt das Einstellen von GRafiken innerhalb eines Textes
+%\usepackage[% bookmarks,%
+						%bookmarksopen=false,% Klappt die Bookmarks aus
+						%pdfauthor={Autor},%
+						%pdftitle={Titel},%
+						%colorlinks=true,%
+						%linkcolor=blue,%
+						%citecolor=blue,%
+						%urlcolor=blue,%
+					 %]{hyperref} % Erlaubt das Erzeugen von Hyperreferenzen zu Webseiten, mit bestimmten Farben
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[most]{tcolorbox} % Benötigt, damit Boxen einen Seitenumbruch machen
+\usepackage{xcoffins,calc}
+%% Create and Set Coffins
+\NewCoffin\Output   %Coffin to hold the others 
+\NewCoffin\Definition % Definition definition ...
+\NewCoffin\BackFrame % Background: green rectangle
+\NewCoffin\SideRule  %lateral left border
+\SetHorizontalCoffin\Output{} % It will provide the reference point to join the others
+\SetVerticalCoffin\Definition{\linewidth}{%
+\textbf{Definition.} $\gamma^5$ is defined to be the matrix given by:%
+\[\gamma^5=\frac{1}{24}\epsilon_{abcd}\gamma^{abcd} \]%
+}
+\SetHorizontalCoffin\BackFrame{\color{green!30!gray!15}\rule{\linewidth}{\CoffinTotalHeight\Definition + \baselineskip}}    
+\SetHorizontalCoffin\SideRule{\color{green!50!black}\rule{3pt}{\CoffinTotalHeight\Definition +\baselineskip}} %vertical side rule 
+\JoinCoffins*\Output[l,t]\BackFrame[l,t] %attach left-top corner of BackFrame  to idem of Output
+\JoinCoffins*\Output[l,t]\SideRule[l,t] %attach left-top corner of  SideRule to idem of Output
+\JoinCoffins*\Output[l,t]\Definition[l,t](0pt,-\baselineskip) %attack left-top corner of Definition to idem of Output
+%%%%%%%%%%%%%%%%%  macro def, to be moved  to the preamble, use as \SetDefinition{your-text}
+\newcounter{defcounter}
+\newcommand{\SetDefinition}[1]{%
+    \SetHorizontalCoffin\Output{} % It will be the reference point join the others  
+    \SetVerticalCoffin\Definition{\linewidth}{\hspace{0.5cm}\parbox{15cm}{\textsf{#1}}\vspace{0.4cm}} %added counter
+    %\SetHorizontalCoffin\BackFrame{\color{yellow!30!orange!15}\rule{\linewidth}{\CoffinTotalHeight\Definition +\baselineskip}}    
+       \SetHorizontalCoffin\BackFrame{\color{LHCbLightBlue!30}\rule{\linewidth}{\CoffinTotalHeight\Definition +\baselineskip}}    
+    \SetHorizontalCoffin\SideRule{\color{LHCbRed}\rule{3pt}{\CoffinTotalHeight\Definition +2pt+\baselineskip}} %vertical side rule 
+ %% Assembly Coffins
+    \JoinCoffins*\Output[l,t]\BackFrame[l,t] %attach left-top corner of BackFrame  to idem of Output
+    \JoinCoffins*\Output[l,t]\SideRule[l,t] %attach left-top corner of  SideRule to idem of Output
+    \JoinCoffins*\Output[l,t]\Definition[l,t](0pt,-\baselineskip) %attack left-top corner of Definition to idem of Output
+    %% Typeset output
+    \noindent\TypesetCoffin\Output % at the text insertion point. It is not a float.
+    \vspace*{\CoffinTotalHeight\Definition}\bigskip %make some room for Output
+    }   
+%%%%%%%%%%%%%%%%%%%%%   end macro
+
+\usepackage{etoolbox} % Erforderlich für if-Anweisungen
+\usepackage{enumitem}
+\usepackage{blindtext}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\usepackage{lipsum}
+\usepackage{ragged2e} % Prinzipiell unnötig
+\usepackage{pifont} %Lädt ganz coole Symbole
+
+%----------------------------------------------------------------------------------------
+%% [C] 	Zitieren und Biblioteksmanagement
+%----------------------------------------------------------------------------------------
+
+\usepackage[nohyperlinks, printonlyused]{acronym} % Akronyme für ein mögliches Abkürzuzngsverzeichnis
+\usepackage{natbib} % Nice Bibliographien. Für Zitirvorgehen unbedingt googlen. Tipp: "(\citealt{Autor})" ist gut. \citep{Autor, Autor} ist nicht cique
+\usepackage[square,numbers]{natbib} % für [Zahl] Zitirweise
+\bibliographystyle{unsrtnat}
+\usepackage{csquotes}
+
+%----------------------------------------------------------------------------------------
+% [D] 	Benutzerdefinierte Farben und Farbumgebung
+%---------------------------------------------------------------------------------------
+\definecolor{LHCbRed}{RGB}{220,40,37}
+\definecolor{LHCbLightBlue}{RGB}{214,242,252}
+\definecolor{LHCbDarkBlue}{RGB}{33,84,172}
+\definecolor{Orange}{rgb}{0.85, 0.86, 0.1} % UBC Grey (secondary) %Netzwer-Teilchenwelt-Grün
+%\definecolor{XY}{rgb}{,,}
+\newcommand{\rot}[1]{\textcolor{red}{#1}}
+\newcommand{\blau}[1]{\textcolor{Blue}{#1}}
+\newcommand{\n}[1]{\textmd{#1}}
+
+%----------------------------------------------------------------------------------------
+%	Karierte Umgebung
+%----------------------------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{keystroke}
+\usepackage{rotating}
+\newcommand{\kariert}[3]{
+    \footnotesize \textbf{#1} \normalsize\newline
+    \begin{tikzpicture}
+    \draw[step=0.5cm,color=gray] (0,0) grid (#2 cm ,#3 cm);
+    \end{tikzpicture}}
+%----------------------------------------------------------------------------------------
+% [E] 	Tabelle mit Platz
+%----------------------------------------------------------------------------------------
+\newcommand\T{\rule{0pt}{3ex}} %für einen Abstand nach oben in einer Tabelle
+\newcommand\B{\rule[-2ex]{0pt}{0pt}} % für einen Abstand nach unten   in einer Tabelle 
+%----------------------------------------------------------------------------------------
+% [F] 	DOKUMENTRÄNDER und STYLE
+%----------------------------------------------------------------------------------------
+\usepackage{scrextend}
+%\usepackage{geometry,lmodern} % Wegmarkieren, um automatischen Styl zu aktiveriern (Dann \geometry{x}ausschalten)
+\usepackage{geometry} % Erforderlich für die Anpassung der Seitenabmessungen und -ränder
+\usepackage{lastpage} % Erforderlich zur Bestimmung der letzten Seitenzahl für die Fußzeile
+\geometry{
+	paper=a4paper, % Papierformat
+	top=3cm, % Oberer Rand
+	bottom=2cm, % Unterer Rand
+	left=2cm, % Linker Rand
+	right=2cm, % Rechter Rand
+	headheight=0pt, % Größe der kopfzeile
+	footskip=1cm, % Abstand zwischen dem Fußzeile und der Grundlinie der Seite
+	headsep=2cm, % Abstand zwischen dem oberen Rand und der Grundlinie der Kopfzeile
+	%showframe, % Wegkommentieren, um zu zeigen, wie der Schriftblock auf der Seite gesetzt ist
+}
+
+% Kopf und Fußlinie
+%\renewcommand{\headrulewidth}{1pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+%----------------------------------------------------------------------------------------
+% [G] 	SCHRIFTARTEN
+%----------------------------------------------------------------------------------------
+
+%\usepackage[T1]{fontenc} % Ausgabe der Schriftkodierung für internationale Zeichen (Kann manchmal mit den sc-artl Probleme machen. Wenn das der Fall ist, so ausschalten)
+\usepackage[english,ngerman]{babel}% Ermöglichung des korrekten Satzes von Zeichen wie ä, ö, ẞ, ü usw. und Unterstützung von sprachspezifischen Merkmalen wie Silbentrennung.
+\usepackage{times} % Times, Achtung: Lädt andere Überschriften (Intern: Wörter), als denn das andere Paket! 
+\usepackage{mathptmx} % Hier steckt Times drin
+%\linespread{0.5} % Zeilenabstand
+%\addtokomafont{subsection}{\color{Babyblau}} %Falls man Überschrfiften für subsections fabig haben will.
+%\renewcommand{\familydefault}{\rmdefault} % Stellt die Normalschriftart ein
+%\renewcommand{\rmdefault}{ptm}
+%\setkomafont{sectionentry}{\normalsize\bfseries} % Fettes Erscheinungsbild
+
+%----------------------------------------------------------------------------------------
+% [H] 	MATHEMATIK & Physik
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb} % Mathematik-Paket
+\usepackage{array} % Umgebung die dafür sorgt, dass Gleichhetszeichen untereinender auf gleicher Höhe sind.
+\usepackage{braket} %Nur bei Theorethischer QP nüztzlich
+\usepackage{physics}%Nur bei Theorethischer QP nüztzlich
+\usepackage{nicefrac} %Halbe Brüche
+\usepackage{siunitx} %Fügt regionspezififische Syntax für Einheiten und Mathematik hinzu: Dokumentation: siehe z.B. https://www.namsu.de/Extra/pakete/Siunitx.html
+\sisetup{locale = DE} %|> Wähle Region aus
+\usepackage{array}
+%----------------------------------------------------------------------------------------
+% [I] 	HEADERS AND FOOTERS (Optional. Sonst das was in Dokumentvorlage und im Kapitel oben steht)
+%----------------------------------------------------------------------------------------
+\usepackage{fancyhdr} % Erforderlich für die Anpassung von Kopf- und Fußzeilen
+\pagestyle{fancy} % Aktivieren Sie benutzerdefinierte Kopf- und Fußzeilen, alternativ zu i/o-Variante
+\lhead{\includegraphics[height=1cm]{Logos And Group/LHCb_Logo.png}}
+\chead{\Event}
+\rhead{\dateMC}
+
+%\fancyhead[RO,LE]{\today}
+%\fancyfoot[RO,LE]{\today}
+%\lfoot{} % Left footer
+%\cfoot{\small Page\ \thepage\ of\ \pageref{LastPage}} % Centre footer
+%\rfoot{} % Right footer
+
+%\usepackage[headsepline=1pt]{scrlayer-scrpage}
+%\pagestyle{scrheadings} 
+%\clearpairofpagestyles  %Löscht ursprüngliche Formaterung, erlaubt nackte zeite Seite
+% Rrechte Seiten:
+    %\lehead[Inhalt plain.scrheadings]{Inhalt scrheadings} % left even
+    %\cehead[Inhalt plain.scrheadings]{Inhalt scrheadings} % center even
+    %\rehead[Inhalt plain.scrheadings]{Inhalt scrheadings} % right even
+% Linke Seiten:
+    %\lohead[Inhalt plain.scrheadings]{Inhalt scrheadings} % left odd
+    % \cohead[Inhalt plain.scrheadings]{Inhalt scrheadings} % center odd
+    % \rohead[Inhalt plain.scrheadings]{Inhalt scrheadings} % right odd
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% [J] 	[most]{tcolorbox} - Umgebungen
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tcbset{%
+    theo/.style={%
+        enhanced,
+        breakable,
+        sharp corners,
+        toprule=5pt, rightrule=5pt, bottomrule=5pt, leftrule=1mm,
+        colback=#1!5, colframe=#1!80!black, coltitle=#1!80!black, 
+        detach title,
+        overlay unbroken and first ={
+            \node[rotate=90, minimum width=1cm, anchor=south, font=\bfseries] 
+               at (frame.west) {\tcbtitle};
+        }
+    }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% [K] 	IMPORT CONTENT
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{GER_Worksheet_Evaluation}
+
+
+

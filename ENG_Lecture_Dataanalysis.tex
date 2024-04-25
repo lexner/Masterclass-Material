@@ -1,0 +1,717 @@
+\sisetup{locale = EN} 
+\title{\textbf{\rmfamily Introduction to Data Analysis}}
+\subtitle{Histograms, Filters, Invariant Mass}
+\author[~\PersonDataAnalysis~]{{\PersonDataAnalysis}}
+\institute[\WorkGroup]{ \University}
+\date{\dateMC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Options for the footline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in foot}%
+\usebeamerfont{author in foot} \parbox{0.5\paperwidth}{\insertsubsection{}}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.11\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.385\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertsection{}\hfill
+|~Slide \insertframenumber{} \hspace*{2ex}%/ \inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}}%
+\vskip0pt%
+}
+\tikzset{>=latex}
+\usetikzlibrary{decorations.markings, calc}
+\newcommand{\midlabelline}[3]{
+   \node (midlabel) at ($ (#1)!.5!(#2) $) {#3};
+   \draw[<-] (#1) --  (midlabel);
+   \draw[->] (midlabel) -- (#2);}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options for the timetable
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \makeatletter
+% \newcommand{\setcurrtime}[1]{%
+%   \set@time\curr@hour\curr@mins#1\@nil
+% }
+% \def\set@time#1#2#3:#4\@nil{%
+%   \def#1{#3}\def#2{#4}%
+% }
+% \newcommand{\currtime}[1][00:00]{%
+%   \begingroup
+%   \set@time\new@hour\new@mins#1\@nil
+%   \count\z@=\curr@mins\relax
+%   \count\tw@=\curr@hour\relax
+%   \advance\count\z@\new@mins\relax
+%   \advance\count\tw@\new@hour\relax
+%   \ifnum\count\z@>59
+%     \advance\count\z@-60
+%     \advance\count\tw@\@ne
+%   \fi
+%   % we have to use \count\z@ and \count\tw@ before
+%   % ending the group and printing the result
+%   \edef\x{\endgroup\two@digits{\count\tw@}:\two@digits{\count\z@}}\x
+% }
+% \makeatother
+
+
+\begin{document}\selectlanguage{english}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+\begin{center}
+    \begin{tabular}{ccc}
+ \parbox{0.33\textwidth}{\LogoInsitute}    &
+ ~~~~\parbox{0.33\textwidth}{\includegraphics[height=1cm]{Logos And Group/LHCb_Logo.png}}   &  \parbox{0.33\textwidth}{\LogoUniversity}\\
+\end{tabular}
+\end{center}
+
+\maketitle
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mass Concept}
+\subsection{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \begin{frame}
+   \begin{center} \begin{spacing}{2}
+       \Large The term \\ \LARGE \textbf{mass} \\ \Large in our everyday language
+   \end{spacing}\end{center}
+   
+   \end{frame}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \subsection{Picture: Airbus}
+\begin{frame}{Let's take a look...}
+\begin{minipage}{0.1\textwidth}
+    \quad
+\end{minipage}
+            \begin{minipage}[t]{0.49\textwidth}
+      \vspace{1cm} 
+      What properties do you associate with \emph{mass}? \pause \\ Our ideas:
+      
+      \begin{center}
+        \begin{itemize}
+             \item[-] long-lasting
+            \item [-] extended
+            \item [-]"there"
+            \item [-] easily detectable
+        \end{itemize}
+         \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{0.29\textwidth}
+     \centering
+     \vspace{+.1cm}
+         \includegraphics[width=2cm]{Figures Lecture on Hadrons/SevenMountainsMilk.png}\\ \vspace{.5cm}
+         \includegraphics[width=2.5cm]{Figures Lecture on Hadrons/Airbus A321Neo.jpg}
+           \end{minipage} 
+ \end{frame}
+  \subsection{}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{What are We Dealing with?}
+\begin{minipage}[t]{0.39\textwidth}
+     \centering
+     \vspace{0.4cm}
+        \begin{tikzpicture}[yscale = 1.2,xscale=0.6]\tiny
+
+
+
+\draw[fill=LHCbLightBlue!80] (4.7,2) to (3.6,2.2)  to (2.5,2.4)  to (1.4,2.6)to (3.6,2.7) to(5.8,2.8)  to  (8.0,2.9)to(6.9,2.6)    to(5.8,2.3)   to(4.7,2);
+\draw[fill=LHCbLightBlue!80] (4.8,3) node [below left=-2pt] {\textcolor{black}{$\mathbf{\Omega_{c}^{0}}$}} to (3.7,3.20) to (2.6,3.4) to(4.58,3.49) to (7,3.6)  to(5.9,3.3) node [below right] {\textcolor{black}{$\mathbf{\Xi_{c}^{+}}$}}  to(4.8,3);
+    \draw[fill=LHCbLightBlue!80] (6,4.3)  to (4.9,4) to (3.8,4.2) to (6,4.3);
+\draw[black, --] (5,5) to (4.9,4)  to (4.8,3)   node [above=2pt] {\colorbox{LHCbLightBlue!80}{$ssc$}}  to (4.7,2)   (5,5)to(6,4.3)   to(7,3.6)  to(8.0,2.9)   (5,5)to(3.8,4.2) to(2.6,3.4)  to(1.4,2.6)   ;
+\draw[](5.9,3.3) node [above left=-1pt] {\tiny $usc$};
+ \node (ccc) at (5,5) {$\bullet$};
+        
+        \node (scc) at (4.9,4) {$\bullet$};
+        \node (ucc) at (6,4.3) {$\bullet$};
+        \node (dcc) at (3.8,4.2) {$\bullet$};
+        
+         \node (ssc) at (4.8,3) {$\bullet$};
+         \node (dsc) at (3.7,3.20) {$\bullet$};
+         \node (ddc) at (2.6,3.4) {$\bullet$};
+             \node (usc) at (5.9,3.3) {$\bullet$};
+             \node (uuc) at (7,3.6) {$\bullet$};
+
+         
+          \node (sss) at (4.7,2) {$\bullet$};
+          \node (dss) at (3.6,2.2) {$\bullet$};
+          \node (uds) at (4.63,2.53) {$\bullet$} ;
+          \node (dds) at (2.5,2.4) {$\bullet$};
+          \node (ddd) at (1.4,2.6) {$\bullet$};
+                    \node (uss) at (5.8,2.3) {$\bullet$};
+                     \node (uus) at (6.9,2.6) {$\bullet$};
+                     \node (uuu) at (8.0,2.9) {$\bullet$};
+
+      \node (udc) at (4.58,3.49) {$\bullet$};
+      \node (udd) at (3.6,2.7) {$\bullet$};
+      \node (uud) at (5.8,2.8) {$\bullet$};
+
+    \end{tikzpicture}
+Heavy baryons
+           \end{minipage}
+            \begin{minipage}[t]{0.59\textwidth}
+Which of these applies to heavy hadrons? %Schwer niemals definiert
+\begin{center}
+        \begin{itemize}
+            \item[-] unstable, decaying
+            \item[-] short-lived {\small($\tau \gtrsim 10^{-24}$\,s)}
+            % Diese Abschaetzung koennte man einfueren bei dem TOpquarks und begruenden warum ein Gluon wie weit fliegen wuerde damit es zu einer Formation kaeme
+                        \item[-] small {\small(atomic nuclei $\sim 10^{-14}\,$m})
+            \item[-] Must be produced
+            \item [$\Rightarrow$] \textbf{not easily detectable}
+            \\\item [\,]
+            \item [\ding{43}] Ideas?
+        \end{itemize}
+        \end{center}
+      \end{minipage}
+    \end{frame}
+    \subsection{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Invariant Mass}
+    \textbf{Strategy:}\\ Reconstruction via (sufficiently) stable decay products
+    \begin{center}
+    \begin{overpic}[width=10cm]{Figures Lecture on Datanalysis/LHCb_Calculation_tracks only.png}
+\put(100,42){$\pi^+$}
+\put(100,33){$p$}
+\put(100,27){$K^-$}
+\put(100,1){$K^-$}
+\put(3,20){$\rotatebox[]{135}{\rightarrow} \textbf{?}$}
+\put(3,30){$\leftarrow~\textbf{?} ~\rightarrow$}
+\end{overpic}\end{center}
+What el. charge will the particles behind the question marks have?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\Bigbullet{\raisebox{-1.1mm}{\scalebox{2.5}{$\bullet$}}}
+\definecolor{orange}{rgb}{0.96,0.48,0.16}
+\definecolor{lightblue}{rgb}{0.33,0.61,0.86}
+\definecolor{goodgreen}{rgb}{0.43,0.70,0.26}
+\newcommand\BigbulletG{\raisebox{-2mm}{\scalebox{3.5}{$\bullet$}}}
+\begin{frame}{Invariant Mass}
+\begin{center}
+We consider the grey particle. It is at rest and has the \\ rest mass = rest energy $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_1.png}\put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} \end{overpic}
+\end{center}
+
+
+\textcolor{white}{The mass of \BigbulletG is completely divided into the momentum and mass of the products \Bigbullet\Bigbullet\Bigbullet. \\
+    \\ $\Rightarrow$ Add energy and momentum vectors to obtain the mass of the \emph{particle 1}!}
+    \end{frame}
+\begin{frame}{Invariant Mass}
+\begin{center}
+We consider the grey particle. It is at rest and has the \\ rest mass = rest energy $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_2.png}
+     
+     \put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (47.5,22.5){\parbox{1cm}{\textcolor{black}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (90,34){\parbox{1cm}{\textcolor{black}{$m_1$\\ \footnotesize{$v_1$}}}} 
+     \put (92,20){\parbox{1cm}{\textcolor{black}{$m_2$\\ \footnotesize{$v_2$}}}} 
+     \put (90,5){\parbox{1cm}{\textcolor{black}{$m_3$\\ \footnotesize{$v_3$}}}} 
+          
+\end{overpic}
+\end{center}
+The particle decays into three products. \\ \, \\ \, \\ \,
+\end{frame}
+\begin{frame}{Invariant Mass}
+\begin{center}
+We consider the grey particle. It is at rest and has the \\ rest mass = rest energy $m_{inv}$
+
+     \begin{overpic}[width=8cm]{Figures Lecture on Datanalysis/Invarint_Mass_2.png}
+     
+     \put (9,22.5){\parbox{1cm}{\textcolor{white}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (47.5,22.5){\parbox{1cm}{\textcolor{black}{$m_{inv}$\\ \footnotesize{$v=0$}}}} 
+     \put (90,34){\parbox{1cm}{\textcolor{black}{$m_1$\\ \footnotesize{$v_1$}}}} 
+     \put (92,20){\parbox{1cm}{\textcolor{black}{$m_2$\\ \footnotesize{$v_2$}}}} 
+     \put (90,5){\parbox{1cm}{\textcolor{black}{$m_3$\\ \footnotesize{$v_3$}}}} 
+          
+\end{overpic}
+\end{center}
+The mass of \textcolor{gray}{\BigbulletG} is completely divided into momentum and mass/\,energy of the products \textcolor{orange}{\Bigbullet}\textcolor{lightblue}{\Bigbullet}\textcolor{goodgreen}{\Bigbullet}. \\ \pause
+    \\ $\Rightarrow$ Add energy and momentum vectors to get the mass of \textcolor{gray}{\BigbulletG}!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{frame}{Invariant Mass}
+     A simple task?\\ \vspace{0.5cm}
+     \begin{itemize}
+         \item [\ding{43}] You have to hit the exact products of the decay! \\ \small Depending on the decay, there are many secondary decays, so there are many possible combinations.\normalsize
+         \item  [\ding{43}] Data needs to be filtered.
+               \end{itemize}\vspace{0.5cm}
+           Indications of combinatorics:
+           
+          \begin{itemize}
+         \item [\ding{202}]Conservation of charge
+         \item [\ding{203}]Common intersection of the track
+                    \end{itemize}
+\end{frame}
+\subsection{Picture: LHCb, 2008}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Events}
+\begin{center}
+     \includegraphics[width=8cm]{Figures Lecture on Datanalysis/2D-Eventdisplay.png} \\
+    Typical event display
+\end{center}
+   \end{frame}
+   \subsection{}
+   \begin{frame}
+
+        \Large How do I present results? \\ 
+        \quad Histograms 
+
+\end{frame}
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+\subsection{}
+
+\begin{frame}{Histograms \& Filters}
+\begin{minipage}[t]{0.43\textwidth}
+\vspace{0.3cm}
+\begin{center}
+\begin{overpic}[width=1\textwidth]{Figures Lecture on Datanalysis/Histogram_Resoance.png} \put (30,-3){\scriptsize Variable} \put (0,40){\rotatebox[]{90}{\scriptsize Counts}}\end{overpic}
+\end{center}
+           \end{minipage}
+           \vspace{-2cm}
+            \begin{minipage}[t]{0.55\textwidth}
+                 \begin{itemize}
+         \item Indicates frequency distribution
+         \item Division into classes, with specified width
+               \end{itemize}
+               \vspace{1cm}
+               \begin{center}
+              \tcbox[tcbox raise base]{\parbox{3cm}{\centering Example?!\\ \href{https://docs.google.com/spreadsheets/d/19Me7GeqSumzgNOTNH_OifDmuqUSA9yFIJokz8N98cV0/edit#gid=0}{\textbf{click}}}}
+               \end{center}
+      \end{minipage}
+\end{frame}
+
+
+\subsection{Picture: CERN}
+\begin{frame}
+
+
+
+\begin{minipage}{0.49\textwidth}
+    \animategraphics[width=\textwidth]{10}{Figures_HiggstoGammaGamma_Gif/frame_}{000}{163}
+  \end{minipage} \begin{minipage}{0.49\textwidth}
+
+\includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/ATLAS_Energy_People.jpg}
+\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    
+\section{Histograms \& Filters}
+
+   \subsection{LHCb, 2016}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Result}
+    
+
+
+
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{Figures Lecture on Datanalysis/Resonance_Xi_c_-.png}\\
+    $\Xi_b^- \rightarrow \Xi_c^0 ~\pi^-$ \vspace{0.5cm}
+
+     
+        Combinations indicate the mass of a potential undiscovered mother particle. \vspace{0.5cm}
+             
+              
+               \begin{minipage} {0.4\textwidth}\\
+               \tcbox[tcbox raise base]{\ding{43} So-called resonances}\\
+              
+               \end{minipage}
+               \end{center}
+        
+
+\end{frame}
+\subsection{} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data Analysis} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Task}
+\begin{block}{Your task later: \textbf{Search for new particles}}
+    Using the knowledge you have gained here and applying filters, search for a possible signal of the as yet undiscovered particle $\Omega_c^0$.
+\end{block}
+$\Rightarrow$ But how do filters look like at the LHCb?
+    
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Motivation}
+  We want to find a new particle!\\ 
+\begin{minipage}{0.25\textwidth}
+~
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+ \begin{center}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+    \includegraphics[\textwidth]{Figures Lecture on Datanalysis/penguin2.jpeg}
+\end{center} 
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+    Quark content:\\
+    \begin{tabular}{cc}
+        $\Omega_c^0$ & $ssc$  \\
+         $\Xi^+$ & $usc$ \\ 
+         $K^-$ & $s \bar u$
+    \end{tabular}
+\end{minipage}
+      
+   \normalsize \ding{43} How can we search for the $\Omega_c^0$?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Search for $\Omega_c^0$}
+
+  \begin{center} \vspace{-1cm}
+ \Large    \[\mathbf{\Omega_c^0 \rightarrow \Xi_c^+ \, K^-}\]
+ \end{center}
+   \begin{spacing}{1.5}
+       
+  
+    \begin{itemize}    \item[\ding{202}] Searching for the decay products in the LHCb data
+    \item[\ding{203}] Combine the decay products and look at the mass spectrum 
+    \item [\ding{204}] If we find a peak, we have discovered a new resonance! 
+\end{itemize}
+ \end{spacing}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$\Omega_c^0$ Decay}
+Quark content of $\Omega_c^0:~~css$
+\vspace{0.5cm}
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex(cl) {\(c\)};
+    \vertex[right=5cm of cl] (cr) {\(c\)};
+    \vertex[below=1cm of cl] (sl1) {\(s\)};
+    \vertex[right=5cm of sl1] (sr1) {\(s\)};
+    \vertex[below right = 1cm and 2cm of cl] (g1);
+    \vertex[below right = 1cm and 1.5cm of g1] (g2);
+    \vertex[below = 0.5cm of sr1] (u) {\(u\)};
+    \vertex[below = 1cm of u] (ubar) {\(\bar u\)};
+    \vertex[below=2cm of sl1] (sl2) {\(s\)};
+    \vertex[right=5cm of sl2] (sr2) {\(s\)};
+    \diagram* { {[edges=fermion]
+    (cl) -- (cr), (sl1) -- (g1), (g1) -- (sr1),
+    (sl2) -- (sr2), (g2) -- (u), (ubar) -- (g2)};
+    (g1) -- [boson, edge label = \(g\)] (g2)
+    };
+\draw [decoration={brace}, decorate] (sl2.south west) -- (cl.north west) node [pos=0.5, left] {\(\Omega_c^0\)};
+\draw [decoration={brace}, decorate] (cr.north east) --  (u.south east) node [pos=0.5, right] {\(\Xi_c^+\)};
+\draw [decoration={brace}, decorate] (ubar.north east) --  (sr2.south east) node [pos=0.5, right] {\(K^-\)};
+\end{feynman}
+\end{tikzpicture}   
+\end{center}
+%\pause
+
+\\
+However, the $\Xi_c^+$ is not stable and decays further into \begin{center}
+   \Large $\mathbf{\Xi_c^+ \rightarrow p\, K^-\, \boldsymbol \pi^+}$
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Data Analysis}
+%Wir wollen aus den riesigen Mengen an Daten, nur die Ereignisse auswählen, die für unsere Analyse interessant sind\\
+
+Huge amounts of data - what are we interested in?\\
+\vspace{0.2cm}
+\ding{43} We need to consider criteria to distinguish $\Omega_c^0 \rightarrow \Xi_c^+ K^-$ from background\\%\pause 
+\vspace{0.5cm}
+Potential background: 
+\begin{itemize}
+    \item a $\Xi_c^+$ and a $K^-$ are produced in the collision, but do \textbf{not} originate from a $\Omega_c^0$ decay%\pause
+    \item we have \textbf{incorrectly identified} a particle, e.g. mistook a $\pi^-$ for a $K^-$
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Picture: LHCb, 2008}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Particle Identification - Reminder}
+How were we able to identify particles with the LHCb?
+\vspace{0.5cm}
+\begin{itemize}  
+    \item Tracking: Momentum and charge of charged particles%\pause\\
+    \item Calorimeter: Energy%\pause\\
+    \item RICH: Velocity%\pause
+\end{itemize}%
+\vspace{0.5cm}
+\begin{center}
+    \includegraphics[width = 0.45\textwidth]{Figures Lecture on Datanalysis/2D-Eventdisplay.png}
+\end{center}  
+\end{frame}
+\subsection{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Particle Identification }
+The individual measurement data (radius of curvature, velocity, etc.) are processed into a variable: 
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+\scriptsize
+    \draw (-6,0)  node [rounded corners=3pt, draw, fill=white, line width=0.1] {\parbox{70pt}{Data from \\ - Tracking \\ - Calorimenter \\ - RICH}};
+    \draw (0,0) node [rounded corners=3pt, draw, fill=black, line width=0.1,text=white]   {\parbox{50pt}{\centering \vspace{10pt}\textbf{Neuronal network (NN)}\vspace{10pt}}} ;
+    \draw (6.3,0) node [rounded corners=3pt, draw, fill=white, line width=0.1]  {\parbox{90pt}{\centering Number $\in [0,1]$ \\ How likely is it that it is particle X?}};
+    \draw[--,fill=darkblue] (-3,-0.5)--(-3,0.5)--(-2.5,0.5)--(-2.5,0.75)--(-2,0)--(-2.5,-0.75)--(-2.5,-0.5)--(-3,-0.5);
+    \draw[--,fill=darkblue] (2,-0.5)--(2,0.5)--(2.5,0.5)--(2.5,0.75)--(3,0)--(2.5,-0.75)--(2.5,-0.5)--(2,-0.5);
+    
+\end{tikzpicture}
+     % \includegraphics[width=8cm]{Figures Lecture on Datanalysis/ProbNN_DE.png}  
+\end{center}%\pause
+Variable "ProbNNp": How likely it is to be a proton?
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{The $\Xi_c^+$ Decay}
+We are looking for:
+\begin{equation*}
+\Omega_c^0 \rightarrow \Xi_c^+ (\rightarrow pü K^- \pi^+) K^-
+\end{equation*}
+We know the $\Xi_c^+$ with its lifetime $\tau_{\Xi_c^+}\approx 4.5 \times 10^{-13}$\,s\\ \, \\
+\begin{center}
+    \begin{overpic}[width=10cm]{Figures Lecture on Datanalysis/LHCb_Calculation_tracks only.png}
+\put(100,42){$\pi^+$}
+\put(100,33){$p$}
+\put(100,27){$K^-$}
+\put(100,1){$K^-$}
+\put(3,20){$\rotatebox[]{135}{\rightarrow}\Omega_c^0 $}
+\put(3,30){$\leftarrow~\Xi_c^+\rightarrow$}
+\end{overpic}
+\end{center}
+
+
+\small From precise vertex reconstruction, we can use the \textbf{flight distance} of the $\Xi_c^+$ ($\sim$ mm to cm) as a filter!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Thr $\Xi_c^+$ Decay}
+Here we consider the decay \begin{center}
+    $\Xi_c^+ \rightarrow p K^- \pi^+$
+\end{center}
+\textbf{\textcolor{red}{Why this one in particular?}}\\
+Other options would be, e.g.\\ 
+\begin{minipage}{0.5\textwidth}
+\begin{itemize}
+    \item $\Xi_c^+ \rightarrow \Xi^0 \pi^+$
+    \item $\Xi_c^+ \rightarrow p K^0$ %\pause
+\end{itemize}  
+\vspace{1.5cm}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+\begin{tikzpicture}
+\draw[](-3,-3)circle(0.141cm);
+    \draw[--] (-3.1,-3.1)--(-2.9,-2.9);
+    \draw[--] (-3.1,-2.9)--(-2.9,-3.1);
+
+
+\draw[](-2,-3)circle(0.141cm);
+    \draw[--] (-2.1,-3.1)--(-1.9,-2.9);
+    \draw[--] (-2.1,-2.9)--(-1.9,-3.1);
+
+\draw[](-1,-3)circle(0.141cm);
+    \draw[--] (-1.1,-3.1)--(-0.9,-2.9);
+    \draw[--] (-1.1,-2.9)--(-0.9,-3.1);
+
+\draw[](-3,-2)circle(0.141cm);
+    \draw[--] (-3.1,-2.1)--(-2.9,-1.9);
+    \draw[--] (-3.1,-1.9)--(-2.9,-2.1);
+
+\draw[] (-2,-2) node {$\Vec{B}$};
+% \draw[](-2,-2)circle(0.141cm);
+%     \draw[--] (-2.1,-2.1)--(-1.9,-1.9);
+%     \draw[--] (-2.1,-1.9)--(-1.9,-2.1);
+
+\draw[](-1,-2)circle(0.141cm);
+    \draw[--] (-1.1,-2.1)--(-0.9,-1.9);
+    \draw[--] (-1.1,-1.9)--(-0.9,-2.1);
+
+\draw[](-3,-1)circle(0.141cm);
+    \draw[--] (-3.1,-1.1)--(-2.9,-0.9);
+    \draw[--] (-3.1,-0.9)--(-2.9,-1.1);
+
+\draw[](-2,-1)circle(0.141cm);
+    \draw[--] (-2.1,-1.1)--(-1.9,-0.9);
+    \draw[--] (-2.1,-0.9)--(-1.9,-1.1);
+
+ \draw[](-1,-1)circle(0.141cm);
+    \draw[--] (-1.1,-1.1)--(-0.9,-0.9);
+    \draw[--] (-1.1,-0.9)--(-0.9,-1.1);
+
+\draw[](-3,-4)circle(0.141cm);
+    \draw[--] (-3.1,-4.1)--(-2.9,-3.9);
+    \draw[--] (-3.1,-3.9)--(-2.9,-4.1);
+
+\draw[](-2,-4)circle(0.141cm);
+    \draw[--] (-2.1,-4.1)--(-1.9,-3.9);
+    \draw[--] (-2.1,-3.9)--(-1.9,-4.1);
+
+ \draw[](-1,-4)circle(0.141cm);
+    \draw[--] (-1.1,-4.1)--(-0.9,-3.9);
+    \draw[--] (-1.1,-3.9)--(-0.9,-4.1);
+
+ \draw[](-4,-4)circle(0.141cm);
+    \draw[--] (-4.1,-4.1)--(-3.9,-3.9);
+    \draw[--] (-4.1,-3.9)--(-3.9,-4.1);
+
+    \draw[](-4,-3)circle(0.141cm);
+    \draw[--] (-4.1,-3.1)--(-3.9,-2.9);
+    \draw[--] (-4.1,-2.9)--(-3.9,-3.1);
+
+\draw[](-4,-2)circle(0.141cm);
+    \draw[--] (-4.1,-2.1)--(-3.9,-1.9);
+    \draw[--] (-4.1,-1.9)--(-3.9,-2.1);
+
+\draw[](-4,-1)circle(0.141cm);
+    \draw[--] (-4.1,-1.1)--(-3.9,-0.9);
+    \draw[--] (-4.1,-0.9)--(-3.9,-1.1);
+
+\draw[->,red] (-2.75,-4.3)--(-2.74,-0.9) node[black,above] {$K^0$};
+ \draw[blue] (-0.65,-2.3) --++ (90:0)  arc (90:180:2)   ;
+ \draw[->, blue] (-0.65,-2.3)--(0,-2.3)node[black,right] {$K^-$};
+
+\end{tikzpicture}
+    %\includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/Particle_in_B_Field.png}
+\end{minipage}
+%Proton, $K^-$ und $\pi^+$ sind alles geladene und (hinreichend) stabile Teilchen, die gut rekonstruiert werden können!
+\end{frame}
+\begin{frame}{Filter for $\Omega_c^0$?}
+\begin{minipage}[c]{0.75\textwidth}
+    Problem: We do not yet know the $\Omega_c^0$ \vspace{1cm}
+\end{minipage}
+\begin{minipage}[c]{0.2\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/sad-penguin3.png}
+\end{minipage}\\
+\vspace{0.5cm}%\pause
+\begin{minipage}[c]{0.2\textwidth}
+\centering
+    \includegraphics[width=\textwidth]{Figures Lecture on Datanalysis/happy-penguin2.jpeg}
+\end{minipage}%
+\begin{minipage}[c]{0.75\textwidth}
+    \ding{43} But we can still establish criteria based on our knowledge of hadrons and the Standard Model!
+\end{minipage}
+
+\end{frame}% Finde diese SLide etwas misleading, wozu brauchen wir die eigentlich?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The $\Omega_c^0$ Decay}
+We are looking for:
+\begin{equation*}
+    \Omega_c^0\rightarrow \Xi_c^+ K^-
+\end{equation*}
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex(cl) {\(c\)};
+    \vertex[right=5cm of cl] (cr) {\(c\)};
+    \vertex[below=1cm of cl] (sl1) {\(s\)};
+    \vertex[right=5cm of sl1] (sr1) {\(s\)};
+    \vertex[below right = 1cm and 2cm of cl] (g1);
+    \vertex[below right = 1cm and 1.5cm of g1] (g2);
+    \vertex[below = 0.5cm of sr1] (u) {\(u\)};
+    \vertex[below = 1cm of u] (ubar) {\(\bar u\)};
+    \vertex[below=2cm of sl1] (sl2) {\(s\)};
+    \vertex[right=5cm of sl2] (sr2) {\(s\)};
+    \diagram* { {[edges=fermion]
+    (cl) -- (cr), (sl1) -- (g1), (g1) -- (sr1),
+    (sl2) -- (sr2), (g2) -- (u), (ubar) -- (g2)};
+    (g1) -- [boson, edge label = \(g\)] (g2)
+    };
+\draw [decoration={brace}, decorate] (sl2.south west) -- (cl.north west) node [pos=0.5, left] {\(\Omega_c^0\)};
+\draw [decoration={brace}, decorate] (cr.north east) --  (u.south east) node [pos=0.5, right] {\(\Xi_c^+\)};
+\draw [decoration={brace}, decorate] (ubar.north east) --  (sr2.south east) node [pos=0.5, right] {\(K^-\)};
+\end{feynman}
+\end{tikzpicture}   
+\end{center}
+\ding{43} strong force!
+\end{frame}
+\begin{frame}{Filters for $\Omega_c^0$?}
+Typical lifetime for a strong decay:\begin{center}
+    $\tau \approx 10^{-24}\,\textmd{s}$%\pause
+\end{center}
+
+\begin{itemize}
+    \item Again by a factor $10^{11}$ smaller than the lifetime of the $\Xi_c^+$!
+    \item The $\Omega_c^0$ should decay immediately at the $pp$ collision point
+    \item[] 
+    \item[ \ding{43}] \textbf{\textcolor{red}{The daughter particles of the $\Omega_c^0$ should come directly from the $pp$ collision point!}}
+\end{itemize} 
+%\pause
+
+\end{frame}
+\begin{frame}{Filters for $\Omega_c^0$?}
+\textbf{Impact Parameter (IP)}: Minimum distance between collision point and reconstructed particle
+\begin{center}
+\begin{tikzpicture}
+    \draw[->, black, very thick] (-3,0) node[black,left] {$p$}-- (-0.1,0){};
+    \draw[->, black, very thick] (3,0) node[black,right] {$p$} -- (0.1,0){};
+    \draw[->,darkblue] (2.5,1) -- (4.5,2){};
+    \draw[->, darkgreen] (2.5,1)-- (3.5,3){};
+    \draw[--, dashed, thick, gray] (0,-1.5)--(2.5,1){};
+    \draw[--,red,thick] (0,0) -- (0.75,-0.75);
+    \draw[red] (0.5,-0.5) --++ (90:0)  arc (135:45:0.33)  ;
+     \midlabelline{-1,-1}{-0.25,-1.75}{\small \textcolor{red}{$IP$}};
+     \draw (2.5,-1.5) node {Impact Parameter};
+
+    \draw[red, fill=red](0.75,-0.55)circle(0.05cm);
+\end{tikzpicture}
+    % \includegraphics[width=7cm]{Figures Lecture on Datanalysis/Impact_Paramenter.png}
+\end{center}
+ \textbf{\textcolor{red}{Small IP = high probability that the particle comes out of the collision point}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Filters for $\Omega_c^0$?}
+We know from theorists that heavy particles are usually generated with a high \textbf{transverse momentum}
+\begin{center}
+\begin{tikzpicture}
+    \draw[->, black, very thick] (-3,0) node[black,left] {$p$}-- (-0.1,0){};
+    \draw[->, black, very thick] (3,0) node[black,right] {$p$} -- (0.1,0){};
+    \draw[->, green, thick] (0,0)-- (0,2) node[midway,left] {$\Vec{p_{\perp}}$};
+    \draw[->, red, thick] (0,2)-- (2,2) node[midway,above]  {$\Vec{p_{||}}$};
+    \draw[->, blue,very thick] (0,0)-- (2,2) node[midway,right]  {$\Vec{p}$};
+
+  
+\end{tikzpicture}
+   % \includegraphics[width=7cm]{Figures Lecture on Datanalysis/transverse_momentum.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary}
+We are looking for
+\begin{spacing}{1.5}
+\begin{itemize}
+    \item 3 tracks, identified as $p, K^-, \pi^+$
+    \item These tracks originate from a secondary vertex, as the $\Xi_c^+$ propagates a short distance in the detector
+    \item The $\Omega_c^0$  decays in the $pp$ collision point (small IP)
+    \item The desired $\Omega_c^0$ should has a high transverse momentum
+\end{itemize}
+\end{spacing}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{References} \footnotesize
+
+    \begin{itemize}
+\item[-] The LHCb Collaboration. Measurement of the properties of the $\Xi_b^0$ baryon. 	JHEP 1605 (2016) 161.
+\item[-] The LHCb Collaboration. The LHCb Detector at the LHC.  JINST 3 (2008) S08005.
+\item[-] Airbus. \url{aircraft.airbus.com/en/aircraft/a320/a321xlr#images}
+\item[-] Workman, R.L. et al. (PDG), Prog. Theor. Exp. Phys. (2022), 219
+\end{itemize}
+
+
+    % \bibliographystyle{plain}
+    % \bibliography{Z_References}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+

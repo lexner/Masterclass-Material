@@ -4,7 +4,7 @@
 \author[~\PersonHadrons~]{{\PersonHadrons}}
 \institute[\WorkGroup]{ \University}
 \date{\dateMC}
-
+\usepackage{ccicons}
 
 \tikzstyle{state}=[
     circle,
@@ -30,40 +30,10 @@
 \end{beamercolorbox}%
 \begin{beamercolorbox}[wd=0.385\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
 \usebeamerfont{date in head/foot}\insertsection{}\hfill
-|~Folie \insertframenumber{} \hspace*{2ex}%/ \inserttotalframenumber\hspace*{2ex}
+|~Slide \insertframenumber{} \hspace*{2ex}%/ \inserttotalframenumber\hspace*{2ex}
 \end{beamercolorbox}}%
 \vskip0pt%
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Options for the timetable
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \makeatletter
-% \newcommand{\setcurrtime}[1]{%
-%   \set@time\curr@hour\curr@mins#1\@nil
-% }
-% \def\set@time#1#2#3:#4\@nil{%
-%   \def#1{#3}\def#2{#4}%
-% }
-% \newcommand{\currtime}[1][00:00]{%
-%   \begingroup
-%   \set@time\new@hour\new@mins#1\@nil
-%   \count\z@=\curr@mins\relax
-%   \count\tw@=\curr@hour\relax
-%   \advance\count\z@\new@mins\relax
-%   \advance\count\tw@\new@hour\relax
-%   \ifnum\count\z@>59
-%     \advance\count\z@-60
-%     \advance\count\tw@\@ne
-%   \fi
-%   % we have to use \count\z@ and \count\tw@ before
-%   % ending the group and printing the result
-%   \edef\x{\endgroup\two@digits{\count\tw@}:\two@digits{\count\z@}}\x
-% }
-% \makeatother
-
-
 
 
 \begin{document}\selectlanguage{english}
@@ -76,19 +46,26 @@
 \end{center}
 \maketitle
 \end{frame}
+\begin{frame}{Today's day}
+
+\footnotesize
+
+\texttt{TODO: Put your timetable in here.}
+
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Scale analysis}
+\section{Scale Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Deconstruction}
 
-    \hspace{1.1cm} Atom \hspace{0.7cm} Atomic nucleus \hspace{0.8cm} Nucleon  \hfill Quarks~~\\\vspace{1cm}
+    \hspace{1.0cm} Atom \hspace{0.7cm} Atomic nucleus \hspace{1.0cm} Nucleon \hspace{1cm} Quarks\\\vspace{1cm}
      \includegraphics[width=12.5cm]{Figures Lecture on Hadrons/Scale Atom_Quark_updown-approach.png}\\\vspace{1cm}
    \hspace{1.1cm} $10^{-10}$\,m \hspace{1.2cm}  $10^{-14}$\,m  \hspace{1.5cm}  $10^{-15}$\,m  \hspace{1.3cm}  $<10^{-18}$\,m
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Reconstruction}
-     \hspace{1.1cm} Atom \hspace{0.7cm} Atomic nucleus \hspace{0.8cm} \textbf{\textcolor{red}{Hadrons}} \hfill Quarks~~\\\vspace{1cm}
+     \hspace{1.0cm} Atom \hspace{0.7cm} Atomic nucleus \hspace{1.0cm} \textbf{\textcolor{red}{Hadrons}} \hspace{1cm} Quarks\\\vspace{1cm}
      \includegraphics[width=12.5cm]{Figures Lecture on Hadrons/Scale Atom_Quark_downup-approach.png}\\\vspace{1cm}
    \hspace{1.1cm} $10^{-10}$\,m \hspace{1.2cm}  $10^{-14}$\,m  \hspace{1.5cm}  $10^{-15}$\,m  \hspace{1.3cm}  $<10^{-18}$\,m
 \end{frame}
@@ -96,26 +73,25 @@
 \section{Hadrons}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{How to Build Particles?}
+\begin{frame}{How do you build Particles?}
     \centering
     \includegraphics[width=7cm]{Figures Lecture on Hadrons/Scale Atom_Quark_downup-approach_Hadron.png}
 \begin{itemize}
-    \item Under which conditions do quarks stick together to form particles?
-    \item Can matter bind with antimatter?%\pause
-    \item[\ding{43}] Its your turn!
+    \item Under what conditions do quarks stick together to form particles?
+    \item Can matter bind with antimatter? %\pause
+    \item[\ding{43}] Your turn!
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\squareF{\raisebox{-2mm}{\scalebox{3}{\ding{110}}}}
-\begin{frame}{Hands-on-Part}
+\begin{frame}{LHCb Quark-Puzzle}
 \textbf{Task:}\\ Build closed particles from quarks and antiquarks. \\ \begin{itemize}
-    \item[] How are they called and under which conditions do quarks stick together to form a particle?
-    \item[] Are there any peculiarities?
-    \end{itemize}
+    \item What are they called and under what conditions do quarks stick together to form a particle?
+    \item Are there any peculiarities? %\pause
+    \end{itemize}\\
 \vspace{1cm}
-\textcolor{yellow}{\squareF} \hspace{-0.525cm} Yellow sticky notes: Names of the particles\\
-\textcolor{red}{\squareF} \hspace{-0.525cm} Red sticky notes: Peculiarities
+\textbf{Write on the worksheet!}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of Hadrons}
@@ -124,8 +100,8 @@
      \hspace{0.2cm} \textbf{How many quarks can be used to build stable particles?} \\
     \end{frame}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \begin{frame}{Hadronen II}
- \textbf{How many quarks can be used to build stable particles?}
+ \begin{frame}{Hadrons II}
+\textbf{How many quarks can be used to build stable particles?}
 \begin{table}[]
     \centering
     \begin{tabular}{ccc}
@@ -142,35 +118,35 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\textbf{What colours must quarks have? }\\ \textbf{Why are quarks coloured?}
+\textbf{What colours then must quarks have? }\\ \textbf{Why are quarks coloured?}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Colour charges}
+\begin{frame}{Colour Charges}
     \begin{column}{.58\textwidth}
 \\ \includegraphics[width=6cm]{Figures Introductory Lecture/Standard Model/BlackAdditiveColours.png}
 \end{column}%
 \begin{column}{.42\textwidth}
 
 \begin{align*}
-    \ket{\textmd{Baryon}}=\rotatebox[]{90}{\rightarrow}+\rotatebox[]{225}{\rightarrow}+\rotatebox[]{315}{\rightarrow}=\Vec{0}\\ 
-    \ket{\textmd{Meson}}=
+    \ket{\textmd{Baryons}}=\rotatebox[]{90}{\rightarrow}+\rotatebox[]{225}{\rightarrow}+\rotatebox[]{315}{\rightarrow}=\Vec{0}\\ 
+    \ket{\textmd{Mesons}}=
     \begin{cases} \,\rotatebox[]{90}{\rightarrow}~+~\rotatebox[]{270}{\rightarrow}~=\Vec{0}\\
     \rotatebox[]{135}{\rightarrow}+\rotatebox[]{315}{\rightarrow}=\Vec{0}\\
     \rotatebox[]{225}{\rightarrow}+\rotatebox[]{45}{\rightarrow}=\Vec{0}
     \end{cases} 
 \end{align*} %\pause
- \tcbox[tcbox raise base]{\parbox{3cm}{Hadrons are colour-neutral}}\\\
+ \tcbox[tcbox raise base]{\parbox{3cm}{Hadrons are colour-neutral.}}\\ %\pause
 
- $\cdots$ and why define colour then?
+ $\cdots$ and why do we define colour?
  \end{column}
  \end{frame}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Can we Observe Single Quarks?}
+\begin{frame}{Can we observe individual quarks?}
 
             \def\d{1.25}
             \def\R{0.5}
@@ -257,7 +233,7 @@
   \end{feynman}
 
 \end{tikzpicture} \\
-  We build a meson like this
+  We are building such a meson.
 \end{frame}
 
 \begin{frame}{Confinement}
@@ -373,7 +349,7 @@
   \end{feynman}
   
 \end{tikzpicture} \\
-The meson is being pulled
+A meson is pulled.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Confinement}\addtocounter{framenumber}{-1}
@@ -488,7 +464,7 @@ The meson is being pulled
        %CONFINEMENT GRAFIK 
   \end{feynman}
 \end{tikzpicture} \\
-The meson is pulled, when does it fly apart?
+A meson is pulled, when does it fly apart?
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Confinement}\addtocounter{framenumber}{-1}
@@ -603,7 +579,7 @@ The meson is pulled, when does it fly apart?
        %CONFINEMENT GRAFIK 
   \end{feynman}
 \end{tikzpicture} \\
-The energy of the strong field forms a u$\Bar{\textmd{u}}$ pair!
+The energy of the strong field forms a u$\Bar{\textmd{u}}$ pair.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Confinement}\addtocounter{framenumber}{-1}
@@ -720,9 +696,9 @@ The energy of the strong field forms a u$\Bar{\textmd{u}}$ pair!
 Quarks occur \underline{never} individually, hadrons are colour-neutral.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \begin{frame}{Electrical Charge}
+ \begin{frame}{Electrical Charges}
  \begin{center}
-     
+    What electrical charges can hadrons have? %\pause 
  \begin{spacing}{2.0}
      \begin{tabular}{rl}
  \T\B  Baryon   & $q_B/e\in\{-1, 0, 1, 2\}$ \\
@@ -739,20 +715,20 @@ Quarks occur \underline{never} individually, hadrons are colour-neutral.
 \end{frame}
 \subsection{Picture: Airbus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Top Quark}
-It applies:
+\begin{frame}{Top-Quark}
+It is:
     \[ m \propto \nicefrac{1}{\tau} \] %\pause
-    \ding{43} Reminder:
+    \ding{43} Remember:
 
     \begin{table}[]
     \centering
     \begin{tabular}{ccc}
        \includegraphics[width=1.5cm]{Figures Lecture on Hadrons/SevenMountainsMilk.png}  &\parbox{4cm}{\vspace{-3cm}\begin{align*}m_{up}&= 2.2\,\textmd{MeV}/c^2 \\m_{top}&=174\,\textmd{GeV}/c^2 \end{align*}} & \includegraphics[width=3cm]{Figures Lecture on Hadrons/Airbus A321Neo.jpg}
        \end{tabular}  
-\end{table}
+\end{table} %\pause
 
 \begin{center}
-     \tcbox[tcbox raise base]{\parbox{7cm}{A hadron with top flavour takes longer to form than the top quark decays.}}\\
+     \tcbox[tcbox raise base]{\parbox{7.2cm}{  A hadron with top flavour takes longer to form than the top quark decays.}}\\
    \end{center}
     \end{frame}
     \subsection{}
@@ -767,8 +743,7 @@ It applies:
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{}
-\begin{frame}{Baryon Classification System}
+\begin{frame}{Sorting Scheme of Baryons}
 \begin{center}
     
 
@@ -794,7 +769,7 @@ It applies:
           \node (sss) at (4.7,2) {$\bullet$};
           \node (dss) at (3.6,2.2) {$\bullet$};
           \node (uds) at (4.63,2.53) {$\bullet$} ;
-          \node (dds) at (2.5,2.4) {$\bullet$};
+          \node (dds) at (2.5,2.4) {$\bullet$};    
           \node (ddd) at (1.4,2.6) {$\bullet$};
                     \node (uss) at (5.8,2.3) {$\bullet$};
                      \node (uus) at (6.9,2.6) {$\bullet$};
@@ -815,10 +790,12 @@ It applies:
     \end{tikzpicture}
     \end{center}
 \end{frame}
+\subsection{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spectroscopy}
+\subsection{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Baryon Classification System}
+\begin{frame}{Sorting Scheme of Baryons}
 \begin{center}
         \begin{tikzpicture}[yscale = 1.9]\footnotesize
 
@@ -864,40 +841,28 @@ It applies:
 
 
     \end{center}
-\end{frame}
+ \end{frame}
  \subsection{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Atomic Spectra}
-\begin{minipage}{.49\textwidth}
-
-\begin{overpic}[width=0.9\textwidth,,tics=10]{Figures Lecture on Hadrons/Bohr_energy-level.png}
-\put(80,70){$E=h\cdot f $}\put(80,63){$ E = h\cdot \frac{c}{\lambda}$}
-\end{overpic}
-\end{minipage}
-\begin{minipage}{.49\textwidth}
-\begin{tikzpicture}[xscale=3,yscale=1]
-      \draw[thick] (0,0) --++ (1,0) node[right=1pt] {$n=1$};
-      \draw[thick] (0,2) --++ (1,0) node[right=1pt] {$n=2$}; 
-      \draw[thick] (0,3) --++ (1,0) node[right=1pt] {$n=3$};
-      \draw[thick] (0,3.5) --++ (1,0) node[right=1pt] {$n=4$};
-   
-    \draw[] (0,3.8) --++ (1,0) node[right=1pt] {};
-    \draw[] (0,4) --++ (1,0) node[right=1pt] {$n=\infty$};
-    \draw[] (0,3.925) --++ (1,0) node[right=1pt] {};
-    \draw[->,thick] (-0.1,-0.2) --++ (0,4.5) node[left] {$E$};  
-
-   \draw[<-,thick,blue!90!black] (0.2,0) --++ (0,3.5) node[above=40pt,right,midway,scale=0.8] {$E=h\cdot f_3$};
-   \draw[<-,thick,green!90!blue] (0.4,0) --++ (0,3) node[above=27pt,right,midway,scale=0.8] {$E=h\cdot f_2$};
-   \draw[<-,thick,red] (0.6,0) --++ (0,2) node[right,midway,scale=0.8] {$E=h\cdot f_1$};
-
-    
-\end{tikzpicture}
-\end{minipage}
+\begin{frame}
+    \begin{center}
+        \textbf{\LARGE Hadron Spectroscopy}
+    \end{center}\\
+        \begin{center}
+        \textbf{But what is \textcolor{red}{Spectroscopy?!}} \\ \vspace{1cm}
+        
+    \end{center}
+    \ding{43} Does anyone know the term?
 \end{frame}
-\subsection{Picture: Janzen, 2009, edited}
-\begin{frame}{Atomic Spectra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{\ccbysa ~~ Hegelrast 2019 }
+\begin{frame}{Spectroscopy} \centering
+    \includegraphics[width=.9\textwidth]{Figures Lecture on Hadrons/Spectrosopy.jpg}
+\end{frame}
+\subsection{}
 
 
+\begin{frame}{Atomic spectra}
 \begin{minipage}{.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/Hg_Spectrum.png}
 \put(30,90){\small $Hg$-Lamp}
@@ -905,29 +870,14 @@ It applies:
 \put(1,65){\scriptsize \rotatebox[]{90}{Intensity, arbitrary unit}}
 \end{overpic}
 \[ E=h\cdot f = h \cdot \frac{c}{\lambda}\]
-\end{minipage}
+\end{minipage}%\pause
 \begin{minipage}{.49\textwidth}
-\begin{tikzpicture}[xscale=3,yscale=1]
-      \draw[thick] (0,0) --++ (1,0) node[right=1pt] {$n=1$};
-      \draw[thick] (0,2) --++ (1,0) node[right=1pt] {$n=2$}; 
-      \draw[thick] (0,3) --++ (1,0) node[right=1pt] {$n=3$};
-      \draw[thick] (0,3.5) --++ (1,0) node[right=1pt] {$n=4$};
-   
-    \draw[] (0,3.8) --++ (1,0) node[right=1pt] {};
-    \draw[] (0,4) --++ (1,0) node[right=1pt] {$n=\infty$};
-    \draw[] (0,3.925) --++ (1,0) node[right=1pt] {};
-    \draw[->,thick] (-0.1,-0.2) --++ (0,4.5) node[left] {$E$};  
-
-   \draw[<-,thick,blue!90!black] (0.2,0) --++ (0,3.5) node[above=40pt,right,midway,scale=0.8] {$E=h\cdot f_3$};
-   \draw[<-,thick,green!90!blue] (0.4,0) --++ (0,3) node[above=27pt,right,midway,scale=0.8] {$E=h\cdot f_2$};
-   \draw[<-,thick,red] (0.6,0) --++ (0,2) node[right,midway,scale=0.8] {$E=h\cdot f_1$};
-
-    
-\end{tikzpicture}
+\includegraphics[width=\textwidth]{Figures Lecture on Hadrons/Bohr_energy-level.png}
 \end{minipage}
 \end{frame}
 
-\begin{frame}{Atomic Spectra}
+
+\begin{frame}{Atomic spectra}
 \begin{minipage}{.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/Hg_Spectrum.png}
 \put(30,90){\small $Hg$-Lamp}
@@ -938,12 +888,12 @@ It applies:
 \end{minipage}
 \begin{minipage}{.49\textwidth}
 \begin{itemize}
-         \item Excitations in atoms %\pause
+         \item Excitations in atoms 
          \item Excitations in hadrons
-                \end{itemize} %\pause
-                % \begin{block}{Erkenntnis}
-                %    Hadronen: Angeregte Zustände haben unterschiedliche Massen
-                % \end{block}
+                \end{itemize} 
+\begin{center}      \tcbset{colframe=white,colback=white}
+                \tcbox[tcbox raise base]{\parbox{7cm}{\textcolor{white}{Hadrons: Excited states have different masses}}}\\
+                 \end{center} 
 \end{minipage}
 \end{frame}
 \subsection{Königsmann, 1986, 243-291}
@@ -951,29 +901,28 @@ It applies:
 \begin{minipage}{.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/ccBar_spectrum.png}
 \put(40,-5){\scriptsize E$_\gamma$ in MeV}
-\put(-2,35){\scriptsize \rotatebox[]{90}{Counts}}
+\put(-2,35){\scriptsize \rotatebox[]{90}{Count}}
 \end{overpic}
 \end{minipage}
 \begin{minipage}{.49\textwidth}
 \begin{itemize}
-          \item Excitations in atoms %\pause
+         \item Excitations in atoms 
          \item Excitations in hadrons
-                \end{itemize} %\pause
+                \end{itemize} %%\pause
                 % \begin{block}{Erkenntnis}
                 %    Hadronen: Angeregte Zustände haben unterschiedliche Massen
                 % \end{block}
 \end{minipage}
-\, \\
- \, \\
-  \, \\
- \,
+\begin{center}      \tcbset{colframe=white,colback=white}
+                \tcbox[tcbox raise base]{\parbox{7cm}{\textcolor{white}{Hadrons: Excited states have different masses}}}\\
+                 \end{center}  
 \end{frame}
 
 
 
 \subsection{Picture: Königsmann, 1986, edited $|$ Janzen, 2009, edited}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{\large Comparison: Spectrum of Atoms and Hadrons }           %Vergleich bedier spektren?
+\begin{frame}{\large Comparison: Spectrum of atoms and hadrons }           %Vergleich bedier spektren?
 \begin{minipage}{0.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/ccBar_spectrum.png}
 \put(40,-5){\scriptsize E$_\gamma$ in MeV}
@@ -982,7 +931,7 @@ It applies:
 \end{minipage} \begin{minipage}{0.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/Hg_Spectrum.png}
 \put(30,90){\small $Hg$-Lamp}
-\put(30,23){\scriptsize Wavelength $\lambda$ in nm}
+\put(30,23){\scriptsize Wavelentgh $\lambda$ in nm}
 \put(1,65){\scriptsize \rotatebox[]{90}{Intensity, arbitrary unit}}
 \end{overpic}
 \end{minipage} \begin{center}
@@ -991,8 +940,8 @@ It applies:
                 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Königsmann, 1986, edited}
-\begin{frame}{States in the Charmonium Spectrum ($c\Bar{c}$)}
+\subsection{Königsmann, 1986, verändert}
+\begin{frame}{States in the harmonium spectrum ($c\Bar{c}$)}
 \begin{minipage}{.49\textwidth}
 \begin{overpic}[width=1\textwidth,,tics=10]{Figures Lecture on Hadrons/ccBar_spectrum.png}
 \put(40,-5){\scriptsize E$_\gamma$ in MeV}
@@ -1026,17 +975,17 @@ It applies:
 
     
 \end{tikzpicture}
-\end{minipage}
+\end{minipage} %\pause
 \underline{HOWEVER:}\\
 \begin{itemize}
 \item Spectrum of $c\Bar{c}$ is very easy to model
-\item \textcolor{red}{Spectra of hadrons are often complicated and unknown!}
+\item \textcolor{red}{Spectra of hadrons are often complicated and unknown} %\pause
 \item[\ding{43}]Our task this afternoon!
 \end{itemize}
 \end{frame}
 \subsection{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The Most Important}
+\begin{frame}{The most important thing}
     \begin{itemize}
         \item Hadrons (baryons and mesons) can be built from quarks
         \item Hadrons are colour-neutral, quarks carry colour
@@ -1057,6 +1006,7 @@ It applies:
 \item[-] schaette.de. \url{schaette.de/ratgeber/tiergesundheit/rinder/rinder-was-koennen-wir-fuer-abwehrstarke-kaelber-tun}
 \item[-] meinhaushalt.at (2009). \url{meinhaushalt.at/4182-zunge-schalen-kochen/#}
 \item[-] Airbus. \url{aircraft.airbus.com/en/aircraft/a320/a321xlr#images}
+\item[-] Hegelrast 2019. CC BY-SA \url{https://commons.wikimedia.org/wiki/File:Coloured_flames_of_methanol_solutions_of_metal_salts_and_compounds.jpg} 
 
 
     \end{itemize}

@@ -32,36 +32,7 @@
 \vskip0pt%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Options for the timetable
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \makeatletter
-% \newcommand{\setcurrtime}[1]{%
-%   \set@time\curr@hour\curr@mins#1\@nil
-% }
-% \def\set@time#1#2#3:#4\@nil{%
-%   \def#1{#3}\def#2{#4}%
-% }
-% \newcommand{\currtime}[1][00:00]{%
-%   \begingroup
-%   \set@time\new@hour\new@mins#1\@nil
-%   \count\z@=\curr@mins\relax
-%   \count\tw@=\curr@hour\relax
-%   \advance\count\z@\new@mins\relax
-%   \advance\count\tw@\new@hour\relax
-%   \ifnum\count\z@>59
-%     \advance\count\z@-60
-%     \advance\count\tw@\@ne
-%   \fi
-%   % we have to use \count\z@ and \count\tw@ before
-%   % ending the group and printing the result
-%   \edef\x{\endgroup\two@digits{\count\tw@}:\two@digits{\count\z@}}\x
-% }
-% \makeatother
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\midlabelline}[3]{
    \node (midlabel) at ($ (#1)!.5!(#2) $) {#3};

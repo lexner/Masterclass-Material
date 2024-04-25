@@ -5,6 +5,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usetikzlibrary {arrows.meta}
+\usepackage{stix}
 
 
 \title{\textbf{\rmfamily Introductory Lecture}}
@@ -32,74 +33,15 @@
 \vskip0pt%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Options for the timetable
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \makeatletter
-% \newcommand{\setcurrtime}[1]{%
-%   \set@time\curr@hour\curr@mins#1\@nil
-% }
-% \def\set@time#1#2#3:#4\@nil{%
-%   \def#1{#3}\def#2{#4}%
-% }
-% \newcommand{\currtime}[1][00:00]{%
-%   \begingroup
-%   \set@time\new@hour\new@mins#1\@nil
-%   \count\z@=\curr@mins\relax
-%   \count\tw@=\curr@hour\relax
-%   \advance\count\z@\new@mins\relax
-%   \advance\count\tw@\new@hour\relax
-%   \ifnum\count\z@>59
-%     \advance\count\z@-60
-%     \advance\count\tw@\@ne
-%   \fi
-%   % we have to use \count\z@ and \count\tw@ before
-%   % ending the group and printing the result
-%   \edef\x{\endgroup\two@digits{\count\tw@}:\two@digits{\count\z@}}\x
-% }
-% \makeatother
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newcommand{\midlabelline}[3]{
+   \node (midlabel) at ($ (#1)!.5!(#2) $) {#3};
+   \draw[<-] (#1) --  (midlabel);
+   \draw[->] (midlabel) -- (#2);
+}
 \begin{document}\selectlanguage{english}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{\small \hfill \textcolor{gray}{Today you are Scientists!}}
-\, \vspace{0.1cm}  \Large  \begin{center}
-    \textbf{Welcome to the Masterclass!} 
-\end{center} 
-  \small \, \vspace{1cm} \\
-    \emph{Please be patient a little longer. The event will start shortly.}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\begin{minipage}[t]{0.4\textwidth}
-    \includegraphics[width=\textwidth]{Figures Introductory Lecture/Introduction/Human.png}
-\end{minipage}
-\begin{minipage}[t]{0.43\textwidth}
-   \vspace{-3cm} \centering
-     \Large{ \textbf{What are humans actually made of?}} \\ \vspace{0.5cm} \normalsize{And,} \\ \Large \textbf{how do we know that?} % Meldung der SuS sammeln 
-\end{minipage}  
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \begin{center}
-    \Large \textbf{What is the world made of?} \\
-    \vspace{1cm}
-   \textbf{Why is it built the way it is?}\\
-     \vspace{1cm}
-        \large Today we would like to explore the question: \\ 
-    \Large  \textbf{What is matter and how can it be "measured"?}
-    \end{center}
-    \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[plain]
 \begin{center}
@@ -111,55 +53,26 @@
 
 \maketitle
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\GroupPresentation \addtocounter{framenumber}{1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Who are you?}
-\Large Who are we? \textcolor{green}{\ding{52}} \\ \vspace{1cm}
-    \Large Who are you? \\
-    \large ~ \ding{43} Attendance sheet
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{\textbf{What is Matter and how can it be "Measured"?}}
-\begin{center}
-    \Large What do we need to know in order to answer this question?  
-\end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Today's Day}
-
-\footnotesize
- \texttt{Put your time schedule in here.}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Motivation}
-% We start with the scale picture, using practical questions to get to microscopic regime 
-%     - "What is it made of and how do we know it?"   %%% Hier ist darauf zu achten, dass die Messaperaturen besprochen werden: Auge, Licht, Mikroskop ... etc. Bereitet Grundlegendes Verständig für Detektoren vor
-% \end{frame}
-% \begin{frame}{How do we measure matter?}
-%     We motivate the students to answer the question themselves
-% \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction into particle physics}
+\section{Introduction to Particle Physics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
    \begin{center} 
   \huge{  \ding{182} }\\
-   \Large{Introduction to particle physics}
+   \Large{Introduction to Particle Physics}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{And what is actually in the nucleus?}
+\begin{frame}[t]{And what is Actually in the Nucleus?}
 
     \begin{minipage}{\linewidth}
         \begin{minipage}{0.33\linewidth}
              \qquad Atom 
         \end{minipage}     
         \begin{minipage}{0.4\linewidth}
-             \quad Atomic nuclei 
+             \quad Atomic nucleus 
         \end{minipage}    
         \begin{minipage}{0.24\linewidth}
             \quad\textbf{Quarks}
@@ -188,28 +101,14 @@
     \end{minipage}
 
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Quark im Nukleus?!}
-%    Picture von dem Milchprodukt in verschiedenen Geschmäckern
-%\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}<presentation:0>{Theorie/Quarks - Hannah}
-%    Here should be the typical scale picture. We start with an atom and move to quarks via nuclei and protons/neutrons. (Magnefying glass on proton/neutron and show the quarks) 
-    
-%    Goal: Students know that the proton consists of three subparticles. Two of these are identical (AAB (uud) and BBA (ddu)) 
-%\end{frame}
 
-
-%\begin{frame}<presentation:0>{Weiteres - Hannah}
-%    Eventuell vergleich von theoretischer und experimentalphysik ziehen und für das Forschungsgebiet um die Starke Wechselwirkung ableiteten, dass beide Hand in Hand gehen müssen ("Blackbox").
-%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Quarks - What's that?}
+\begin{frame}{Quarks -- What's that?}
 
     \begin{minipage}[t]{\linewidth}\raggedleft
-          What charge has a \textcolor{red}{\textbf{neutron}}/\textcolor{blue}{\textbf{proton}}? \\
-           What charge have \textcolor{darkgreen}{\textbf{Q}}\textbf{u}\textcolor{darkgreen}{\textbf{a}}\textbf{r}\textcolor{darkgreen}{\textbf{k}}\textbf{s}?
+           What charge does a \textcolor{red}{\textbf{Neutron}}/\textcolor{blue}{\textbf{Proton}} have? \\
+           What charge must the \textcolor{darkgreen}{\textbf{Q}}\textbf{u}\textcolor{darkgreen}{\textbf{a}}\textbf{r}\textcolor{darkgreen}{\textbf{k}}\textbf{s} have?
     \end{minipage}%
     \vspace{-0.6cm}
     \begin{minipage}{\linewidth}\raggedright
@@ -221,15 +120,9 @@
     \end{minipage}
     
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{frame}{Quarks - Was ist das?}
-%Here we introduce the quarks. We know the proton/neutron has 3 subparticles. Students should know the electric charge of proton/neutron. How can we combine 3 particles to form an electric positive and neutral particle. 
-
-%Goal: quark composition of proton/neutron. No need to mention up and down yet
-%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{How do Quarks Stick Together?}  
+\begin{frame}{How are Quarks Held Together?}  
     \begin{figure}[htb]
         \includegraphics[width=1\textwidth]{Figures Introductory Lecture/Standard Model/StrongForce_EM.png}
         %\caption{}
@@ -240,15 +133,15 @@
     \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Zweiter Satz als Gegenfrage .. Aber warum halten Protonen zusammen? 
+% Zweiter Satz als GeGenèverage .. Aber warum halten Protonen zusammen? 
 \begin{frame}{Forces in Atomic Nuclei}
-...but why do \emph{atomic nuclei} hold together?!\\ \, \hspace{2cm} \ding{43} \textcolor{blue}{\textbf{Protons}} repel each other electromagnetically!
+...but why do \emph{atomic nuclei} hold together?!\\ \, \hspace{2cm} \ding{43} \textcolor{blue}{\textbf{protons}} repel each other electromagnetically!
 
     \begin{figure}[htb]
         \includegraphics[width=0.3\textwidth]{Figures Introductory Lecture/Standard Model/Nukleus.png}
         %\caption{}
         \label{fig:strong_force_2}
-    \end{figure}\\
+    \end{figure}\\ \pause
     \ding{43} There is another force that binds atomic nuclei\\ 
     \vspace{0.5cm}\begin{center}
     \Large{The \textbf{strong force}}
@@ -258,7 +151,7 @@
 % Protonen -> B
 \begin{frame}{Proton Question Time}
 \begin{center} \Large
-        ...but, \\ how can we determine whether protons are held together by the\\ strong or electromagnetic force\\? 
+        ...but, \\ how can we determine whether protons are held together by the\\ strong or electromagnetic force\\?
 \end{center}
 
 \end{frame}
@@ -267,54 +160,50 @@
 % Masse weg
 % u und d an quarks dranschreiben, oder im Text einbauen
 \begin{frame}{Other Quark Combinations}
-In fact, we find particles that consist of three up quarks/three down quarks!
+In fact, we find particles consisting of three up quarks/three down quarks!
     \begin{figure}[htb]
         \includegraphics[width=0.6\textwidth]{Figures Introductory Lecture/Standard Model/DeltaBaryons.png}
         %\caption{}
         \label{fig:strong_force_2}
-    \end{figure}
+    \end{figure}\pause
     $\hspace{3cm}\rightarrow \Delta^{++}$\hspace{3cm} $\rightarrow \Delta^{-}$\\ \vspace{0.5cm}
     \ding{43} The \textbf{strong force} must be responsible for the binding!
     % only speakting about strong force, not SM here.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Differences of the Forces}
+\begin{frame}{Differences Between the Forces}
 What is the difference between the electromagnetic force and the strong force?
 \pause
-\begin{itemize}
-    % Die EM Kraft ist spürbar!
+\begin{itemise}
+    % The EM force can be felt!
     \item We don't feel the strong force in everyday life
     \item The strong force attracts electrically neutral \& charged particles
-    \item ...
+    \item ... \pause
     \item[\ding{43}] We understand the electromagnetic force, but we have a harder time with the strong force!
-    % Fragen ob den Leuten noch was einfällt...
-\end{itemize}
+    % Ask if people can think of anything else...
+\end{itemise}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% die auf sie wirkt...
-% Quarks müssen eine weitere Ladung haben -> Farbladung
-% Wir messen die Farbladung nicht
 \begin{frame}{The Properties of the Strong Interaction} 
-For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\
-\begin{itemize}
-\begin{itemize}
-    \item [\ding{220}] Quarks must have a so-called \textbf{colour charge}\\\
+For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\ \pause
+\begin{itemise}
+\begin{itemise}
+    \item [\ding{220}] Quarks must have a so-called \textbf{colour charge}. \textbf{colour charge} possess\\\
     \item[] But the particles we observe are colourless! \\
-    \end{itemize}
-   \item[] \textbf{Visualisation:}
-\end{itemize} \vspace{-0.5cm}
+    \end{itemise}
+   \item[] \textbf{illustration:}
+\end{itemise} \vspace{-0.5cm}
     \begin{figure}[htb]                                                 
     \includegraphics[width=0.8\textwidth]{Figures Introductory Lecture/Standard Model/GrayAdditiveColours.png}          
     %\caption{}                                                         
     \label{fig:strong_force_3}                                         
-    \end{figure} \vspace{-0.5cm}
+    \end{figure} \vspace{-0.5cm} \pause
     \ding{220} Overall colour-neutral particles!
 \end{frame} 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Standard Model of Particle Physics}
-% Idea is to show first only the particles student should know from the last slides, i.e. u and d quark. Then ask, what other elementary particles they might know of (expect electron and photon).
-% From there talk about how physicists made the "strange" discovery of new particles that did not seem to be compsed out of ud only -> discovered more flavours over past decays, explain the three generations with increasing mass, same for leptons.
-%In the end ask but how is it possible that the matter surrounding us is only made up of p,n ie ud quarks? -> Heavier flavoured particles must decay into first generation
 \foreach \n in {1,...,4}{
     \includegraphics<\n>[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/ENG_SM_\n.png}%
 }
@@ -324,36 +213,6 @@ For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\
     \includegraphics[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/ENG_SM2_1.png}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \begin{frame}{Die schwache Wechselwirkung}
-% % So how can we imagine such a decay? Lefthand side shows such a "strange" particle, what do we have to change to go a proton, is there something missing (charge) so need electrn for the decay.
-% % More physical picture: show feynman diagram introduce bosons as mediators of interaction.
-% \only<1>{
-% \begin{figure}[htb]
-%     \includegraphics[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/LambdaDecay.png}%
-%     %\caption{}
-%     \label{fig:LambdaToProton}
-% \end{figure}
-% }
-% \only<2>{
-% \begin{figure}[htb]
-%     \includegraphics[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/LambdaDecayCharge.png}%
-%     %\caption{}
-%     \label{fig:Lambda_Decay}
-% \end{figure}
-% }
-% \only<3>{
-% \begin{figure}[htb]
-%     \includegraphics[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/LambdaDecayFull.png}%
-%     %\caption{}
-%     \label{fig:Lambda_DecayFull}
-% \end{figure}
-% }
-% \end{frame}
-
-
-
-
 \begin{frame}{The Week Force}
 \begin{center}
     
@@ -461,7 +320,6 @@ For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Feynman Diagrams}
-% Anstelle solcher Kugel Pictureer verwenden Physiker:innen Feynman diagramme
 \begin{center}
 \begin{tikzpicture}
 \begin{feynman}
@@ -485,24 +343,20 @@ For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\
 \end{feynman}
 \end{tikzpicture}   
 \end{center}
-\ding{43} Only the weak interaction is able to change the \textbf{flavour} of a particle! 
+\ding{43} Only the weak force is able to change the \textbf{flavour} of a particle! 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame}[fragile]{The Standard Model of Particle Physics II}
-% Show the full SM, talk about bosons as mediators, maybe the example of two people on skateboards throwing a ball, as example for repulsive force via mediating particle?
-
-    % - Higgs und Fragen zur Gravitation vorbereiten? -> würde ich weglassen, nicht wirklich relevant, eher das Higgs kurz erwähnen als das elementarteilchen das als letztes gefunden wurde und den Punkt machen, dass Teilchenphysik aktuell ist und nicht nur experimente von vor 100 Jahren
-
 \foreach \n in {1,...,9}{
-        \includegraphics<\n>[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/ENG_SM2_\n.png}%
+        \includegraphics<\n>[width=0.9\textwidth]{Figures Introductory Lecture/Standard Model/ENG_SM2_\n.png}
 } 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{frame}
 \begin{frame}{Standard Model: The most Important for Today}
 \begin{itemize}
-    \item 6 quark flavours $u$, $d$, $s$, $c$, $b$, $t$
+    \item 6 quark flavours $u$, $d$,$s$, $c$, $b$, $t$
     \item strong, weak and electromagnetic force
     \item flavour change only via weak decay
     \item exchange particle $\gamma$, $Z^0$ \& $W^{\pm}$, $g$
@@ -514,35 +368,35 @@ For the \textbf{strong force} there is a \textbf{charge} on which it acts! \\
     
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{frame}{What is Mmatter and how can it be "Measured"?}\Large
- And Now?
+  \begin{frame}{What is Matter, how can it be ‘Measured’?}\Large
+What's next?
  \begin{itemize}
-     \item How can we produce particles?
+     \item How can we create particles?
      \item How can we prove all this?
  \end{itemize}
 \begin{center} \pause
  
-But first \\ \textbf{\textcolor{red}{5\,min break :)}
+But first \\   \textbf{\textcolor{red}{5\,min break :)}
 }
 \end{center}  
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-   \section{LHCb detector at CERN}
+   \section{LHCb-Detector at CERN}
 \begin{frame}[plain]
 
 \begin{center} 
   \huge{  \ding{183} }\\
-   \Large{ Introduction to the LHCb detector at CERN}
+   \Large{Introduction into the LHCb-Detector at CERN}
 
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}{A Particle Please}
+\begin{frame}{A Particle Please!}
 
     \begin{center}
-   \Large We want to produce particles!\\
+   \Large We want to produce a particle!\\
     
     \Large We need a lot of \textbf{\textcolor{red}{energy}} for this!
    \mathrm{ \begin{align*}
@@ -554,7 +408,7 @@ But first \\ \textbf{\textcolor{red}{5\,min break :)}
     
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Picture: CERN, edited}
+\subsection{CERN, edited}
 \begin{frame}{Welcome to CERN \& LHC}
 
   \begin{center}
@@ -573,8 +427,8 @@ But first \\ \textbf{\textcolor{red}{5\,min break :)}
 \begin{frame}
 \begin{figure}
 \begin{overpic}[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHC.jpg}
-     \put (55,43.5) {\tiny \textcolor{white}{\centering \rotatebox[]{270}{$\rightarrow$}  Geneva}}
-     \put (10,39) {\tiny \textcolor{white}{Lake Geneva}}
+     \put (55,43.5) {\tiny \textcolor{white}{\centering \rotatebox[]{270}{$\rightarrow$}  Genève}}
+     \put (10,39) {\tiny \textcolor{white}{Lake Genève}}
      \put (0,50)  {\tiny \textcolor{white}{$\leftarrow$ Lausanne}}
         \put (92,5)  {\tiny \textcolor{white}{ Lyon \rotatebox[]{340}{$\rightarrow$}}}
         \put (47,54) {\tiny \textcolor{ black}{\rotatebox[]{135}{\ding{43}} Mont Blanc}}
@@ -585,11 +439,11 @@ But first \\ \textbf{\textcolor{red}{5\,min break :)}
 \begin{frame}\addtocounter{framenumber}{-1}
 \begin{figure}
 \begin{overpic}[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHC+GVA.jpg}
-        \put (44,43.5) {\tiny \parbox{2.5cm}{\textcolor{white}{\centering \rotatebox[]{45}{\ding{40}}  Geneva Airport\\ Runway length: 4\,km}}}
+        \put (44,43.5) {\tiny \parbox{2.5cm}{\textcolor{white}{\centering \rotatebox[]{45}{\ding{40}} Airport Genève\\ Runway length: 4\,km}}}
         %\put (90,36)  {\tiny \textcolor{green}{TGV}}
         \put (0,50)  {\tiny \textcolor{white}{$\leftarrow$ Lausanne}}
         \put (92,5)  {\tiny \textcolor{white}{ Lyon \rotatebox[]{340}{$\rightarrow$}}}
-        \put (10,39) {\tiny \textcolor{white}{Lake Geneva}}
+        \put (10,39) {\tiny \textcolor{white}{Lake Genève}}
         \put (47,54) {\tiny \textcolor{ black}{\rotatebox[]{135}{\ding{43}} Mont Blanc}}
 \end{overpic}
 \end{figure}
@@ -598,40 +452,40 @@ But first \\ \textbf{\textcolor{red}{5\,min break :)}
 \begin{frame}\addtocounter{framenumber}{-1}
 \begin{figure}
 \begin{overpic}[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHC+GVA+TGV.jpg}
-        \put (44,43.5) {\tiny \parbox{2.5cm}{\textcolor{white}{\centering \rotatebox[]{45}{\ding{40}} Geneva Airport\\ Runway length: 4\,km}}}
+        \put (44,43.5) {\tiny \parbox{2.5cm}{\textcolor{white}{\centering \rotatebox[]{45}{\ding{40}} Airport Genève\\ Runway length: 4\,km}}}
         \put (90,36)  {\tiny \textcolor{green}{TGV}}
         \put (0,50)  {\tiny \textcolor{white}{$\leftarrow$ Lausanne}}
         \put (92,5)  {\tiny \textcolor{white}{ Lyon \rotatebox[]{340}{$\rightarrow$}}}
-        \put (10,39) {\tiny \textcolor{white}{Lake Geneva}}
+        \put (10,39) {\tiny \textcolor{white}{Lake Genève}}
         \put (47,54) {\tiny \textcolor{ black}{\rotatebox[]{135}{\ding{43}} Mont Blanc}}
 \end{overpic}
 \end{figure}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Motivation of Colider experiments (Production)}
-%    E=m
-    %    Wir benoetigen ein Experiment um schwere Teilchen (die nicht nur u und d enthalten) zu produzieren. Hierzu brauche wir viel Energie. % Eventuell Referenz zur kleinsten Wirkung (s.o.)?
-%\end{frame}
 
-%\begin{frame}{CERN, LHC, LHCb...}
-%-> how can we produce the high amount of energy we need?
-%    - From E=m. Huge Energy has to go somewhere when two particles (pp) are colliding.
-%    - start with linear collider than round. Synchrotron Principe
-%    - charged particles in a magn. field got accelerated
-%    - Proton has more energy than a.i. Electrons. (ref to Bonn: e+ e-)
-    % Das intuitive Verständnis, dass bei anihilation von Elektron und Positron "Energie frei wird", kann eventuell aufRückfragen stoßen, wenn wir pp Kollision haben, insbesondere wenn wir keine See-Quarks einfürhen. Rückfragen müsste man mit einem neuen konzept entgegnen, das kann schnell in eine verwirrende richung fühen. Daher eventuell "falsche" Erklärung hier nutzen?
-%\end{frame}
+\begin{frame}{LHC vs. ICE}
+\begin{spacing}{2}
+       \textbf{Energy per beam: 350\,MJ } \\
+   \begin{itemize}
+       \item[\ding{43}] ICE ($m=400\,t$) at 150\,$\nicefrac{\text{km}}{\text{h}}$ \\ 
+   \end{itemize}
+
+     \textbf{Energy per proton: 1\,\text{µJ} } \\
+   \begin{itemize}
+       \item[\ding{43}] Honeybee ($m=0.1\,g$) at 1\,$\nicefrac{\text{km}}{\text{h}}$ 
+   \end{itemize}
+   
+\end{spacing}
+
+   
+    
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{frame}{The Collision of Particles}%{Collision and Detection}
- %- Lot Energy has to go somewhere. (E=const.)
- %- Lot Energy, lot stuff, has to go somewhere. To what? Has to be figured out. -> 
 The high-energy particles collide\\
 \ding{43}  What happens to the energy? % Energieerhaltung
  \\ 
-%event display?
-% Picture ist von hier: https://www.physicsmasterclasses.org/exercises/bonn1/de/teilchenkollision.htm
-% koennte noch schoener gemacht werden. Aber die Idee ist vielleicht nicht schlecht.
 \begin{figure}[h]
         %\centering
        
@@ -639,19 +493,17 @@ The high-energy particles collide\\
         \label{fig:Kollision}
     \end{figure}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Detectives for Particles}%{LHCb}
-%- Da ist was Produziert wurden, wie kann man das Nachvollziehen. 
-%    - Teilcehn treffen auf Material, diese Interaktion mit Material (-Schichten) kann man nachweisen und Spuren rekonstruieren
-How can we find out what happened in the collision?\\
-\ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Detectives for Particles}\addtocounter{framenumber}{-1}
+How can we determine what happened during the collision?
+ \\
     \begin{figure}[h]
         %\centering
 
         \begin{overpic}[width=0.8\textwidth]{Figures Introductory Lecture/LHCb Detector/Detectorsignal.png}
-        \put(64.5,8){\tiny \parbox{1.7cm}{\centering Readout \\ system}}
+        \put(64,8){\tiny readout system}
         \put(45,50){\scriptsize Detector}
-        \put(44,0){\scriptsize \parbox{2.5cm}{Electrical signal}}
+        \put(44,0){\scriptsize \parbox{2cm}{Electrical signal}}
         
         \end{overpic}
    
@@ -665,19 +517,11 @@ How can we find out what happened in the collision?\\
     
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{frame}{Welches Signal gehört zu welchem Teilchen?}
-       %Wie kann man Teilchen anhand von Spuren unterscheiden? 
-       %-> (Reminder) Ladung, Masse, Art der WW, Energie
-       %-> Detektor hat verschiedene Teilce mit verschiedenen Aufgaben
-
-%Fragende Enntwicklung: Wie kann man verschiedene Eigenschaften der Teichen herausfinden?
-%\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Which Signal Belongs to which Particle?}
     
 
-\ \\
-Remember the properties of the particles you know \\
+ \\
+Remember the properties of the particles you know: \\
 \begin{itemize}
     \item<2-> mass \hfill $m$ \hspace{6cm}\,
     \item<2-> electric charge \hfill $q$ \hspace{6cm}\,
@@ -685,26 +529,12 @@ Remember the properties of the particles you know \\
     \item<2-> momentum \hfill $\vec{p} $ \hspace{6cm}\,
     \item<2-> velocity \hfill $\vec{v}$ \hspace{6cm}\,
  
-\ \\
+ \\
     \item<3->[\ding{220}] How can we measure these properties with the LHCb detector?
 
     
 \end{itemize}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Im Folgenden ist die Überlegung: Der LHCb Detekor baut sich langsam auf. Auf den Slides sind immer die Geräte eingezeichnet und werden laufend ergänzt (Grafiken kann Lukas machen!), Außerdem hier Pictureer von den jeweligen Geräten, s. Slides von Sebastian/Klaas. Ziel ist die AbPictureung auf der Rechenaufgabe 
-
-%idee hierfür: beispiel teilchen durch detektor folgen (z.B. b meson wegen namensgebung):
-%- zerfall im velo: gute ortsauflösung
-%- rich 1: impulsmessung
-%- tt: verbindung zu velo spur
-%- magnet: ablenken geladener teilchen
-%- tracking stations: ort nach ablenkung im magnet 
-%- rich2: impuls messung von höherem impuls mit anderem gas
-%- ecal/ hcal: teilchen stoppen und energie messen
-%- muonkammern: misst spuren von teilchen die nicht im calo gestoppt werden (kann man auch weglassen)
-
-%idee der folgenden slides: lhcb detektor baut sich stück für stück vom kollisionspunkt an auf, jede slide hat unten die schematik vom bisherigen detektor und oben ein foto vom subdetektor, den die slide erklärt. zusätzlich hat jede slide ein paar stichpunkte zur funktionsweise des detektors. für einige slides bieten sich fragen an die schüler an (als kommentare an den stichpunkten hinterlegt) 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Picture: CERN}
 \begin{frame}{Vertex Locator (VELO)}
@@ -732,11 +562,751 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}{Vertex Locator (VELO)} \centering
+\begin{minipage}{.59\textwidth}
+    \begin{itemize}
+        \item Track reconstruction
+        \item Identification of vertices
+
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{.39\textwidth}
+  \rotatebox{180}{\begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}} \\\vspace{-8pt}\\ 
+    \begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}\end{minipage}
+    \begin{tikzpicture}[scale=1.2]
+    %Rand der Grafik
+    \draw[white] (-3,-1.5) circle (2pt){};
+    \draw[white] (-3,2.5) circle (2pt){};
+    \draw[white] (5,-1.5) circle (2pt){};
+    \draw[white] (5,2.5) circle (2pt){};
+
+%VELO stations
+%below beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0.05,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.05,-0.25) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2.05,-0.25) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.55,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.05,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.55,-0.25) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.25,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.45,-0.25) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.65,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.85,-0.25) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,-0.25) --++ (0,.75){};
+%above beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1,1) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2,1) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.5,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.5,1) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.2,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.4,1) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.6,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.8,1) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,1) --++ (0,.75){};
+%pp
+\draw[->,line width=2pt](-0.5,.75) node [left] {$p$}--++ (0.5,0){};
+\draw[->,line width=2pt](0.5,.75) node [right] {$p$}--++ (-0.5,0){};
+
+%Labels 
+\midlabelline{-3,-0.25}{-3,1.75}{\scriptsize\SI{6,6}{\centi\metre}}
+\midlabelline{-2.6,-0.75}{4.9,-.75}{\scriptsize\SI{1}{\metre}}
+
+% %Events 
+% \node at (0.2,1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (0.4,1.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (0.6,1.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (0.8,1.6) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+
+% \node at (0.65,0.425) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (0.85,0.325) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (1.05,0.225) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% \node at (1.25,0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (1.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% \node at (1.45,-0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (1.45,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% \node at (1.65,-0.24) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (1.65,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% \node at (1.85,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (2.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (2.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (3.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (3.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (4.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (4.45,0.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (4.6,1.1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+% \node at (4.8,1.7) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% %Funktion
+
+% \draw[ rounded corners,cap=round,--,red!black!49,line width=2pt] (0,.8) -- (1.1,1.85){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (0,.75) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (2,-0.52) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (4.95,2.3){};
+% \draw[ rounded corners,cap=round,--,red,line width=1pt,dashed] (4.38,0.2) -- (4.8,-0.3) node [right]{?};
+    \end{tikzpicture}
+\end{frame}
+\begin{frame}{Vertex Locator (VELO)} \centering\addtocounter{framenumber}{-1}
+\begin{minipage}{.59\textwidth}
+    \begin{itemize}
+        \item Track reconstruction
+        \item Identification of vertices
+
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{.39\textwidth}
+  \rotatebox{180}{\begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}} \\\vspace{-8pt}\\ 
+    \begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}\end{minipage}
+    \begin{tikzpicture}[scale=1.2]
+    %Rand der Grafik
+    \draw[white] (-3,-1.5) circle (2pt){};
+    \draw[white] (-3,2.5) circle (2pt){};
+    \draw[white] (5,-1.5) circle (2pt){};
+    \draw[white] (5,2.5) circle (2pt){};
+
+%VELO stations
+%below beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0.05,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.05,-0.25) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2.05,-0.25) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.55,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.05,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.55,-0.25) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.25,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.45,-0.25) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.65,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.85,-0.25) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,-0.25) --++ (0,.75){};
+%above beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1,1) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2,1) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.5,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.5,1) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.2,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.4,1) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.6,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.8,1) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,1) --++ (0,.75){};
+%pp
+\draw[->,line width=2pt](-0.5,.75) node [left] {$p$}--++ (0.5,0){};
+\draw[->,line width=2pt](0.5,.75) node [right] {$p$}--++ (-0.5,0){};
+
+%Labels 
+\midlabelline{-3,-0.25}{-3,1.75}{\scriptsize\SI{6,6}{\centi\metre}}
+\midlabelline{-2.6,-0.75}{4.9,-.75}{\scriptsize\SI{1}{\metre}}
+
+%Events 
+\node at (0.2,1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.4,1.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.6,1.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.8,1.6) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+
+\node at (0.65,0.425) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.85,0.325) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.05,0.225) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.25,0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.45,-0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.45,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.65,-0.24) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.65,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.85,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.45,0.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.6,1.1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.8,1.7) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+% %Funktion
+
+% \draw[ rounded corners,cap=round,--,red!black!49,line width=2pt] (0,.8) -- (1.1,1.85){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (0,.75) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (2,-0.52) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (1.1,0.2){};
+% \draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (4.95,2.3){};
+% \draw[ rounded corners,cap=round,--,red,line width=1pt,dashed] (4.38,0.2) -- (4.8,-0.3) node [right]{?};
+    \end{tikzpicture}
+\end{frame}
+\begin{frame}{Vertex Locator (VELO)} \centering\addtocounter{framenumber}{-1}
+\begin{minipage}{.59\textwidth}
+    \begin{itemize}
+        \item Track reconstruction
+        \item Identification of vertices
+
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{.39\textwidth}
+  \rotatebox{180}{\begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}} \\\vspace{-8pt}\\ 
+    \begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}\end{minipage}
+    \begin{tikzpicture}[scale=1.2]
+    %Rand der Grafik
+    \draw[white] (-3,-1.5) circle (2pt){};
+    \draw[white] (-3,2.5) circle (2pt){};
+    \draw[white] (5,-1.5) circle (2pt){};
+    \draw[white] (5,2.5) circle (2pt){};
+
+%VELO stations
+%below beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0.05,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.05,-0.25) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2.05,-0.25) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.55,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.05,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.55,-0.25) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.25,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.45,-0.25) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.65,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.85,-0.25) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,-0.25) --++ (0,.75){};
+%above beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1,1) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2,1) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.5,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.5,1) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.2,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.4,1) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.6,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.8,1) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,1) --++ (0,.75){};
+%pp
+\draw[->,line width=2pt](-0.5,.75) node [left] {$p$}--++ (0.5,0){};
+\draw[->,line width=2pt](0.5,.75) node [right] {$p$}--++ (-0.5,0){};
+
+%Labels 
+\midlabelline{-3,-0.25}{-3,1.75}{\scriptsize\SI{6,6}{\centi\metre}}
+\midlabelline{-2.6,-0.75}{4.9,-.75}{\scriptsize\SI{1}{\metre}}
+
+%Events 
+\node at (0.2,1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.4,1.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.6,1.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.8,1.6) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+
+\node at (0.65,0.425) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.85,0.325) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.05,0.225) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.25,0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.45,-0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.45,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.65,-0.24) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.65,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.85,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.45,0.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.6,1.1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.8,1.7) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+%Funktion
+
+\draw[ rounded corners,cap=round,--,red!black!49,line width=2pt] (0,.8) -- (1.1,1.85){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (0,.75) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (2,-0.52) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (4.95,2.3){};
+% \draw[ rounded corners,cap=round,--,red,line width=1pt,dashed] (4.38,0.2) -- (4.8,-0.3) node [right]{?};
+    \end{tikzpicture}
+\end{frame}
+\begin{frame}{Vertex Locator (VELO)} \centering \addtocounter{framenumber}{-1}
+\begin{minipage}{.59\textwidth}
+    \begin{itemize}
+        \item Track reconstruction
+        \item Identification of vertices
+
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{.39\textwidth}
+  \rotatebox{180}{\begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}} \\\vspace{-8pt}\\ 
+    \begin{tikzpicture}[scale=.47]
+        %Rand der Grafik
+     \draw[rounded corners,cap=round,fill=green!40!black!80] (-3,-1)--(-3,-0)--(-1.5,0) -- (0,-1) -- (1.5,0) -- (4.2,0) -- (4.2,-3.5) -- (-3,-3.5) -- (-3,-1);
+    % \draw[red] (-3,-2) circle (2pt){};
+
+    % \draw[red] (-3,3) circle (2pt){};
+    % \draw[red] (5,-2) circle (2pt){};
+    % \draw[red] (5,3) circle (2pt){};
+        \draw[cap=round,fill=blue!5] (-1.8,0) to  (0.1,0) to [out=0,in=180] (0.6,-0.33) to [out=0,in=180](1.1,0) to (3.1,0) [out=-90,in=0] to (0.6,-2.5) [out=180,in=-90] to (-1.9,0){};
+            \draw  (-2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{0}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{10}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{20}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{30}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{40}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{50}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{60}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{70}{\scriptsize$\hrectangleblack$}}};
+            \draw  (-0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{80}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.05,-2.75) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{90}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.48,-2.71) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{100}{\scriptsize$\hrectangleblack$}}};
+            \draw  (0.94,-2.58) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{110}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.375,-2.38) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{120}{\scriptsize$\hrectangleblack$}}};
+            \draw  (1.76,-2.11) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{130}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.11,-1.76) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{140}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.38,-1.375) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{150}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.58,-0.94) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{160}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.71,-0.5) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{170}{\scriptsize$\hrectangleblack$}}};
+            \draw  (2.75,-0.12) node [right]{\textcolor{yellow!90!black!89!orange!90}{\rotatebox{180}{\scriptsize$\hrectangleblack$}}};
+    \end{tikzpicture}\end{minipage}
+    \begin{tikzpicture}[scale=1.2]
+    %Rand der Grafik
+    \draw[white] (-3,-1.5) circle (2pt){};
+    \draw[white] (-3,2.5) circle (2pt){};
+    \draw[white] (5,-1.5) circle (2pt){};
+    \draw[white] (5,2.5) circle (2pt){};
+
+%VELO stations
+%below beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0.05,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.05,-0.25) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.25,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.45,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.65,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.85,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2.05,-0.25) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.55,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.05,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.55,-0.25) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.25,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.45,-0.25) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.65,-0.25) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.85,-0.25) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,-0.25) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,-0.25) --++ (0,.75){};
+%above beam
+    \draw[--,line width=1.5pt,green!40!black!80] (0,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1,1) --++ (0,.75){};
+     \draw[--,line width=1.5pt,green!40!black!80] (1.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (1.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (2,1) --++ (0,.75){};
+       
+        \draw[--,line width=1.5pt,green!40!black!80] (2.5,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (3.5,1) --++ (0,.75){};
+
+        \draw[--,line width=1.5pt,green!40!black!80] (4.2,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.4,1) --++ (0,.75){};                
+        \draw[--,line width=1.5pt,green!40!black!80] (4.6,1) --++ (0,.75){};
+        \draw[--,line width=1.5pt,green!40!black!80] (4.8,1) --++ (0,.75){};
+        
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.6,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-0.8,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-1.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.2,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.4,1) --++ (0,.75){};
+    \draw[--,line width=1.5pt,green!40!black!80] (-2.6,1) --++ (0,.75){};
+%pp
+\draw[->,line width=2pt](-0.5,.75) node [left] {$p$}--++ (0.5,0){};
+\draw[->,line width=2pt](0.5,.75) node [right] {$p$}--++ (-0.5,0){};
+
+%Labels 
+\midlabelline{-3,-0.25}{-3,1.75}{\scriptsize\SI{6,6}{\centi\metre}}
+\midlabelline{-2.6,-0.75}{4.9,-.75}{\scriptsize\SI{1}{\metre}}
+
+%Events 
+\node at (0.2,1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.4,1.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.6,1.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.8,1.6) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+
+\node at (0.65,0.425) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (0.85,0.325) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.05,0.225) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.25,0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.45,-0.08) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.45,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.65,-0.24) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (1.65,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+\node at (1.85,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (2.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.05,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (3.55,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.25,0.2) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.45,0.4) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.6,1.1) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+\node at (4.8,1.7) {\textcolor{red}{\scriptsize$\mathbf{\times}$}};
+
+%Funktion
+
+\draw[ rounded corners,cap=round,--,red!black!49,line width=2pt] (0,.8) -- (1.1,1.85){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (0,.75) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (2,-0.52) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (1.1,0.2){};
+\draw[ rounded corners,cap=round,--,red,line width=2pt] (4.38,0.2) -- (4.95,2.3){};
+\draw[ rounded corners,cap=round,--,red,line width=1pt,dashed] (4.38,0.2) -- (4.6,0) node [right]{?};
+    \end{tikzpicture}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ring Imaging Cherenkov Detector (RICH1)}
     \begin{minipage}{0.68\textwidth}
     \begin{itemize}
-        \item Measures \textcolor{red}{\textbf{Velocity}} of the particles
+        \item Measures \textcolor{red}{\textbf{velocity}} of the particles
         \item Important for identification of particles
         \item Only defined in limited momentum window
     \end{itemize}
@@ -744,7 +1314,7 @@ Remember the properties of the particles you know \\
     \begin{minipage}{0.28\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH1.jpeg}%source:https://cds.cern.ch/record/2807064
+        \includegraphics[height=3cm]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH1.jpeg}%source:https://cds.cern.ch/record/2807064
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -761,18 +1331,555 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=\textheight]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH1.jpeg}%source:https://cds.cern.ch/record/2807064
+        \end{figure}
+\end{frame}
+\begin{frame}{Cerenkov Effect}
+    \begin{minipage}{.49\textwidth}
+     \begin{tikzpicture}
+\draw[--,fill=red!20!orange!30](-3,-2)--(0,-2)--(0,2)--(-3,2)--(-3,-2){};
+         \draw[--,blue] (-2,-0.5)--(-2.5,0)--(-2,0.5){};
+         \draw[--,blue] (-1.5,-0.5)--(-2,0)--(-1.5,0.5){};
+         \draw[--,blue] (-1,-0.5)--(-1.5,0)--(-1,0.5){};
+                  
+        \node at (-2,-1) {$n>n_0$};
+        \node at (-4,-1) {$n_0$};
+        \node at (-1.5,2.5) {RICH};        \node at (-1.5,-2.5) {~};
+        \node at (-2,-1.5) {$c=\frac{c_{\text{vak.}}}{n}$};
+        \node at (-4,-1.5) {$c=\frac{c_{\text{vak.}}}{n_0}$};
+         \draw[->,line width=2pt](-5,0) to node [above] {$v$}(-3,0) to (0.5,0){};
+     \end{tikzpicture}   
+    \end{minipage}
+        \begin{minipage}{.49\textwidth}
+        \includegraphics[width=\textwidth]{Figures Introductory Lecture/FA-18-Jet.jpg}
+    \end{minipage}
+    \vspace{1cm}
+    Radiation is emitted for $v>c$! This can be measured.
+
+    
+    
+\end{frame}
+\begin{frame}{Cerenkov Effect in Water $n\approx1.3$}
+    \begin{minipage}{.49\textwidth}
+    \begin{tikzpicture}[scale=0.8] \draw[black,fill=blue!20,line width=2pt] (-1.5,0.5) circle (2.35cm){};
+        \draw[--,line width=2pt] (0,0)--(-1.5,1.5)--(-3,0){};
+        \node[circle,shading=ball,ball color=red] (ball) at (0,0) {\textbf{\sffamily \HUGE \textcolor{white}{H}}};
+        \node[circle,shading=ball,ball color=red] (ball) at (-3,0) {\textbf{\sffamily \HUGE \textcolor{white}{H}}};
+        \node[circle,shading=ball,ball color=blue] (ball) at (-1.5,1.5) {\textbf{\sffamily \HUGE \textcolor{white}{O}}};
+       % \draw [->,green!50!black!77,line width=4pt] (-1.5,1.3)--(-1.5,-.7) node [below,black] {$p$};
+        \node at (-0.9,2) {$\delta^-$};
+        \node at (-3.5,0.5) {$\delta^+$};
+        \node at (0.6,0.5) {$\delta^+$};
+         \node at (1,-4) {~};
+    \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{.49\textwidth}
+    \begin{tikzpicture}\boldmath 
+        %\draw[->,line width=1pt] (0,3)--(0,-3);
+         % \shade[ball color=green] (0,0) circle (8pt) node [black]{\textbf{\sffamily $e^-$}};
+          \draw[--,round corners=2pt,line width=2pt,fill=blue!10] (-3,0)--(-3,-2)--(3,-2)--(3,2)--(-3,2)-- (-3,0){};
+\def\x{-2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{-1.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{-0.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{0.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{1.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{1}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+\def\x{2}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+\def\x{-1}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+\def\x{-2}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+        
+
+
+    \end{tikzpicture}
+           
+    
+    \end{minipage}
+\[ ~\]
+\end{frame}
+\begin{frame}{Cerenkov Effect in Water $n\approx1.3$}
+    \begin{minipage}{.49\textwidth}
+    \begin{tikzpicture}\boldmath 
+        \clip (-2,-3.2) rectangle (2,3); % Ausschnitt definieren
+        \draw[->,line width=1pt] (0,3)--(0,-3) node [right] {$v$};
+        \draw[--,line width=1pt](-2,0.5)--(0,-0.5)--(2,0.5){};
+        \draw[--,dashed,black!100] (0,0) circle (12.5pt){};
+        \draw[--,dashed,black!100] (0,0.5) circle (25pt){};
+        \draw[--,dashed,black!80] (0,1) circle (37.5pt){};
+        \draw[--,dashed,black!60] (0,1.5) circle (50pt){};
+        \draw[--,dashed,black!40] (0,2) circle (62.5pt){};
+        \draw[--,dashed,black!20] (0,3) circle (87.5pt){};
+        \shade[ball color=green] (0,-0.5) circle (8pt) node [black]{\textbf{\sffamily $e^-$}};
+        \draw[->,blue,line width=2pt](1,0)--(1.5,-1) node [below] {$\gamma$};
+        \draw[--,blue,line width=1pt,dashed](0,2)--(1,0);
+        \draw[->,blue,line width=2pt](-1,0)--(-1.5,-1) node [below] {$\gamma$};
+        \draw[--,blue,line width=1pt,dashed](0,2)--(-1,0);
+        \draw[--,black,line width=1pt](0,0.75) [out=-360,in=-165]  to node [below] {$\theta$} (0.6,0.85){};
+    \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{.49\textwidth}
+    \begin{tikzpicture}\boldmath 
+         \draw[--,round corners=2pt,line width=2pt,fill=blue!10] (-3,0)--(-3,-2)--(3,-2)--(3,2)--(-3,2)-- (-3,0){};
+        \draw[->,line width=1pt] (0,3)--(0,-3)node [right] {$v$};
+          \shade[ball color=green] (0,-0.5) circle (8pt) node [black]{\textbf{\sffamily $e^-$}};
+
+
+\def\x{-2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+        
+\def\x{-2}
+        \node (A1) at (\x,1); \def\R{-110} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{-100} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{-120} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+\def\x{-1.5}
+        \node (A05) at (\x,1.25); \def\R{-140} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5.5pt and 6.5pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{-120} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5.5pt and 6.5pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{-100} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5.5pt and 6.5pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+\def\x{-1}
+        \node (A1) at (\x,1); \def\R{-140} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5.2pt and 6.8pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{-110} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{-100} \draw[black, fill=blue!20,rotate=\R] (C1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D1) at (\x,-0.5); \def\R{-100} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{-150} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.2pt and 6.8pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+\def\x{-0.5}
+        \node (A05) at (\x,1.25); \def\R{-160} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5.2pt and 6.8pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{-140} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{-120} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{-111} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+
+\def\x{0.5}
+        \node (A05) at (\x,1.25); \def\R{160} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{140} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{120} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{111} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+\def\x{1}
+        \node (A1) at (\x,1); \def\R{140} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5.2pt and 6.8pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{120} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{100} \draw[black, fill=blue!20,rotate=\R] (C1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{150} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.2pt and 6.8pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+\def\x{1.5}
+        \node (A05) at (\x,1.25); \def\R{140} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5.5pt and 6.5pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{120} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5.5pt and 6.5pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{100} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5.5pt and 6.5pt)  node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05)circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+
+
+
+
+\def\x{2}
+        \node (A1) at (\x,1); \def\R{110} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{100} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{120} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.9pt and 6.1pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-7pt}\textcolor{blue}{$-$}}};
+
+\def\x{2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+
+        
+
+
+    \end{tikzpicture}
+           
+    
+    \end{minipage}
+\[\cos{\theta}=\frac{c}{v\cdot n}~, v>c/n\]
+\end{frame}
+\begin{frame}{Cerenkov Effect in Water $n\approx1.3$}
+    \begin{minipage}{.49\textwidth}
+        \begin{tikzpicture}\boldmath 
+        \clip (-2,-3.2) rectangle (2,3); % Ausschnitt definieren
+        \draw[->,line width=1pt] (0,3)--(0,-3) node [right] {$v$};
+        \draw[--,dashed,black!100] (0,0) circle (20pt){};
+        \draw[--,dashed,black!100] (0,0.5) circle (40pt){};
+        \draw[--,dashed,black!80] (0,1) circle (60pt){};
+        \draw[--,dashed,black!60] (0,1.5) circle (80pt){};
+        \draw[--,dashed,black!40] (0,2) circle (100pt){};
+        \draw[--,dashed,black!20] (0,2.5) circle (120pt){};
+        \shade[ball color=green] (0,-0.5) circle (8pt) node [black]{\textbf{\sffamily $e^-$}};
+        
+    \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{.49\textwidth}
+    \begin{tikzpicture}\boldmath 
+        \draw[--,round corners=2pt,line width=2pt,fill=blue!10] (-3,0)--(-3,-2)--(3,-2)--(3,2)--(-3,2)-- (-3,0){};
+        \draw[->,line width=1pt] (0,3)--(0,-3);
+        \shade[ball color=green] (0,-0.5) circle (8pt) node [black]{\textbf{\sffamily $e^-$}};
+\def\x{-2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{2.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C05) circle  (6pt);
+
+        \node (D05) at (\x,-0.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D05) circle  (6pt);
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) circle  (6pt);
+
+        \node (F05) at (\x,-1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{-0.5}
+        \node (A05) at (\x,1.25); \def\R{-170} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{-160} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{-140} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{-100} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{-80} \draw[black, fill=blue!20,rotate=\R] (E05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (F05) at (\x,-1.25); \def\R{-60} \draw[black, fill=blue!20,rotate=\R] (F05) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+
+\def\x{0.5}
+        \node (A05) at (\x,1.25); \def\R{170} \draw[black, fill=blue!20,rotate=\R] (A05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B05) at (\x,0.75); \def\R{160} \draw[black, fill=blue!20,rotate=\R] (B05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C05) at (\x,0.25); \def\R{140} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{100} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{80} \draw[black, fill=blue!20,rotate=\R] (E05) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-4pt}\textcolor{blue}{$-$}}};
+
+        \node (F05) at (\x,-1.25); \def\R{60} \draw[black, fill=blue!20,rotate=\R] (F05) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+\def\x{1.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{130} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{110} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (F05) at (\x,-1.25); \def\R{70} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+\def\x{-1.5}
+        \node (A05) at (\x,1.25); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A05) circle  (6pt);
+
+        \node (B05) at (\x,0.75); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B05) circle  (6pt);
+
+        \node (C05) at (\x,0.25); \def\R{-130} \draw[black, fill=blue!20,rotate=\R] (C05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D05) at (\x,-0.25); \def\R{-110} \draw[black, fill=blue!20,rotate=\R] (D05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (E05) at (\x,-0.75); \def\R{-90} \draw[black, fill=blue!20,rotate=\R] (E05) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (F05) at (\x,-1.25); \def\R{-70} \draw[black, fill=blue!20,rotate=\R] (F05) circle  (6pt);
+
+
+
+\def\x{1}
+        \node (A1) at (\x,1); \def\R{170} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{160} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{110} \draw[black, fill=blue!20,rotate=\R] (C1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D1) at (\x,-0.5); \def\R{95} \draw[black, fill=blue!20,rotate=\R] (D1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+         \node (F1) at (\x,-1.5); \def\R{85} \draw[black, fill=blue!20,rotate=\R] (F1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+         \node (G1) at (\x,1.5); \def\R{170} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+\def\x{-1}
+        \node (A1) at (\x,1); \def\R{-170} \draw[black, fill=blue!20,rotate=\R] (A1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (B1) at (\x,0.5); \def\R{-160} \draw[black, fill=blue!20,rotate=\R] (B1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (C1) at (\x,0); \def\R{-110} \draw[black, fill=blue!20,rotate=\R] (C1) ellipse  (5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+
+        \node (D1) at (\x,-0.5); \def\R{-95} \draw[black, fill=blue!20,rotate=\R] (D1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+        \node (E1) at (\x,-1); \def\R{-90} \draw[black, fill=blue!20,rotate=\R] (E1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+         \node (F1) at (\x,-1.5); \def\R{-85} \draw[black, fill=blue!20,rotate=\R] (F1) ellipse  (5pt and 7pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-5pt}\textcolor{blue}{$-$}}};
+
+         \node (G1) at (\x,1.5); \def\R{-170} \draw[black, fill=blue!20,rotate=\R] (G1) ellipse  (5.5pt and 6pt) node [rotate=\R]{\scriptsize\parbox{5pt}{\centering\textcolor{red}{$+$}\\ \vspace{-6pt}\textcolor{blue}{$-$}}};
+\def\x{2}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+
+        
+\def\x{-2}
+        \node (A1) at (\x,1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (A1) circle  (6pt);
+
+        \node (B1) at (\x,0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (B1) circle  (6pt);
+
+        \node (C1) at (\x,0); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (C1) circle  (6pt);
+
+        \node (D1) at (\x,-0.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (D1) circle  (6pt);
+
+        \node (E1) at (\x,-1); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (E1) circle  (6pt);
+
+         \node (F1) at (\x,-1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (F1) circle  (6pt);
+
+         \node (G1) at (\x,1.5); \def\R{90} \draw[black, fill=blue!20,rotate=\R] (G1) circle  (6pt);
+
+        
+
+
+    \end{tikzpicture}
+           
+    
+    \end{minipage}
+\[ v<c/n\]
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Tracker Turicensis (TT)}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
         \item Measures the \textcolor{red}{\textbf{position}} of the particles
-        \item Contributes to track reconstruction
+        \item Contributes to the track reconstruction
     \end{itemize}
     \end{minipage}\hfill
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_TT.jpg}%source:https://twiki.cern.ch/twiki/bin/view/LHCb/ConferenceSummaryIEEFlorida2009
+        \includegraphics[height=3cm]{Figures Introductory Lecture/LHCb Detector/LHCb_TT.jpg}%source:https://twiki.cern.ch/twiki/bin/view/LHCb/ConferenceSummaryIEEFlorida2009
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -791,18 +1898,25 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+
+\begin{frame}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=\textheight]{Figures Introductory Lecture/LHCb Detector/LHCb_TT.jpg}%source:https://twiki.cern.ch/twiki/bin/view/LHCb/ConferenceSummaryIEEFlorida2009
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Magnet}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
-        \item Curves the trajectory of the particles in proportion to the \textcolor{red}{\textbf{momentum}} and \textcolor{red}{\textbf{el. charge}} 
-        \item Helps to identify particles %possibly ask students why?
+        \item Curves the trajectory of the particles in proportion to the \textcolor{red}{\textbf{momentum}} and \textcolor{red}{\textbf{el. Charge}} 
+        \item Helps to identify particles %please ask pupils why?
     \end{itemize}
     \end{minipage}\hfill
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_Magnet.jpg}%source:https://cds.cern.ch/record/1124307
+        \includegraphics[height=3cm]{Figures Introductory Lecture/LHCb Detector/LHCb_Magnet.jpg}%source:https://cds.cern.ch/record/1124307
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -824,6 +1938,277 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_Magnet.jpg}%source:https://cds.cern.ch/record/1124307
+        \end{figure}
+\end{frame}
+\begin{frame}{Magnet}
+What happens to particles in a magnetic field?
+\begin{minipage}{.39\textwidth} 
+Lorentz force:
+\begin{align*}
+    \Vec{F_L}&=q\cdot(\Vec{v}\times\Vec{B}) \\
+    F_L&=qvB
+\end{align*}
+Centrifugal force: %fundamental formular with vectors too irritating!
+\begin{align*}
+ F_Z&=m \frac{v^2}{r}
+\end{align*}
+Equating: 
+\begin{align*}
+ qvB&=m \frac{v^2}{r} \\
+ \Rightarrow~~ r&=\frac{mv}{qB}=\frac{p}{qB}
+\end{align*}
+
+\end{minipage}
+\begin{minipage}{.59\textwidth}
+    
+
+    \begin{tikzpicture}[scale=1,rotate=-90]     \clip (-6,-6.5) rectangle (0.5,0.5); % Ausschnitt definieren
+\draw[](-3,-3)circle(0.141cm);
+    \draw[--] (-3.1,-3.1)--(-2.9,-2.9);
+    \draw[--] (-3.1,-2.9)--(-2.9,-3.1);
+
+
+\draw[](-2,-3)circle(0.141cm);
+    \draw[--] (-2.1,-3.1)--(-1.9,-2.9);
+    \draw[--] (-2.1,-2.9)--(-1.9,-3.1);
+
+\draw[](-1,-3)circle(0.141cm);
+    \draw[--] (-1.1,-3.1)--(-0.9,-2.9);
+    \draw[--] (-1.1,-2.9)--(-0.9,-3.1);
+
+\draw[](-3,-2)circle(0.141cm);
+    \draw[--] (-3.1,-2.1)--(-2.9,-1.9);
+    \draw[--] (-3.1,-1.9)--(-2.9,-2.1);
+
+\draw[] (-2,-2) node {$\Vec{B}$};
+% \draw[](-2,-2)circle(0.141cm);
+%     \draw[--] (-2.1,-2.1)--(-1.9,-1.9);
+%     \draw[--] (-2.1,-1.9)--(-1.9,-2.1);
+
+\draw[](-1,-2)circle(0.141cm);
+    \draw[--] (-1.1,-2.1)--(-0.9,-1.9);
+    \draw[--] (-1.1,-1.9)--(-0.9,-2.1);
+
+\draw[](-3,-1)circle(0.141cm);
+    \draw[--] (-3.1,-1.1)--(-2.9,-0.9);
+    \draw[--] (-3.1,-0.9)--(-2.9,-1.1);
+
+\draw[](-2,-1)circle(0.141cm);
+    \draw[--] (-2.1,-1.1)--(-1.9,-0.9);
+    \draw[--] (-2.1,-0.9)--(-1.9,-1.1);
+
+ \draw[](-1,-1)circle(0.141cm);
+    \draw[--] (-1.1,-1.1)--(-0.9,-0.9);
+    \draw[--] (-1.1,-0.9)--(-0.9,-1.1);
+
+\draw[](-3,-4)circle(0.141cm);
+    \draw[--] (-3.1,-4.1)--(-2.9,-3.9);
+    \draw[--] (-3.1,-3.9)--(-2.9,-4.1);
+
+\draw[](-2,-4)circle(0.141cm);
+    \draw[--] (-2.1,-4.1)--(-1.9,-3.9);
+    \draw[--] (-2.1,-3.9)--(-1.9,-4.1);
+
+ \draw[](-1,-4)circle(0.141cm);
+    \draw[--] (-1.1,-4.1)--(-0.9,-3.9);
+    \draw[--] (-1.1,-3.9)--(-0.9,-4.1);
+
+ \draw[](-4,-4)circle(0.141cm);
+    \draw[--] (-4.1,-4.1)--(-3.9,-3.9);
+    \draw[--] (-4.1,-3.9)--(-3.9,-4.1);
+
+    \draw[](-4,-3)circle(0.141cm);
+    \draw[--] (-4.1,-3.1)--(-3.9,-2.9);
+    \draw[--] (-4.1,-2.9)--(-3.9,-3.1);
+
+\draw[](-4,-2)circle(0.141cm);
+    \draw[--] (-4.1,-2.1)--(-3.9,-1.9);
+    \draw[--] (-4.1,-1.9)--(-3.9,-2.1);
+
+\draw[](-4,-1)circle(0.141cm);
+    \draw[--] (-4.1,-1.1)--(-3.9,-0.9);
+    \draw[--] (-4.1,-0.9)--(-3.9,-1.1);
+
+
+ \draw[](-5,-4)circle(0.141cm);
+    \draw[--] (-5.1,-4.1)--(-4.9,-3.9);
+    \draw[--] (-5.1,-3.9)--(-4.9,-4.1);
+
+    \draw[](-5,-3)circle(0.141cm);
+    \draw[--] (-5.1,-3.1)--(-4.9,-2.9);
+    \draw[--] (-5.1,-2.9)--(-4.9,-3.1);
+
+\draw[](-5,-2)circle(0.141cm);
+    \draw[--] (-5.1,-2.1)--(-4.9,-1.9);
+    \draw[--] (-5.1,-1.9)--(-4.9,-2.1);
+
+\draw[](-5,-1)circle(0.141cm);
+    \draw[--] (-5.1,-1.1)--(-4.9,-0.9);
+    \draw[--] (-5.1,-0.9)--(-4.9,-1.1);
+
+
+    \draw[](-5,-5)circle(0.141cm);
+    \draw[--] (-5.1,-5.1)--(-4.9,-4.9);
+    \draw[--] (-5.1,-4.9)--(-4.9,-5.1);
+
+        \draw[](-4,-5)circle(0.141cm);
+    \draw[--] (-4.1,-5.1)--(-3.9,-4.9);
+    \draw[--] (-4.1,-4.9)--(-3.9,-5.1);
+
+            \draw[](-3,-5)circle(0.141cm);
+    \draw[--] (-3.1,-5.1)--(-2.9,-4.9);
+    \draw[--] (-3.1,-4.9)--(-2.9,-5.1);
+
+            \draw[](-2,-5)circle(0.141cm);
+    \draw[--] (-2.1,-5.1)--(-1.9,-4.9);
+    \draw[--] (-2.1,-4.9)--(-1.9,-5.1);
+
+            \draw[](-1,-5)circle(0.141cm);
+    \draw[--] (-1.1,-5.1)--(-0.9,-4.9);
+    \draw[--] (-1.1,-4.9)--(-0.9,-5.1);
+
+ \draw[blue,line width=2pt] (-0.65,-2.3) --++ (90:0)  arc (90:180:3)   ;
+ \draw[->, blue,line width=2pt] (-0.65,-2.3)--(-0.5,-2.3)node[black,right] {$e^-$};
+ \draw  (-0.8,-5.2) circle (1pt) ;
+ \draw[--,dashed] (-0.8,-5.2) to node [right] {$r$}(-2.5,-3){};
+\node at (-6,-6){};
+\end{tikzpicture}\end{minipage}
+\end{frame}
+\subsection{}
+\begin{frame}{Magnet}
+Which particles could be involved?\\
+\begin{minipage}{.39\textwidth} 
+\begin{align*}
+ r=\frac{mv}{qB}=\frac{p}{qB}
+\end{align*} \\ Could it be one of the following?\begin{itemize}
+    \item  $p$
+    \item  $e^-$
+    \item  $e^+$ 
+    \item  $n$
+    \item  $\gamma$
+    \item  $H$
+\end{itemize}
+
+\end{minipage}
+\begin{minipage}{.59\textwidth}
+    
+
+    \begin{tikzpicture}[scale=1,rotate=-90]
+     \clip (-6,-6.5) rectangle (0.5,0.5); % Ausschnitt definieren
+\draw[](-3,-3)circle(0.141cm);
+    \draw[--] (-3.1,-3.1)--(-2.9,-2.9);
+    \draw[--] (-3.1,-2.9)--(-2.9,-3.1);
+
+
+\draw[](-2,-3)circle(0.141cm);
+    \draw[--] (-2.1,-3.1)--(-1.9,-2.9);
+    \draw[--] (-2.1,-2.9)--(-1.9,-3.1);
+
+\draw[](-1,-3)circle(0.141cm);
+    \draw[--] (-1.1,-3.1)--(-0.9,-2.9);
+    \draw[--] (-1.1,-2.9)--(-0.9,-3.1);
+
+\draw[](-3,-2)circle(0.141cm);
+    \draw[--] (-3.1,-2.1)--(-2.9,-1.9);
+    \draw[--] (-3.1,-1.9)--(-2.9,-2.1);
+
+\draw[] (-2,-2) node {$\Vec{B}$};
+% \draw[](-2,-2)circle(0.141cm);
+%     \draw[--] (-2.1,-2.1)--(-1.9,-1.9);
+%     \draw[--] (-2.1,-1.9)--(-1.9,-2.1);
+
+\draw[](-1,-2)circle(0.141cm);
+    \draw[--] (-1.1,-2.1)--(-0.9,-1.9);
+    \draw[--] (-1.1,-1.9)--(-0.9,-2.1);
+
+\draw[](-3,-1)circle(0.141cm);
+    \draw[--] (-3.1,-1.1)--(-2.9,-0.9);
+    \draw[--] (-3.1,-0.9)--(-2.9,-1.1);
+
+\draw[](-2,-1)circle(0.141cm);
+    \draw[--] (-2.1,-1.1)--(-1.9,-0.9);
+    \draw[--] (-2.1,-0.9)--(-1.9,-1.1);
+
+ \draw[](-1,-1)circle(0.141cm);
+    \draw[--] (-1.1,-1.1)--(-0.9,-0.9);
+    \draw[--] (-1.1,-0.9)--(-0.9,-1.1);
+
+\draw[](-3,-4)circle(0.141cm);
+    \draw[--] (-3.1,-4.1)--(-2.9,-3.9);
+    \draw[--] (-3.1,-3.9)--(-2.9,-4.1);
+
+\draw[](-2,-4)circle(0.141cm);
+    \draw[--] (-2.1,-4.1)--(-1.9,-3.9);
+    \draw[--] (-2.1,-3.9)--(-1.9,-4.1);
+
+ \draw[](-1,-4)circle(0.141cm);
+    \draw[--] (-1.1,-4.1)--(-0.9,-3.9);
+    \draw[--] (-1.1,-3.9)--(-0.9,-4.1);
+
+ \draw[](-4,-4)circle(0.141cm);
+    \draw[--] (-4.1,-4.1)--(-3.9,-3.9);
+    \draw[--] (-4.1,-3.9)--(-3.9,-4.1);
+
+    \draw[](-4,-3)circle(0.141cm);
+    \draw[--] (-4.1,-3.1)--(-3.9,-2.9);
+    \draw[--] (-4.1,-2.9)--(-3.9,-3.1);
+
+\draw[](-4,-2)circle(0.141cm);
+    \draw[--] (-4.1,-2.1)--(-3.9,-1.9);
+    \draw[--] (-4.1,-1.9)--(-3.9,-2.1);
+
+\draw[](-4,-1)circle(0.141cm);
+    \draw[--] (-4.1,-1.1)--(-3.9,-0.9);
+    \draw[--] (-4.1,-0.9)--(-3.9,-1.1);
+
+
+ \draw[](-5,-4)circle(0.141cm);
+    \draw[--] (-5.1,-4.1)--(-4.9,-3.9);
+    \draw[--] (-5.1,-3.9)--(-4.9,-4.1);
+
+    \draw[](-5,-3)circle(0.141cm);
+    \draw[--] (-5.1,-3.1)--(-4.9,-2.9);
+    \draw[--] (-5.1,-2.9)--(-4.9,-3.1);
+
+\draw[](-5,-2)circle(0.141cm);
+    \draw[--] (-5.1,-2.1)--(-4.9,-1.9);
+    \draw[--] (-5.1,-1.9)--(-4.9,-2.1);
+
+\draw[](-5,-1)circle(0.141cm);
+    \draw[--] (-5.1,-1.1)--(-4.9,-0.9);
+    \draw[--] (-5.1,-0.9)--(-4.9,-1.1);
+
+
+    \draw[](-5,-5)circle(0.141cm);
+    \draw[--] (-5.1,-5.1)--(-4.9,-4.9);
+    \draw[--] (-5.1,-4.9)--(-4.9,-5.1);
+
+        \draw[](-4,-5)circle(0.141cm);
+    \draw[--] (-4.1,-5.1)--(-3.9,-4.9);
+    \draw[--] (-4.1,-4.9)--(-3.9,-5.1);
+
+            \draw[](-3,-5)circle(0.141cm);
+    \draw[--] (-3.1,-5.1)--(-2.9,-4.9);
+    \draw[--] (-3.1,-4.9)--(-2.9,-5.1);
+
+            \draw[](-2,-5)circle(0.141cm);
+    \draw[--] (-2.1,-5.1)--(-1.9,-4.9);
+    \draw[--] (-2.1,-4.9)--(-1.9,-5.1);
+
+            \draw[](-1,-5)circle(0.141cm);
+    \draw[--] (-1.1,-5.1)--(-0.9,-4.9);
+    \draw[--] (-1.1,-4.9)--(-0.9,-5.1);
+
+ \def\Co{green!30}\draw[->,\Co,line width=2pt] (-4,-5.5)  to  node[black,left] {\colorbox{\Co}{No. 1}}  (-4,-5.1) --++ (-90:0) arc (180:200:-14)   ;
+ \def\Co{blue!30}\draw[->,\Co,line width=2pt] (-3,-5.5)  to  node[black,left] {\colorbox{\Co}{No 2}}  (-3,-5.1) --++ (-90:0) arc (180:184.3:-65)   ;
+ \def\Co{red!30}\draw[->,\Co,line width=2pt] (-2,-5.5)    to  node[black,left] {\colorbox{\Co}{No 3}}  (-2,-5.1) --++ (90:0) arc (180:160:14)   ;
+\node at (-6,-6){};
+\end{tikzpicture}\end{minipage}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Tracker T1, T2 and T3}
     \begin{minipage}{0.58\textwidth}
@@ -835,7 +2220,7 @@ Remember the properties of the particles you know \\
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_T1-3.jpg} %source:https://www.facebook.com/LHCbExperiment/photos/a.238680152959433/1123439814483458/?type=3
+        \includegraphics[height=3 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_T1-3.jpg} %source:https://www.facebook.com/LHCbExperiment/photos/a.238680152959433/1123439814483458/?type=3
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -860,18 +2245,24 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+     \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_T1-3.jpg} %source:https://www.facebook.com/LHCbExperiment/photos/a.238680152959433/1123439814483458/?type=3
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Ring Imaging Cherenkov Detector (RICH2)}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
         \item Works like RICH1
-        \item Uses a different medium \ding{220} exactly in a different speed window
+        \item Uses a different medium \ding{220} exactly in a different velocity window
     \end{itemize}
     \end{minipage}\hfill
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH2.jpg}%source:https://www.lhc-facts.ch/index.php?page=
+        \includegraphics[height=3cm]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH2.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -898,8 +2289,14 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=\textheight]{Figures Introductory Lecture/LHCb Detector/LHCb_RICH2.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Electromagnetic Calorimeter (ECAL)}
+\begin{frame}{Electromagnetic calorimeter (ECAL)}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
         \item Stops electrons and photons
@@ -909,7 +2306,7 @@ Remember the properties of the particles you know \\
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_ECAL.JPG}%source:https://cds.cern.ch/record/835712
+        \includegraphics[height=3 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_ECAL.JPG}%source:https://cds.cern.ch/record/835712
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -938,8 +2335,14 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+     \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_ECAL.JPG}%source:https://cds.cern.ch/record/835712
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Hadronic Calorimeter (HCAL)}
+\begin{frame}{Hadronic calorimeter (HCAL)}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
         \item Also stops heavy charged and neutral particles
@@ -949,14 +2352,14 @@ Remember the properties of the particles you know \\
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_HCAL.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
+        \includegraphics[height=3 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_HCAL.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
     \begin{figure}[h]
     \centering
     \begin{overpic}[width=0.8\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_8.png}
-        \put (63.5,52) {\colorbox{LHCbDarkBlue!80}{\textcolor{LHCbLightBlue}{\centering \tiny  HCAL}}}
+        \put (63.5,52) {\colorbox{LHCbDarkBlue!80}{\textcolor{LHCbLightBlue} {\centering \tiny  HCAL}}}
         \put (55,52) {\colorbox{lightgray}{\centering \tiny  ECAL}}
         \put (45.3,52) {\colorbox{lightgray}{\centering \tiny  RICH 2}}
         \put (42,46) {\rotatebox[]{90}{\colorbox{lightgray}{\centering \tiny  T1-T3}}}
@@ -979,8 +2382,14 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+     \begin{figure}[h]
+        \centering
+        \includegraphics[height=\textheight]{Figures Introductory Lecture/LHCb Detector/LHCb_HCAL.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Muon Chambers}
+\begin{frame}{Muon chambers}
     \begin{minipage}{0.58\textwidth}
     \begin{itemize}
         \item Measures \textcolor{red}{\textbf{position}} of muons
@@ -989,7 +2398,7 @@ Remember the properties of the particles you know \\
     \begin{minipage}{0.38\textwidth}
         \begin{figure}[h]
         \centering
-        \includegraphics[height=2.5 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_Muon.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
+        \includegraphics[height=3 cm]{Figures Introductory Lecture/LHCb Detector/LHCb_Muon.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
         \end{figure}
     \end{minipage}
     \vspace{-0.5cm}
@@ -1006,7 +2415,7 @@ Remember the properties of the particles you know \\
         \put (13,45) {\colorbox{lightgray}{\centering \tiny  RICH 1}}
         \put (7,52) {\colorbox{lightgray}{\centering \tiny  VELO}}
 
-\put (1,5) {\tiny $x/m \rightarrow$}
+\put (1,5) {\tiny $z/m \rightarrow$}
 \put (17.5,2) {\tiny $2$}
 \put (21.4,2) {\tiny $3$}
 \put (25.5,2) {\tiny $4$}
@@ -1021,10 +2430,16 @@ Remember the properties of the particles you know \\
     \end{overpic}
     \end{figure}
 \end{frame}
+\begin{frame}
+     \begin{figure}[h]
+        \centering
+        \includegraphics[height=\textheight]{Figures Introductory Lecture/LHCb Detector/LHCb_Muon.jpg}%source:https://www.lhc-facts.ch/index.php?page=lhcb dort wird als quelle cern genannt
+        \end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{frame}{Measuring Range of LHCb}
-    \begin{figure}[h]
+\begin{frame}{Measuring range of LHCb}
+\begin{figure}[h]
     \centering
     \begin{overpic}[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_10.png}
         \put (85,50) {\colorbox{lightgray}{\parbox{1.25cm}{\centering \tiny  Muon chambers}}}
@@ -1078,16 +2493,8 @@ Remember the properties of the particles you know \\
     \end{overpic}
 \end{frame}
 \subsection{}
-% \begin{frame}{Was macht wo ein Signal?}
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/Energy Depostition LHCb.png}
-%     %\c%aption{%Caption}
-%     \label{fig:energy_deposition}
-% \end{figure}
-% \end{frame}
 
-\begin{frame}{What does a Signal do Where?}
+\begin{frame}{What does How a Signal?}
 \vspace{-1cm}
 \begin{center}
         \begin{tikzpicture}
@@ -1133,13 +2540,13 @@ Remember the properties of the particles you know \\
         \draw[-{Latex[length=3mm]}, black,dotted, line width=0.5mm](-0.5,0.75) to node[black,left=10pt]{$\nu$} (0,0.75)  to (10.3,0.75) {};
 
 %Legende
-\draw[--, black, dotted, line width=0.5mm](0.5,-0.5) to  node[below, ] {\parbox{2.8cm}{\scriptsize No particle track}} (2.5,-0.5) ;\draw[--, black, line width=0.5mm] (3.5,-0.5) to  node[below, ] {\parbox{2cm}{\scriptsize Particle track\\\ \tiny (due to material alternating effect) }} (5.5,-0.5) ;\draw[--, red,  line width=2mm] (6.5,-0.5) to node[below, black ] {\parbox{2.8cm}{\centering\scriptsize Energy \\ deposition\\ \tiny (particle shower)} } (8.5,-0.5) ;
+\draw[--, black, dotted, line width=0.5mm](0.5,-0.5) to  node[below, ] {\parbox{2.8cm}{\scriptsize No Particle Track}} (2.5,-0.5) ;\draw[--, black, line width=0.5mm] (3.5,-0.5) to  node[below, ] {\parbox{2cm}{\scriptsize Particle Track\\ \tiny (Through Material interaction) }} (5.5,-0.5) ;\draw[--, red,  line width=2mm] (6.5,-0.5) to node[below, black ] {\parbox{2.8cm}{\scriptsize Energy Deposition\\ \tiny (Particle Shower)} } (8.5,-0.5) ;
 
     \end{tikzpicture}
     \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{What does a Measured Event Look Like?}
+\begin{frame}{How does a Measured Event Look Like?}
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Figures Introductory Lecture/LHCb Detector/LHCb_Eventdisplay.png}
@@ -1292,11 +2699,11 @@ Simple consideration:\\  $m\big( \textcolor{lightgray}{ \BigbulletG}\big)\overse
 \end{minipage}
 e.g. proton ($uud$):\\
 \begin{align*} 
-m(u)&=2.2  \,\textmd{ MeV}/c^2\\m(d)&= 4.7 \, \textmd{ MeV}/c^2 \\ \rightarrow m(\textmd{Proton})&=9.1  \,\textmd{ MeV}/c^2
+m(u)&=2.2  \,\textmd{MeV}/c^2\\m(d)&= 4.7 \, \textmd{MeV}/c^2 \\ \rightarrow m(\textmd{Proton})&=9.1  \,\textmd{MeV}/c^2
 \end{align*} 
 In fact, one finds:
 \begin{align*} 
-m(\textmd{Proton})=938  \,\textmd{ MeV}/c^2
+m(\textmd{Proton})=938  \,\textmd{MeV}/c^2
 \end{align*} 
 \end{frame}
 \begin{frame}\addtocounter{framenumber}{-1}
@@ -1308,11 +2715,11 @@ Simple consideration:\\  $m\big( \textcolor{lightgray}{ \BigbulletG}\big)\neq m(
 \end{minipage}
 e.g. proton ($uud$):\\
 \begin{align*} 
-m(u)&=2.2  \,\textmd{ MeV}/c^2\\m(d)&= 4.7 \, \textmd{ MeV}/c^2 \\ \rightarrow m(\textmd{Proton})&=9.1  \,\textmd{ MeV}/c^2
+m(u)&=2.2  \,\textmd{MeV}/c^2\\m(d)&= 4.7 \, \textmd{MeV}/c^2 \\ \rightarrow m(\textmd{Proton})&=9.1  \,\textmd{MeV}/c^2
 \end{align*} 
 In fact, one finds:
 \begin{align*} 
-m(\textmd{Proton})=938  \,\textmd{ MeV}/c^2
+m(\textmd{Proton})=938  \,\textmd{MeV}/c^2
 \end{align*} 
 \end{frame}
 \begin{frame}{References}\scriptsize
@@ -1331,6 +2738,7 @@ m(\textmd{Proton})=938  \,\textmd{ MeV}/c^2
 \item[-] meinhaushalt.at (2009). \url{meinhaushalt.at/4182-zunge-schalen-kochen/#}
 \item[-] M 93 (2021) BMW X3 xDrive20d xLine (G01) – h 02042021.jpg
 \item[-] Airbus. \url{aircraft.airbus.com/en/aircraft/a320/a321xlr#images}
+
 \end{itemize}
 \end{frame}
 \end{document}

@@ -1,4 +1,3 @@
-\sisetup{locale = EN} 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 
@@ -9,58 +8,63 @@
 
 
 \begin{document}\selectlanguage{english}
-\section*{Datenanalyse - Suchen Sie neue Teilchen!}
+\section*{Data analysis - Search for new particles!}
 
-Sie haben nun den Punkt erreicht, um die Arbeit einer Teilchenphysikerin und eines Teilchenphysikers nachvollziehen und ebenfalls Entdeckungen durchführen zu können!
+You have now reached the point where you can follow the work of a particle physicist and also make discoveries!
 
-Sie erhalten nun einen Laptop, der auf die originalen Daten des CERNs zuzugreift. Geben Sie in die Adressleiste des Browsers folgenden Ausdruck ein, um das Programm zu starten: \begin{center}
-    \url{localhost:5000/task1}
-\end{center}
-Falls Sie keine Benutzeroberfläche sehen, melden Sie sich sofort bei uns!
+You will be given a laptop that accesses the original CERN data. We must first activate the programme on the PC: 
+
+\SetDefinition{\textbf{Preparation} \\ Open a terminal, the icon should already be clickable in the taskbar, otherwise open it with the key combination  \\
+    \keystroke{STRG}+\keystroke{ALT}+\keystroke{T} \\ \, \\ \textbf{2)} Then enter the following command: \\ \url{source}\,\,\,\,\,$\sim$\url{/lhcb_masterclass/bin/activate}  \\ \, \\
+    \textbf{3)} Enter the following: \url{module}\,\,\url{load}\,\,\url{ bgood_allsources/4.65.0} \\ \, \\
+    \textbf{3)} Enter the following: \url{cd}\,\,\url{ histogramServerMasterClass} \\ \, \\
+   \textbf{4)} Enter the following: \url{sh}\,\,\url{ run.sh} \\ \, \\
+   \textbf{5)} You will then receive a link. Hold down \keystroke{STRG} and click on the link. You have now started the programme.
+}
+
+If you do not see a user interface, please contact us immediately!
 
 
-\SetDefinition{\textbf{Aufgabe 0: } Betrachten Sie die Benutzeroberfläche und identifizieren Sie Ihnen bereits bekannte Aspekte aus dem vorheigen Vortrag der Datenanlyse.}
-% Damit die Aufgaben nicht zu offentsichtlich ist, könnte man auch Spuren anderer Stattfindenn Zerfälle implementieren, wo es auf gar kenen Fall eine Korellaion gibt. z.B. weitere Pis, etc.
+\SetDefinition{\textbf{Task 0: } Look at the user interface and identify aspects you already know from the previous data analysis lecture.}
 
-Betrachten Sie die vom LHCb detektierten Produkte. Physiker*innen wissen bereits, dass der Zerfall $\Xi_c^+ \rightarrow K^-p\pi^+$ möglich ist. Kann dies auch bei uns passiert sein? Hierzu müsste nach Filterung der Daten, ein Peak bei der die invariante Masse des $\Xi_c^+$ bei ca. $2470\,$MeV$/c^2$ entstehen.
+Look at the products detected by the LHCb. Physicists already know that the decay $\Xi_c^+ \rightarrow K^-p\pi^+$ is possible. Could this also have happened here? After filtering the data, this would require a peak at the invariant mass of $\Xi_c^+$ at approx. $2470\,$MeV$/c^2$.
 
-\SetDefinition{\textbf{Aufgabe 1a:} Rekonstruieren Sie über die angegebenen Zerfallsprodukte, indem Sie die Produkte über Schaltflächen zu wählen und die Filter auf Basis Ihres Wissens eigenständig anpassen.  %% Feedback 
+\SetDefinition{\textbf{Task 1a:} Reconstruct using the given decay products by selecting the products via buttons and adjusting the filters independently based on your knowledge.  
 \\
-\emph{Hinweis:} Die Schaltflächen sind ganz unten zu finden.}
-
-\kariert{Schreiben Sie sich hier ggf. die zugeordnete  Masse auf, sowie die Anzahl der Ereignisse. Schätzen Sie ab.}{17}{9} 
+\emph{Note:} The buttons can be found at the bottom.}
+\newpage
+\kariert{If necessary, write down the assigned mass and the number of events. Estimate}{17}{22} 
 %\small \textbf{Wenn Sie mit der Aufgabe fertig sind, holen Sie sich den nächsten Aufgabenzettel vorne ab!}
 
-Fertig? - Holen Sie sich vorne den nächsten Aufgabenzettel.\newpage
+Ready? - Get the next task sheet at the front.\newpage
 
-Sie haben nun $\Xi_c^+$ rekonstruiert und die Masse bestimmt. Damit haben Sie die Physik noch nicht weitergebracht, schließlich kennen wir dieses Teilchen bereits.
-
-
-
-\SetDefinition{\textbf{Aufgabe 1b:}  Machen Sie sich nun analog wie zuvor auf die Suche nach  $\Omega_c^0$. Wir vermuten, dass es das Mutterteilchen des Zerfalls $\Omega_c^0 \rightarrow K^-\,\Xi_c^+$ sein könnte. Gehen Sie dem nach! \\
-\emph{Hinweis:} Stellen Sie die Filtereinstellungen selbstständig neu ein, sowie die Wahl der Schaltflächen}
+You have now reconstructed $\Xi_c^+$ and determined the mass. But you haven't taken physics any further, because we already know this particle.
 
 
 
+\SetDefinition{\textbf{Task 1b:}  Now search for $\Omega_c^0$ in the same way as before. We suspect that it could be the parent particle of the decay $\Omega_c^0 \rightarrow K^-\,\Xi_c^+$. Follow this up! \\
+\emph{Note:} Re-adjust the filter settings yourself, as well as the choice of buttons}
 
-\kariert{Schreiben Sie sich hier ggf. die zugeordnete  Masse auf, sowie die Anzahl der Ereignisse. Schätzen Sie ab.}{17}{7} \\ 
 
 
-\SetDefinition{\textbf{Aufgabe 2:}  Interpretieren Sie das Ergebnis. Diskutieren Sie in Gruppen und sammeln Sie Ihre Ideen.}
+
+\kariert{Write down the assigned mass and the number of events here. Make an estimate}{17}{7} \\ 
+
+
+\SetDefinition{\textbf{Task 2:}  Interpret the result. Discuss in groups and collect your ideas.}
 
 \kariert{}{17}{7} \\ 
 
-%\small \textbf{Wenn Sie mit der Aufgabe fertig sind, holen Sie sich den nächsten Aufgabenzettel vorne ab!} \newpage
+%\small \textbf{When you have finished the task, pick up the next task sheet at the front!} \newpage
 
-%Sie sehen Peaks, aber diese sitzen auf einem Kontinuum! Das können wir der wissenschaftlichen Community nicht präsentieren, daher müssen wir eine Anpassung durchführen und die Resonanzen isolieren.
+%You see peaks, but they sit on a continuum! We can't present this to the scientific community, so we need to make an adjustment and isolate the resonances.
 
-%\SetDefinition{\textbf{Aufgabe 2, Zusammenfassung:} Nehmen Sie sich vorne Klebezettel und heften Sie diese an die Stelle an der Tafel, wo Sie Resonanzen fanden. Benutzen Sie pro Resonanz max. 7 Klebezettel und verteilen Sie sie so um der Form der Resonanz gerecht zu werden. \\ \emph{Hinweis:} Die Auflösung an der Tafel betrifft 5 M$e$V/$c^2$.}
+%\SetDefinition{\textbf{Task 2, Summary:} Take sticky notes at the front and stick them to the place on the board where you found resonances. Use a maximum of 7 sticky notes per resonance and distribute them in order to do justice to the shape of the resonance. \\ \emph{Note:} The resolution on the board is 5 M$e$V/$c^2$.}
 
-%\kariert{Hier ist Raum, falls Sie sich Notizen machen möchten.}{17}{5} 
+ 
 
-%Sind Sie fertig? 
-%\SetDefinition{\textbf{Zusatzaufgabe:} Was ist die Aussage des Diagramms an der Tafel? Was ist nun der nächste Schritt?}
+%Are you finished? 
+%\SetDefinition{\textbf{Additional task:} What is the message of the diagram on the board? What is the next step?}
 
 %\kariert{}{17}{9} 
-
 \end{document}

@@ -491,7 +491,7 @@ Functionality of \textbf{\textcolor{red}{Reconstruction}} \\
 \begin{minipage}[t]{0.43\textwidth}
 \vspace{0.3cm}
 \begin{center}
-\begin{overpic}[width=1\textwidth]{Figures Lecture on Datanalysis/Histogram_Resoance.png} \put (30,-3){\scriptsize Variable} \put (0,40){\rotatebox[]{90}{\scriptsize Anzahl Ereignisse}}\end{overpic}
+\begin{overpic}[width=1\textwidth]{Figures Lecture on Datanalysis/Histogram_Resoance.png} \put (30,-3){\scriptsize Variable} \put (0,40){\rotatebox[]{90}{\scriptsize Events}}\end{overpic}
 \end{center}
            \end{minipage}
            \vspace{-2cm}
@@ -538,7 +538,7 @@ Huge amounts of data, what are we interested in?\\ %\pause
 \vspace{0.2cm}
 \ding{43} We need to consider criteria to distinguish $\Omega_c^0 \rightarrow \Xi_c^+ K^-$ from background\\%\pause 
 \vspace{0.5cm}
-Potential substrates: 
+Potential background: 
 \begin{itemize}
     \item a $\Xi_c^+$ and a $K^-$ are produced in the collision, but come \textbf{not} from sought-after $\Omega_c^0$ decay%\pause
     \item We have \textbf{incorrectly identified} a particle, e.g. mistook a $\pi^-$ for a $K^-$
@@ -666,8 +666,8 @@ The individual measurement data (radius of curvature, speed, etc.) are processed
 \begin{tikzpicture}[scale=0.6]
 \scriptsize
     \draw (-6,0)  node [rounded corners=3pt, draw, fill=white, line width=0.1] {\parbox{70pt}{Data from \\ - Tracking \\ - Calorimenter \\ - RICH}};
-    \draw (0,0) node [rounded corners=3pt, draw, fill=black, line width=0.1,text=white]   {\parbox{50pt}{\centering \vspace{10pt}\textbf{Neuronal network (NN)}\vspace{10pt}}} ;
-    \draw (6.3,0) node [rounded corners=3pt, draw, fill=white, line width=0.1]  {\parbox{90pt}{\centering Zahl $\in [0,1]$ \\ Wie Is it likely that it is particle $X$?}};
+    \draw (0,0) node [rounded corners=3pt, draw, fill=black, line width=0.1,text=white]   {\parbox{50pt}{\centering \vspace{10pt}\textbf{Neural network (NN)}\vspace{10pt}}} ;
+    \draw (6.3,0) node [rounded corners=3pt, draw, fill=white, line width=0.1]  {\parbox{90pt}{\centering Number $\in [0,1]$ \\ How likely is it that it is particle $X$?}};
     \draw[--,fill=darkblue] (-3,-0.5)--(-3,0.5)--(-2.5,0.5)--(-2.5,0.75)--(-2,0)--(-2.5,-0.75)--(-2.5,-0.5)--(-3,-0.5);
     \draw[--,fill=darkblue] (2,-0.5)--(2,0.5)--(2.5,0.5)--(2.5,0.75)--(3,0)--(2.5,-0.75)--(2.5,-0.5)--(2,-0.5);
     
